@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700;800;900&display=swap");
+
+@import "./base.css";
+@import "./scrub.css";
+@import "./ambient-background.css";
+@import "./intro-logo.css";
+@import "./about-text.css";
+@import "./lineup-header.css";
+@import "./product-brand-labels.css";
+@import "./brand-name-cue.css";
+@import "./brand-showcase.css";
+@import "./certificate.css";
+@import "./oem-contact-cue.css";
+@import "./ui.css";
+
+
+/* ป้องกัน overlay แว้บขึ้นมาก่อน JS คำนวณ scroll/time */
+html:not(.is-ready) .intro-logo-group,
+html:not(.is-ready) .intro-about-text,
+html:not(.is-ready) .lineup-header,
+html:not(.is-ready) .product-brand-labels,
+html:not(.is-ready) .brand-name-cue,
+html:not(.is-ready) .brand-showcase,
+html:not(.is-ready) .certificate,
+html:not(.is-ready) .contact-cue,
+html:not(.is-ready) .certificate-cue,
+html:not(.is-ready) .oem-contact-cue {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+

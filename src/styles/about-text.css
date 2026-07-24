@@ -1,0 +1,316 @@
+.intro-about-text {
+  position: absolute;
+  z-index: 20;
+  left: clamp(44px, 6.6vw, 122px);
+  top: clamp(118px, 18vh, 190px);
+  width: min(45vw, 690px);
+  color: var(--navy);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.about-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(-34px, 18px, 0) scale(0.965);
+  filter: blur(8px);
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+}
+
+.about-ingredient-panel {
+  top: clamp(-24px, -2.6vh, -14px);
+}
+
+/* แสงบาง ๆ ด้านหลังข้อความ */
+.about-panel::before {
+  content: "";
+  position: absolute;
+  left: -9%;
+  top: -10%;
+  z-index: -2;
+  width: 84%;
+  height: 112%;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      circle at 28% 32%,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.43) 34%,
+      rgba(245, 164, 0, 0.08) 58%,
+      transparent 76%
+    );
+  filter: blur(24px);
+  opacity: 0.9;
+}
+
+/* เส้น accent ด้านซ้าย */
+.about-panel::after {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 8px;
+  width: 5px;
+  height: clamp(74px, 9vw, 128px);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--orange) 0%,
+    rgba(245, 164, 0, 0.45) 62%,
+    rgba(245, 164, 0, 0) 100%
+  );
+  box-shadow: 0 12px 32px rgba(245, 164, 0, 0.24);
+}
+
+.about-kicker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 clamp(18px, 2vw, 30px);
+  color: var(--orange);
+  font-size: clamp(12px, 0.88vw, 15px);
+  font-weight: 950;
+  letter-spacing: 0.42em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.about-kicker::after {
+  content: "";
+  width: clamp(64px, 7vw, 126px);
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 164, 0, 0.9),
+    rgba(245, 164, 0, 0)
+  );
+}
+
+.about-ingredient-panel .about-kicker::before {
+  content: "SELECTED FROM THAILAND";
+  position: absolute;
+  left: 0;
+  top: -24px;
+  color: rgba(20, 39, 74, 0.42);
+  font-size: clamp(9px, 0.62vw, 11px);
+  font-weight: 950;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+}
+
+.about-lines {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(7px, 0.72vw, 14px);
+}
+
+.about-line {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(40px, 4.1vw, 74px);
+  font-weight: 950;
+  letter-spacing: -0.025em;
+  line-height: 1.03;
+  opacity: 0;
+  transform: translate3d(-14px, 22px, 0);
+  filter: blur(8px);
+  will-change: opacity, transform, filter;
+  text-shadow:
+    0 10px 22px rgba(255, 255, 255, 0.38),
+    0 12px 28px rgba(20, 39, 74, 0.06);
+}
+
+.about-line.is-accent {
+  color: var(--orange);
+  text-shadow:
+    0 10px 24px rgba(255, 255, 255, 0.48),
+    0 16px 32px rgba(245, 164, 0, 0.13);
+}
+
+.about-line-1,
+.about-line-2 {
+  font-size: clamp(46px, 4.45vw, 82px);
+}
+
+.about-line-3 {
+  font-size: clamp(34px, 3.55vw, 60px);
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+.about-line-5 {
+  margin-top: clamp(8px, 0.7vw, 14px);
+}
+
+.about-lines::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  bottom: -26px;
+  width: clamp(88px, 9vw, 160px);
+  height: 6px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, var(--orange), rgba(245, 164, 0, 0)),
+    radial-gradient(circle, var(--orange) 0 35%, transparent 38%);
+  opacity: 0.9;
+}
+
+/* Ingredient section */
+.ingredient-title {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(44px, 4.7vw, 86px);
+  font-weight: 950;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-transform: uppercase;
+  text-shadow:
+    0 10px 22px rgba(255, 255, 255, 0.42),
+    0 14px 28px rgba(20, 39, 74, 0.08);
+}
+
+.ingredient-title span {
+  display: block;
+  color: var(--orange);
+}
+
+.ingredient-copy {
+  margin: clamp(16px, 1.5vw, 24px) 0 0;
+  max-width: 580px;
+  color: rgba(20, 39, 74, 0.72);
+  font-size: clamp(14px, 1.05vw, 18px);
+  font-weight: 760;
+  line-height: 1.62;
+}
+
+.ingredient-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(22px, 2vw, 34px);
+  max-width: 620px;
+}
+
+.ingredient-list span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid rgba(20, 39, 74, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow:
+    0 12px 28px rgba(20, 39, 74, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  padding: 10px 16px;
+  color: var(--navy);
+  font-size: clamp(12px, 0.92vw, 15px);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  filter: blur(6px);
+  will-change: opacity, transform, filter;
+}
+
+.ingredient-list span:nth-child(1),
+.ingredient-list span:nth-child(3) {
+  color: var(--orange);
+}
+
+@media (max-width: 1180px) {
+  .intro-about-text {
+    width: min(52vw, 640px);
+  }
+
+  .about-line {
+    font-size: clamp(36px, 4.25vw, 66px);
+  }
+
+  .about-line-1,
+  .about-line-2 {
+    font-size: clamp(40px, 4.7vw, 72px);
+  }
+
+  .ingredient-title {
+    font-size: clamp(42px, 5vw, 76px);
+  }
+}
+
+@media (max-width: 900px) {
+  .intro-about-text {
+    left: 28px;
+    right: 28px;
+    top: 116px;
+    width: auto;
+  }
+
+  .about-panel::after {
+    left: -14px;
+  }
+
+  .about-line,
+  .about-line-1,
+  .about-line-2,
+  .ingredient-title {
+    font-size: clamp(36px, 10vw, 66px);
+  }
+
+  .about-kicker {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+  }
+
+  .ingredient-copy {
+    max-width: 32em;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro-about-text {
+    top: 76px;
+  }
+
+  .about-line,
+  .about-line-1,
+  .about-line-2,
+  .ingredient-title {
+    font-size: clamp(34px, 12vw, 58px);
+    line-height: 1.05;
+  }
+
+  .about-lines {
+    gap: 6px;
+  }
+
+  .about-line-3 {
+    font-size: clamp(29px, 9.4vw, 44px);
+    line-height: 1.1;
+  }
+
+  .about-kicker::after {
+    width: 54px;
+  }
+
+  .ingredient-list {
+    gap: 8px;
+  }
+
+  .ingredient-list span {
+    min-height: 34px;
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+}

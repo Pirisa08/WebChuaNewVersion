@@ -1,0 +1,37 @@
+.scroll-percent {
+  position: absolute;
+  z-index: 30;
+  right: clamp(18px, 3vw, 44px);
+  bottom: clamp(24px, 4vw, 52px);
+  padding: 8px 13px;
+  border: 1px solid rgba(20, 39, 74, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.68);
+  color: var(--navy);
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(20, 39, 74, 0.06);
+}
+
+.progress-rail {
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: rgba(20, 39, 74, 0.08);
+  transform: translateZ(0);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy), var(--orange));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 90ms linear;
+}

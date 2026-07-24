@@ -1,0 +1,111 @@
+.cursor-fog-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  contain: layout paint style;
+  isolation: isolate;
+}
+
+.cursor-fog {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translate3d(-50%, -50%, 0);
+  backface-visibility: hidden;
+}
+
+/* แสงหลัก สีส้ม ฟุ้งตามเมาส์ */
+.cursor-fog-main {
+  width: clamp(280px, 34vw, 620px);
+  height: clamp(280px, 34vw, 620px);
+  background:
+    radial-gradient(
+      circle,
+      rgba(245, 164, 0, 0.18) 0%,
+      rgba(245, 164, 0, 0.1) 24%,
+      rgba(245, 164, 0, 0.035) 48%,
+      transparent 72%
+    );
+  filter: blur(7px);
+  mix-blend-mode: multiply;
+}
+
+/* แสงขาวนุ่ม ๆ ให้ดู premium */
+.cursor-fog-soft {
+  width: clamp(360px, 42vw, 760px);
+  height: clamp(360px, 42vw, 760px);
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.1) 28%,
+      rgba(255, 255, 255, 0.03) 52%,
+      transparent 76%
+    );
+  filter: blur(9px);
+  mix-blend-mode: screen;
+}
+
+/* เงาน้ำเงินจาง ๆ ช่วยเพิ่มมิติ */
+.cursor-fog-warm {
+  width: clamp(300px, 36vw, 680px);
+  height: clamp(300px, 36vw, 680px);
+  background:
+    radial-gradient(
+      circle,
+      rgba(20, 39, 74, 0.075) 0%,
+      rgba(20, 39, 74, 0.032) 32%,
+      transparent 70%
+    );
+  filter: blur(11px);
+  mix-blend-mode: multiply;
+}
+
+/* texture เบามาก */
+.cursor-fog-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(20, 39, 74, 0.13) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 72% 64%,
+      rgba(245, 164, 0, 0.15) 0 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px, 72px 72px;
+  mix-blend-mode: multiply;
+  will-change: opacity;
+}
+
+/* จอ touch ไม่ต้องใช้ mouse fog */
+@media (pointer: coarse) {
+  .cursor-fog-layer {
+    display: none;
+  }
+}
+
+/* ลด motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-fog {
+    transition: none;
+    filter: none;
+  }
+
+  .cursor-fog-grain {
+    display: none;
+  }
+}

@@ -1,0 +1,1260 @@
+.oem-contact-cue {
+  --oem-contact-in: 0;
+  --oem-contact-out: 0;
+  --oem-contact-opacity: 0;
+
+  position: absolute;
+  inset: 0;
+  z-index: 37;
+  display: block;
+  color: var(--navy);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  background: transparent;
+  will-change: opacity, transform, filter;
+}
+
+/* พื้นหลังเบา ๆ คล้าย certificate */
+.oem-contact-cue::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 26%, rgba(245, 164, 0, 0.14), transparent 30%),
+    radial-gradient(circle at 16% 82%, rgba(20, 39, 74, 0.05), transparent 34%),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 250, 240, 0.08)
+    );
+  opacity: calc(var(--oem-contact-opacity) * 0.82);
+  pointer-events: none;
+}
+
+/* ไม่เอากรอบนอกทั้งจอ */
+.oem-contact-cue::after {
+  display: none;
+}
+
+.oem-contact-scene {
+  position: absolute;
+  inset:
+    clamp(42px, 6vh, 84px)
+    clamp(48px, 6vw, 112px);
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 680px);
+  align-items: center;
+  justify-items: stretch;
+  gap: clamp(28px, 4vw, 68px);
+}
+
+/* ตัวอักษร OEM จาง ๆ ด้านหลัง */
+.oem-contact-scene::before {
+  content: "OEM";
+  position: absolute;
+  left: clamp(24px, 5vw, 86px);
+  top: 2vh;
+  color: rgba(20, 39, 74, 0.045);
+  font-size: clamp(96px, 10vw, 190px);
+  font-weight: 950;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+  pointer-events: none;
+}
+
+/* =========================
+   MAIN CARDS
+   ========================= */
+
+.oem-contact-copy,
+.oem-contact-info {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  border: 1px solid rgba(20, 39, 74, 0.08);
+  border-radius: clamp(28px, 2.8vw, 42px);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(255, 250, 240, 0.86)
+    );
+  box-shadow:
+    0 24px 58px rgba(20, 39, 74, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* กล่อง OEM หลักฝั่งขวา */
+.oem-contact-copy {
+  grid-column: 2;
+  justify-self: end;
+  width: 100%;
+  max-width: 680px;
+  padding: clamp(24px, 2.4vw, 42px);
+}
+
+/* กล่อง Contact ฝั่งขวา */
+.oem-contact-info {
+  justify-self: stretch;
+  width: auto;
+  padding: clamp(30px, 2.8vw, 48px);
+}
+
+/* วงแสงในกล่อง */
+.oem-contact-copy::before,
+.oem-contact-info::before {
+  content: "";
+  position: absolute;
+  right: -18%;
+  top: -22%;
+  width: 46%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(245, 164, 0, 0.18) 0%,
+      rgba(245, 164, 0, 0.06) 44%,
+      transparent 72%
+    );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.oem-contact-copy::after {
+  content: "";
+  position: absolute;
+  left: -20%;
+  bottom: -30%;
+  width: 52%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(20, 39, 74, 0.06) 0%,
+      rgba(20, 39, 74, 0.025) 44%,
+      transparent 72%
+    );
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.oem-contact-kicker,
+.oem-contact-copy h2,
+.oem-contact-lead,
+.oem-contact-service-list,
+.oem-contact-info h3,
+.oem-contact-info > p,
+.oem-contact-methods {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   KICKER
+   ========================= */
+
+.oem-contact-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 clamp(16px, 1.2vw, 22px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow:
+    0 10px 24px rgba(20, 39, 74, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  padding: 10px 16px;
+  color: var(--orange-deep);
+  font-size: clamp(10px, 0.72vw, 12px);
+  font-weight: 950;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.oem-contact-kicker span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--orange);
+  box-shadow: 0 0 0 6px rgba(245, 164, 0, 0.14);
+}
+
+/* =========================
+   OEM COPY
+   ========================= */
+
+.oem-contact-copy h2 {
+  margin: 0;
+  max-width: 11ch;
+  color: var(--navy);
+  font-size: clamp(3.2rem, 4vw, 4.8rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.oem-contact-copy h2 span {
+  display: block;
+  margin-top: 0.06em;
+  color: var(--orange);
+}
+
+.oem-contact-lead,
+.oem-contact-info > p {
+  max-width: 640px;
+  margin: clamp(18px, 1.45vw, 26px) 0 0;
+  color: rgba(20, 39, 74, 0.72);
+  font-size: clamp(14px, 0.98vw, 17px);
+  font-weight: 720;
+  line-height: 1.58;
+}
+
+/* =========================
+   SERVICE CARDS
+   ========================= */
+
+.oem-contact-service-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: clamp(22px, 2.2vw, 34px);
+}
+
+.oem-contact-service-list article {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 14px;
+  border: 1px solid rgba(20, 39, 74, 0.07);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow:
+    0 12px 28px rgba(20, 39, 74, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  padding: 15px 16px;
+}
+
+.oem-contact-service-list span,
+.oem-contact-service-list strong,
+.oem-contact-service-list p {
+  display: block;
+}
+
+.oem-contact-service-list span {
+  display: inline-flex;
+  grid-row: 1 / span 2;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: white;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.oem-contact-service-list strong {
+  margin-top: 0;
+  color: var(--navy);
+  font-size: clamp(15px, 1.02vw, 19px);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.28;
+}
+
+.oem-contact-service-list p {
+  margin: 6px 0 0;
+  color: rgba(20, 39, 74, 0.60);
+  font-size: clamp(12px, 0.86vw, 15px);
+  font-weight: 680;
+  line-height: 1.56;
+}
+
+/* =========================
+   CONTACT CARD
+   ========================= */
+
+.oem-contact-info h3 {
+  margin: 0;
+  max-width: 16ch;
+  color: var(--navy);
+  font-size: 4rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.oem-contact-info h3 span {
+  display: block;
+  margin-top: 0.06em;
+  color: var(--orange);
+}
+
+/* contact method เป็นกล่องย่อยเหมือน certificate points */
+.oem-contact-methods {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(28px, 3vw, 46px);
+}
+
+.oem-contact-methods div {
+  border: 1px solid rgba(20, 39, 74, 0.07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow:
+    0 10px 24px rgba(20, 39, 74, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  padding: 17px 18px;
+}
+
+.oem-contact-methods span,
+.oem-contact-methods strong {
+  display: block;
+}
+
+.oem-contact-methods span {
+  color: var(--orange-deep);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.oem-contact-methods strong {
+  margin-top: 10px;
+  color: rgba(20, 39, 74, 0.86);
+  font-size: clamp(14px, 1vw, 18px);
+  font-weight: 850;
+  line-height: 1.44;
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1240px) {
+  .oem-contact-cue {
+    overflow-y: auto;
+  }
+
+  .oem-contact-scene {
+    grid-template-columns: minmax(0, 680px);
+    align-content: center;
+    justify-content: end;
+    gap: 24px;
+  }
+
+  .oem-contact-copy {
+    grid-column: 1;
+    max-width: 680px;
+  }
+
+  .oem-contact-copy h2,
+  .oem-contact-info h3 {
+    max-width: 16ch;
+    font-size: 4rem;
+  }
+
+  .oem-contact-info {
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .oem-contact-service-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .oem-contact-cue {
+    overflow-y: auto;
+  }
+
+  .oem-contact-scene {
+    position: relative;
+    inset: auto;
+    min-height: 100vh;
+    padding: 72px 18px 28px;
+    grid-template-columns: 1fr;
+    align-content: start;
+    justify-content: stretch;
+  }
+
+  .oem-contact-scene::before {
+    display: none;
+  }
+
+  .oem-contact-copy,
+  .oem-contact-info {
+    border-radius: 26px;
+    padding: 22px;
+  }
+
+  .oem-contact-copy h2 {
+    max-width: 12ch;
+    font-size: 3rem;
+    line-height: 1.08;
+  }
+
+  .oem-contact-info h3 {
+    max-width: 12ch;
+    font-size: 3rem;
+    line-height: 1.08;
+  }
+}
+
+/* ======================================================
+   CONTACT PAGE
+   Clean Right Card Layout
+
+   Social:
+   WhatsApp / Facebook / Instagram / LinkedIn
+
+   Email และ Phone:
+   ใช้รูปแบบเดียวกับ Address
+   ====================================================== */
+
+.contact-cue {
+  --contact-in: 0;
+  --contact-out: 0;
+  --contact-opacity: 0;
+
+  position: absolute;
+  inset: 0;
+  z-index: 38;
+
+  display: block;
+
+  color: var(--navy);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  will-change:
+    opacity,
+    transform,
+    filter;
+}
+
+/* ======================================================
+   BACKGROUND
+   ====================================================== */
+
+.contact-cue::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 80% 26%,
+      rgba(245, 164, 0, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 16% 82%,
+      rgba(20, 39, 74, 0.05),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 250, 240, 0.08)
+    );
+
+  opacity:
+    calc(
+      var(--contact-opacity) * 0.82
+    );
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   CONTACT SCENE
+   ====================================================== */
+
+.contact-scene {
+  position: absolute;
+
+  inset:
+    clamp(42px, 6vh, 84px)
+    clamp(48px, 6vw, 112px);
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(380px, 680px);
+
+  align-items: center;
+  justify-content: end;
+  justify-items: stretch;
+}
+
+/* ตัวอักษร CONTACT จาง ๆ ด้านหลัง */
+
+.contact-scene::before {
+  content: "CONTACT";
+
+  position: absolute;
+
+  left: -0.6vw;
+  top: 2vh;
+
+  color:
+    rgba(20, 39, 74, 0.045);
+
+  font-size:
+    clamp(
+      92px,
+      9.5vw,
+      176px
+    );
+
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.86;
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   CONTACT CARD
+   ====================================================== */
+
+.contact-copy {
+  position: relative;
+  z-index: 3;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+
+  border-radius:
+    clamp(
+      28px,
+      2.8vw,
+      42px
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(255, 250, 240, 0.86)
+    );
+
+  box-shadow:
+    0 24px 58px
+      rgba(20, 39, 74, 0.1),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.94);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.contact-copy.contact-right-card {
+  grid-column: 1;
+  justify-self: end;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap:
+    clamp(
+      20px,
+      2vw,
+      28px
+    );
+
+  width: 100%;
+  max-width: 680px;
+
+  padding:
+    clamp(
+      28px,
+      2.8vw,
+      46px
+    );
+
+  overflow: hidden;
+}
+
+/* แสงสีส้มอ่อนในกล่อง */
+
+.contact-copy.contact-right-card::before {
+  content: "";
+
+  position: absolute;
+
+  right: -18%;
+  top: -20%;
+
+  z-index: 1;
+
+  width: 48%;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(245, 164, 0, 0.18) 0%,
+      rgba(245, 164, 0, 0.06) 44%,
+      transparent 72%
+    );
+
+  filter: blur(10px);
+
+  pointer-events: none;
+}
+
+/* จุดตกแต่งสีส้ม */
+
+.contact-copy.contact-right-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: 12%;
+  top: 12%;
+
+  z-index: 1;
+
+  width: 210px;
+  height: 90px;
+
+  background:
+    radial-gradient(
+      circle at 10% 24%,
+      rgba(245, 164, 0, 0.5) 0 5px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 28% 32%,
+      rgba(245, 164, 0, 0.42) 0 7px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 42% 42%,
+      rgba(245, 164, 0, 0.34) 0 5px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 62% 54%,
+      rgba(245, 164, 0, 0.3) 0 6px,
+      transparent 7px
+    ),
+    radial-gradient(
+      circle at 80% 72%,
+      rgba(245, 164, 0, 0.22) 0 4px,
+      transparent 5px
+    );
+
+  transform: rotate(16deg);
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   CONTENT LAYERS
+   ====================================================== */
+
+.contact-right-card .contact-brand-block,
+.contact-right-card .contact-address-block,
+.contact-right-card .contact-direct-block {
+  position: relative;
+  z-index: 2;
+}
+
+/* ======================================================
+   BRAND BLOCK
+   ====================================================== */
+
+.contact-right-card .contact-brand-block {
+  display: grid;
+
+  gap: 18px;
+}
+
+.contact-right-card .contact-logo {
+  display: block;
+
+  width:
+    clamp(
+      82px,
+      6.4vw,
+      112px
+    );
+
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0.92;
+
+  filter:
+    contrast(1.18)
+    brightness(0.72)
+    saturate(0.82);
+
+  mix-blend-mode: multiply;
+}
+
+.contact-right-card .contact-brand-block p {
+  max-width: 38ch;
+
+  margin: 0;
+
+  color:
+    rgba(20, 39, 74, 0.82);
+
+  font-size:
+    clamp(
+      13px,
+      0.96vw,
+      16px
+    );
+
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.58;
+}
+
+/* ======================================================
+   ADDRESS
+   ====================================================== */
+
+.contact-right-card .contact-address-block {
+  margin: 0;
+
+  border-top:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+
+  padding-top:
+    clamp(
+      18px,
+      1.8vw,
+      26px
+    );
+
+  font-style: normal;
+}
+
+/* หัวข้อ Address / Email / Phone / Follow Us */
+
+.contact-right-card .contact-address-block > span,
+.contact-right-card .contact-detail-group > span,
+.contact-right-card .contact-social-group > span {
+  display: block;
+
+  margin: 0 0 10px;
+
+  color:
+    rgba(38, 76, 135, 0.86);
+
+  font-size:
+    clamp(
+      9px,
+      0.66vw,
+      11px
+    );
+
+  font-weight: 880;
+  letter-spacing: 0.2em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+/* ข้อความ Address */
+
+.contact-right-card .contact-address-block strong {
+  display: block;
+
+  color:
+    rgba(20, 39, 74, 0.9);
+
+  font-size:
+    clamp(
+      12px,
+      0.9vw,
+      15px
+    );
+
+  font-weight: 560;
+  letter-spacing: 0;
+  line-height: 1.54;
+
+  text-transform: uppercase;
+}
+
+/* ======================================================
+   DIRECT CONTACT
+   ====================================================== */
+
+.contact-right-card .contact-direct-block {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    clamp(
+      16px,
+      1.6vw,
+      24px
+    );
+
+  border-top:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+
+  padding-top:
+    clamp(
+      18px,
+      1.8vw,
+      25px
+    );
+}
+
+.contact-right-card .contact-detail-group {
+  min-width: 0;
+}
+
+/*
+ * Email และ Phone
+ * ใช้ขนาด สี และน้ำหนักเหมือน Address
+ */
+
+.contact-right-card .contact-detail-group a {
+  display: block;
+
+  color:
+    rgba(20, 39, 74, 0.9);
+
+  font-size:
+    clamp(
+      12px,
+      0.9vw,
+      15px
+    );
+
+  font-weight: 560;
+  letter-spacing: 0;
+  line-height: 1.54;
+
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.contact-right-card .contact-detail-group a:hover {
+  color: var(--orange);
+}
+
+.contact-right-card .contact-detail-group a:focus-visible {
+  outline:
+    2px solid
+    rgba(245, 164, 0, 0.26);
+
+  outline-offset: 3px;
+
+  border-radius: 4px;
+}
+
+/* ======================================================
+   FOLLOW US
+   ====================================================== */
+
+.contact-right-card .contact-social-group {
+  position: relative;
+
+  grid-column: 1 / -1;
+
+  min-width: 0;
+
+  margin-top: 2px;
+}
+
+.contact-right-card .contact-social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+}
+
+/* ======================================================
+   SOCIAL BUTTON — MINIMAL
+   ====================================================== */
+
+.contact-social-link,
+.contact-right-card .contact-social-link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width: 34px;
+  height: 34px;
+
+  border:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+
+  border-radius: 999px;
+
+  background:
+    rgba(222, 229, 239, 0.72);
+
+  box-shadow:
+    0 7px 18px
+      rgba(20, 39, 74, 0.055),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.78);
+
+  color:
+    rgba(38, 76, 135, 0.88);
+
+  font-size: 0;
+  line-height: 1;
+
+  text-decoration: none;
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  overflow: hidden;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+
+  will-change: transform;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ซ่อน span เก่า */
+
+.contact-social-link > span,
+.contact-right-card .contact-social-link > span {
+  display: none;
+}
+
+/* ======================================================
+   SOCIAL SVG
+   ====================================================== */
+
+.contact-social-link svg,
+.contact-right-card .contact-social-link svg {
+  display: block;
+
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 auto;
+
+  fill: currentColor;
+  color: currentColor;
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   MINIMAL HOVER
+   ====================================================== */
+
+.contact-social-link:hover,
+.contact-right-card .contact-social-link:hover,
+.contact-social-whatsapp:hover,
+.contact-social-facebook:hover,
+.contact-social-instagram:hover,
+.contact-social-linkedin:hover,
+.contact-right-card .contact-social-whatsapp:hover,
+.contact-right-card .contact-social-facebook:hover,
+.contact-right-card .contact-social-instagram:hover,
+.contact-right-card .contact-social-linkedin:hover {
+  color: var(--orange);
+
+  border-color:
+    rgba(245, 164, 0, 0.22);
+
+  background:
+    rgba(245, 164, 0, 0.08);
+
+  box-shadow:
+    0 9px 20px
+      rgba(20, 39, 74, 0.07),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.82);
+
+  transform:
+    translate3d(
+      0,
+      -2px,
+      0
+    );
+}
+
+.contact-social-link:active,
+.contact-right-card .contact-social-link:active {
+  transform:
+    translate3d(0, 0, 0)
+    scale(0.96);
+}
+
+.contact-social-link:focus-visible,
+.contact-right-card .contact-social-link:focus-visible {
+  outline:
+    2px solid
+    rgba(245, 164, 0, 0.28);
+
+  outline-offset: 3px;
+}
+
+/* ปิด tooltip จากโค้ดชุดก่อน */
+
+.contact-social-link::after,
+.contact-right-card .contact-social-link::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 1240px) {
+  .contact-cue {
+    overflow-y: auto;
+  }
+
+  .contact-scene {
+    grid-template-columns:
+      minmax(0, 680px);
+
+    align-content: center;
+    justify-content: end;
+  }
+
+  .contact-copy.contact-right-card {
+    grid-column: 1;
+    justify-self: stretch;
+
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 980px) {
+  .contact-scene {
+    position: relative;
+    inset: auto;
+
+    min-height: 100vh;
+
+    padding:
+      72px
+      22px
+      34px;
+
+    align-content: center;
+  }
+
+  .contact-social-link,
+  .contact-right-card .contact-social-link {
+    width: 33px;
+    height: 33px;
+  }
+
+  .contact-social-link svg,
+  .contact-right-card .contact-social-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 760px) {
+  .contact-cue {
+    overflow-y: auto;
+  }
+
+  .contact-scene {
+    position: relative;
+    inset: auto;
+
+    min-height: 100vh;
+
+    padding:
+      72px
+      18px
+      28px;
+
+    grid-template-columns: 1fr;
+
+    align-content: start;
+    justify-content: stretch;
+  }
+
+  .contact-scene::before {
+    display: none;
+  }
+
+  .contact-copy.contact-right-card {
+    width: 100%;
+    max-width: none;
+
+    border-radius: 26px;
+
+    padding: 22px;
+  }
+
+  .contact-right-card .contact-direct-block {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .contact-right-card .contact-social-links {
+    flex-wrap: wrap;
+
+    gap: 7px;
+  }
+
+  .contact-social-link,
+  .contact-right-card .contact-social-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-social-link svg,
+  .contact-right-card .contact-social-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (max-width: 480px) {
+  .contact-scene {
+    padding:
+      68px
+      16px
+      28px;
+  }
+
+  .contact-copy.contact-right-card {
+    padding: 20px;
+
+    border-radius: 23px;
+  }
+
+  .contact-right-card .contact-brand-block {
+    gap: 15px;
+  }
+
+  .contact-right-card .contact-logo {
+    width: 80px;
+  }
+
+  .contact-social-link,
+  .contact-right-card .contact-social-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .contact-social-link svg,
+  .contact-right-card .contact-social-link svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/* ======================================================
+   BACKDROP FALLBACK
+   ====================================================== */
+
+@supports not (
+  backdrop-filter: blur(18px)
+) {
+  .contact-copy {
+    background:
+      rgba(255, 252, 245, 0.96);
+  }
+
+  .contact-social-link,
+  .contact-right-card .contact-social-link {
+    background:
+      rgba(232, 237, 244, 0.96);
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .contact-social-link,
+  .contact-right-card .contact-social-link,
+  .contact-detail-group a,
+  .contact-right-card .contact-detail-group a {
+    transition: none !important;
+  }
+}

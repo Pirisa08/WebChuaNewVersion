@@ -1,0 +1,447 @@
+/* ======================================================
+   PRODUCT BRAND LABELS
+   New layout — 3 brands
+   POLNAPA / LONGANIC / MATSURI
+   ====================================================== */
+
+.product-brand-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  color: var(--navy);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 12px, 0);
+  filter: blur(5px);
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* ======================================================
+   TOPLINE
+   ====================================================== */
+
+.product-labels-topline {
+  position: absolute;
+  left: 50%;
+  top: clamp(42px, 7vh, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: min(82vw, 1040px);
+  transform: translate3d(-50%, 10px, 0);
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, transform, filter;
+}
+
+.product-labels-topline p {
+  margin: 0;
+  color: var(--orange);
+  font-size: clamp(12px, 0.9vw, 15px);
+  font-weight: 950;
+  letter-spacing: 0.3em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 10px 24px rgba(255, 255, 255, 0.7);
+}
+
+.product-labels-topline::before,
+.product-labels-topline::after {
+  content: "";
+  height: 1px;
+  flex: 1 1 auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 164, 0, 0.46),
+    transparent
+  );
+}
+
+.product-labels-topline-tags {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.product-labels-topline-tags span {
+  border: 1px solid rgba(20, 39, 74, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(20, 39, 74, 0.06);
+  padding: 6px 10px;
+  color: rgba(20, 39, 74, 0.66);
+  font-size: clamp(8px, 0.62vw, 10px);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ======================================================
+   LABEL BASE
+   ====================================================== */
+
+.product-brand-label {
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "dot name"
+    "dot desc";
+  column-gap: 11px;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid rgba(20, 39, 74, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 18px 42px rgba(20, 39, 74, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  padding: 12px 18px 12px 14px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  translate: -50% 0;
+  transform: translate3d(0, 8px, 0) scale(0.92);
+  transform-origin: center center;
+  filter: blur(6px);
+  pointer-events: none;
+  transition: none;
+  will-change: opacity, transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.product-brand-label::before {
+  content: "";
+  grid-area: dot;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--orange);
+  box-shadow:
+    0 0 0 6px rgba(245, 164, 0, 0.16),
+    0 8px 18px rgba(20, 39, 74, 0.14);
+}
+
+.product-brand-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 6px);
+  width: 2px;
+  height: var(--label-line-height, 96px);
+  transform: translateX(-50%);
+  opacity: var(--label-line-opacity, 1);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 164, 0, 0.95),
+    rgba(245, 164, 0, 0.62),
+    rgba(245, 164, 0, 0.16),
+    transparent
+  );
+  box-shadow:
+    0 0 0 1px rgba(245, 164, 0, 0.08),
+    0 0 12px rgba(245, 164, 0, 0.28);
+  transform-origin: top center;
+  pointer-events: none;
+}
+
+.product-brand-label strong {
+  grid-area: name;
+  color: var(--navy);
+  font-size: clamp(15px, 1.18vw, 22px);
+  font-weight: 950;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.product-brand-label span {
+  grid-area: desc;
+  display: block;
+  margin-top: 4px;
+  color: rgba(20, 39, 74, 0.58);
+  font-size: clamp(9px, 0.7vw, 12px);
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* ======================================================
+   DESKTOP POSITIONS
+   ====================================================== */
+
+.product-brand-label-polnapa {
+  left: 32.5%;
+  top: clamp(140px, 18vh, 195px);
+  --label-line-height: clamp(96px, 18vh, 150px);
+}
+
+.product-brand-label-longanic {
+  left: 68.5%;
+  top: clamp(105px, 14vh, 150px);
+  --label-line-height: clamp(120px, 22vh, 180px);
+}
+
+.product-brand-label-matsuri {
+  left: 86.5%;
+  top: clamp(145px, 19vh, 205px);
+  --label-line-height: clamp(78px, 14vh, 118px);
+}
+
+.product-brand-label-samoodi {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.product-brand-label-polnapa,
+.product-brand-label-longanic,
+.product-brand-label-matsuri {
+  transform-origin: center center;
+}
+
+/* ======================================================
+   1280
+   ====================================================== */
+
+@media (max-width: 1280px) {
+  .product-brand-label {
+    padding: 11px 15px 11px 13px;
+    column-gap: 9px;
+  }
+
+  .product-brand-label-polnapa {
+    left: 31%;
+    top: 20vh;
+    --label-line-height: 110px;
+  }
+
+  .product-brand-label-longanic {
+    left: 68%;
+    top: 15vh;
+    --label-line-height: 140px;
+  }
+
+  .product-brand-label-matsuri {
+    left: 86%;
+    top: 21vh;
+    --label-line-height: 100px;
+  }
+}
+
+/* ======================================================
+   1080
+   ====================================================== */
+
+@media (max-width: 1080px) {
+  .product-labels-topline {
+    top: 6vh;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .product-labels-topline::before,
+  .product-labels-topline::after {
+    display: none;
+  }
+
+  .product-brand-label {
+    padding: 10px 13px 10px 12px;
+    column-gap: 8px;
+  }
+
+  .product-brand-label strong {
+    font-size: clamp(13px, 1.5vw, 17px);
+    letter-spacing: 0.11em;
+  }
+
+  .product-brand-label span {
+    font-size: clamp(8px, 0.9vw, 10px);
+  }
+
+  .product-brand-label-polnapa {
+    left: 29%;
+    top: 21vh;
+    --label-line-height: 105px;
+  }
+
+  .product-brand-label-longanic {
+    left: 67%;
+    top: 16vh;
+    --label-line-height: 125px;
+  }
+
+  .product-brand-label-matsuri {
+    left: 85%;
+    top: 22vh;
+    --label-line-height: 92px;
+  }
+}
+
+/* ======================================================
+   820
+   ====================================================== */
+
+@media (max-width: 820px) {
+  .product-labels-topline {
+    top: 6vh;
+    width: calc(100vw - 28px);
+  }
+
+  .product-labels-topline p {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+
+  .product-labels-topline-tags {
+    display: none;
+  }
+
+  .product-brand-label {
+    padding: 9px 11px;
+    column-gap: 7px;
+    background: rgba(255, 255, 255, 0.84);
+  }
+
+  .product-brand-label::before {
+    width: 9px;
+    height: 9px;
+    box-shadow:
+      0 0 0 4px rgba(245, 164, 0, 0.16),
+      0 6px 14px rgba(20, 39, 74, 0.12);
+  }
+
+  .product-brand-label strong {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .product-brand-label span {
+    display: none;
+  }
+
+  .product-brand-label-polnapa {
+    left: 25%;
+    top: 23vh;
+    --label-line-height: 82px;
+  }
+
+  .product-brand-label-longanic {
+    left: 62%;
+    top: 17vh;
+    --label-line-height: 102px;
+  }
+
+  .product-brand-label-matsuri {
+    left: 84%;
+    top: 24vh;
+    --label-line-height: 72px;
+  }
+}
+
+/* ======================================================
+   560
+   ====================================================== */
+
+@media (max-width: 560px) {
+  .product-brand-label {
+    padding: 8px 10px;
+    border-radius: 18px;
+    translate: -50% 0;
+  }
+
+  .product-brand-label strong {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .product-brand-label-polnapa {
+    left: 21%;
+    top: 25vh;
+    --label-line-height: 62px;
+  }
+
+  .product-brand-label-longanic {
+    left: 55%;
+    top: 18vh;
+    --label-line-height: 82px;
+  }
+
+  .product-brand-label-matsuri {
+    left: 82%;
+    top: 27vh;
+    --label-line-height: 58px;
+  }
+}
+
+/* ======================================================
+   390
+   ====================================================== */
+
+@media (max-width: 390px) {
+  .product-brand-label {
+    padding: 7px 8px;
+  }
+
+  .product-brand-label::before {
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 0 3px rgba(245, 164, 0, 0.14);
+  }
+
+  .product-brand-label strong {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+
+  .product-brand-label-polnapa {
+    left: 20%;
+    top: 26vh;
+    --label-line-height: 52px;
+  }
+
+  .product-brand-label-longanic {
+    left: 54%;
+    top: 19vh;
+    --label-line-height: 70px;
+  }
+
+  .product-brand-label-matsuri {
+    left: 81%;
+    top: 28vh;
+    --label-line-height: 48px;
+  }
+}
+
+/* ======================================================
+   FALLBACK
+   ====================================================== */
+
+@supports not (backdrop-filter: blur(18px)) {
+  .product-brand-label {
+    background: rgba(255, 255, 255, 0.94);
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .product-brand-labels,
+  .product-brand-label {
+    transition: none !important;
+  }
+}

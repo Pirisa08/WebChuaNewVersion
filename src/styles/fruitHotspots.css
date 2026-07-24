@@ -1,0 +1,1641 @@
+/* ======================================================
+   FRUIT HOTSPOTS
+   ตำแหน่งอ้างอิงวิดีโอ 1920 × 1080
+   ====================================================== */
+
+.fruit-hotspot-cue {
+  position: absolute;
+  inset: 0;
+
+  z-index: 34;
+
+  color: var(--navy);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  will-change:
+    opacity,
+    visibility;
+}
+
+.fruit-hotspot-scene {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  will-change:
+    opacity,
+    transform,
+    filter;
+}
+
+/* ======================================================
+   TOP INSTRUCTION
+   ====================================================== */
+
+.fruit-hotspot-hint {
+  position: absolute;
+
+  left: 50%;
+  top:
+    clamp(
+      38px,
+      6.5vh,
+      68px
+    );
+
+  z-index: 30;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: max-content;
+
+  border:
+    1px solid
+    rgba(20, 39, 74, 0.07);
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  box-shadow:
+    0 14px 34px
+      rgba(20, 39, 74, 0.07),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.94);
+
+  padding:
+    10px
+    16px
+    10px
+    12px;
+
+  transform:
+    translateX(-50%);
+
+  backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+
+  pointer-events: none;
+}
+
+.fruit-hotspot-hint-dot {
+  position: relative;
+
+  display: block;
+
+  width: 9px;
+  height: 9px;
+
+  flex: 0 0 auto;
+
+  border-radius: 999px;
+
+  background:
+    var(--orange);
+
+  box-shadow:
+    0 0 0 5px
+      rgba(245, 164, 0, 0.13);
+}
+
+.fruit-hotspot-hint-dot::after {
+  content: "";
+
+  position: absolute;
+  inset: -6px;
+
+  border:
+    1px solid
+    rgba(245, 164, 0, 0.18);
+
+  border-radius: inherit;
+
+  animation:
+    fruitHintPulse
+    2.4s
+    ease-out
+    infinite;
+}
+
+.fruit-hotspot-hint-copy {
+  display: grid;
+
+  gap: 3px;
+}
+
+.fruit-hotspot-hint-copy strong {
+  color:
+    rgba(20, 39, 74, 0.9);
+
+  font-size:
+    clamp(
+      9px,
+      0.66vw,
+      12px
+    );
+
+  font-weight: 950;
+  letter-spacing: 0.2em;
+  line-height: 1;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fruit-hotspot-hint-copy small {
+  color:
+    rgba(20, 39, 74, 0.52);
+
+  font-size:
+    clamp(
+      8px,
+      0.54vw,
+      10px
+    );
+
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+@keyframes fruitHintPulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+/* ======================================================
+   VIDEO COORDINATE MAP
+
+   ทำให้ Hotspot ใช้สัดส่วนเดียวกับ object-fit: cover
+   ของวิดีโอ 16:9
+
+   หน้าจอกว้าง:
+   ขยายตามความกว้างและตัดด้านบน/ล่าง
+
+   หน้าจอสูง:
+   ขยายตามความสูงและตัดด้านซ้าย/ขวา
+   ====================================================== */
+
+.fruit-hotspot-stage {
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.fruit-hotspot-map {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width:
+    max(
+      100vw,
+      177.777778vh
+    );
+
+  height:
+    max(
+      100vh,
+      56.25vw
+    );
+
+  transform:
+    translate3d(
+      -50%,
+      -50%,
+      0
+    );
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   HOTSPOT HIT AREA
+   ตัวปุ่มครอบบริเวณผลไม้จริง
+   ====================================================== */
+
+.fruit-hotspot {
+  --fruit-accent: #f5a400;
+  --fruit-accent-rgb: 245, 164, 0;
+
+  position: absolute;
+
+  z-index: 12;
+
+  width: var(--hotspot-width);
+  height: var(--hotspot-height);
+
+  border: 0;
+
+  border-radius:
+    clamp(
+      28px,
+      3vw,
+      52px
+    );
+
+  background: transparent;
+
+  padding: 0;
+
+  color: var(--navy);
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform:
+    translate3d(
+      -50%,
+      -50%,
+      0
+    )
+    scale(0.965);
+
+  transform-origin:
+    center center;
+
+  transition:
+    filter 180ms ease;
+
+  will-change:
+    opacity,
+    transform;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+/* แสงบาง ๆ ครอบตัวผลไม้ */
+
+.fruit-hotspot-focus {
+  position: absolute;
+
+  inset: 4%;
+
+  z-index: 0;
+
+  display: block;
+
+  border:
+    1px solid
+    rgba(
+      var(--fruit-accent-rgb),
+      0
+    );
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        var(--fruit-accent-rgb),
+        0.13
+      ),
+      rgba(
+        var(--fruit-accent-rgb),
+        0.035
+      ) 48%,
+      transparent 72%
+    );
+
+  box-shadow:
+    0 0 0 1px
+      rgba(
+        255,
+        255,
+        255,
+        0
+      );
+
+  opacity: 0;
+
+  transform:
+    scale(0.9);
+
+  transition:
+    opacity 180ms ease,
+    transform 220ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+
+  pointer-events: none;
+}
+
+.fruit-hotspot:hover
+.fruit-hotspot-focus,
+.fruit-hotspot:focus-visible
+.fruit-hotspot-focus {
+  border-color:
+    rgba(
+      var(--fruit-accent-rgb),
+      0.24
+    );
+
+  box-shadow:
+    0 0 0 5px
+      rgba(
+        255,
+        255,
+        255,
+        0.11
+      );
+
+  opacity: 1;
+
+  transform:
+    scale(1);
+}
+
+/* ======================================================
+   HOTSPOT LABEL CARD
+   ====================================================== */
+
+.fruit-hotspot-card {
+  position: absolute;
+
+  left: 50%;
+  top: -7px;
+
+  z-index: 3;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  column-gap: 9px;
+
+  min-width: max-content;
+
+  border:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.86
+    );
+
+  box-shadow:
+    0 13px 32px
+      rgba(20, 39, 74, 0.1),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.96);
+
+  padding:
+    8px
+    11px
+    8px
+    10px;
+
+  transform:
+    translate3d(
+      -50%,
+      -100%,
+      0
+    );
+
+  backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+
+  pointer-events: none;
+}
+
+/* เส้นบางเชื่อมป้ายลงมาที่ผลไม้ */
+
+.fruit-hotspot-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: calc(100% + 5px);
+
+  width: 1px;
+  height:
+    clamp(
+      24px,
+      4.5vh,
+      52px
+    );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        var(--fruit-accent-rgb),
+        0.78
+      ),
+      rgba(
+        var(--fruit-accent-rgb),
+        0.22
+      ),
+      transparent
+    );
+
+  transform:
+    translateX(-50%);
+
+  pointer-events: none;
+}
+
+.fruit-hotspot-dot {
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 999px;
+
+  background:
+    var(--fruit-accent);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(
+        var(--fruit-accent-rgb),
+        0.13
+      );
+}
+
+.fruit-hotspot-copy {
+  display: grid;
+
+  gap: 3px;
+
+  min-width: 0;
+
+  text-align: left;
+}
+
+.fruit-hotspot-copy strong {
+  color:
+    rgba(20, 39, 74, 0.9);
+
+  font-size:
+    clamp(
+      9px,
+      0.66vw,
+      12px
+    );
+
+  font-weight: 950;
+  letter-spacing: 0.11em;
+  line-height: 1;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fruit-hotspot-copy small {
+  color:
+    rgba(20, 39, 74, 0.46);
+
+  font-size:
+    clamp(
+      7px,
+      0.48vw,
+      9px
+    );
+
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  line-height: 1;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fruit-hotspot-arrow {
+  display: grid;
+  place-items: center;
+
+  width: 19px;
+  height: 19px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      var(--fruit-accent-rgb),
+      0.1
+    );
+
+  color:
+    var(--fruit-accent);
+
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+/* ======================================================
+   HOTSPOT HOVER
+   ====================================================== */
+
+.fruit-hotspot:hover
+.fruit-hotspot-card,
+.fruit-hotspot:focus-visible
+.fruit-hotspot-card {
+  border-color:
+    rgba(
+      var(--fruit-accent-rgb),
+      0.27
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.96
+    );
+
+  box-shadow:
+    0 17px 38px
+      rgba(20, 39, 74, 0.13),
+    0 0 0 4px
+      rgba(
+        var(--fruit-accent-rgb),
+        0.065
+      ),
+    inset 0 1px 0
+      rgba(255, 255, 255, 1);
+
+  transform:
+    translate3d(
+      -50%,
+      calc(-100% - 3px),
+      0
+    );
+}
+
+.fruit-hotspot:hover
+.fruit-hotspot-arrow,
+.fruit-hotspot:focus-visible
+.fruit-hotspot-arrow {
+  background:
+    var(--fruit-accent);
+
+  color: #ffffff;
+
+  transform:
+    translate3d(
+      2px,
+      -2px,
+      0
+    );
+}
+
+.fruit-hotspot:focus-visible {
+  outline: none;
+}
+
+/* ======================================================
+   EXACT FRUIT POSITIONS
+   อ้างอิงภาพวิดีโอ 16:9 ที่ส่งมา
+   ====================================================== */
+
+/* Mango — ผลไม้สีเหลืองก้อนใหญ่ด้านซ้าย */
+
+.fruit-hotspot-mango {
+  --hotspot-width: 18.5%;
+  --hotspot-height: 44%;
+
+  --fruit-accent: #f4b000;
+  --fruit-accent-rgb: 244, 176, 0;
+
+  left: 17.4%;
+  top: 52.5%;
+}
+
+/* Strawberry — สีแดงถัดจาก Mango */
+
+.fruit-hotspot-strawberry {
+  --hotspot-width: 14%;
+  --hotspot-height: 37%;
+
+  --fruit-accent: #dc543d;
+  --fruit-accent-rgb: 220, 84, 61;
+
+  left: 29.2%;
+  top: 51%;
+}
+
+/* Longan — วงกลมสีทองตรงกลางซ้าย */
+
+.fruit-hotspot-longan {
+  --hotspot-width: 13%;
+  --hotspot-height: 36%;
+
+  --fruit-accent: #e8a126;
+  --fruit-accent-rgb: 232, 161, 38;
+
+  left: 41%;
+  top: 51.5%;
+}
+
+/* Coconut — แผ่นสีขาวตรงกลาง */
+
+.fruit-hotspot-coconut {
+  --hotspot-width: 17%;
+  --hotspot-height: 42%;
+
+  --fruit-accent: #b98d63;
+  --fruit-accent-rgb: 185, 141, 99;
+
+  left: 55.3%;
+  top: 52.5%;
+}
+
+/* Pineapple — วงแหวนและชิ้นสีเหลือง */
+
+.fruit-hotspot-pineapple {
+  --hotspot-width: 15%;
+  --hotspot-height: 39%;
+
+  --fruit-accent: #dfa300;
+  --fruit-accent-rgb: 223, 163, 0;
+
+  left: 69.3%;
+  top: 51.5%;
+}
+
+/* Mixed Fruit — กลุ่มผลไม้ด้านขวาสุด */
+
+.fruit-hotspot-mixed {
+  --hotspot-width: 18%;
+  --hotspot-height: 42%;
+
+  --fruit-accent: #dd6f27;
+  --fruit-accent-rgb: 221, 111, 39;
+
+  left: 84.7%;
+  top: 52%;
+}
+
+/* ======================================================
+   FRUIT MODAL
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding:
+    clamp(
+      10px,
+      2vw,
+      28px
+    );
+
+  pointer-events: auto;
+
+  overscroll-behavior:
+    contain;
+}
+
+.fruit-hotspot-cue
+.fruit-modal[hidden] {
+  display: none;
+}
+
+/* ======================================================
+   MODAL BACKDROP
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-modal-backdrop {
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+
+  background:
+    rgba(
+      14,
+      14,
+      11,
+      0.54
+    );
+
+  backdrop-filter:
+    blur(5px);
+
+  -webkit-backdrop-filter:
+    blur(5px);
+
+  opacity: 0;
+
+  transition:
+    opacity
+    200ms
+    ease;
+}
+
+/* ======================================================
+   MODAL SHELL
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-modal-shell {
+  position: relative;
+
+  z-index: 1;
+
+  display: grid;
+
+  grid-template-rows:
+    auto
+    minmax(0, 1fr);
+
+  gap:
+    clamp(
+      16px,
+      2vw,
+      26px
+    );
+
+  width:
+    min(
+      1220px,
+      calc(100vw - 36px)
+    );
+
+  height:
+    min(
+      92dvh,
+      820px
+    );
+
+  max-height:
+    calc(100dvh - 24px);
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+
+  border-radius:
+    clamp(
+      20px,
+      2vw,
+      32px
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.985),
+      rgba(255, 250, 240, 0.965)
+    );
+
+  box-shadow:
+    0 34px 80px
+      rgba(7, 8, 7, 0.3);
+
+  padding:
+    clamp(
+      20px,
+      2.4vw,
+      34px
+    );
+
+  opacity: 0;
+
+  transform:
+    translate3d(
+      0,
+      18px,
+      0
+    )
+    scale(0.98);
+
+  transition:
+    opacity
+    200ms
+    ease,
+    transform
+    200ms
+    ease;
+}
+
+.fruit-hotspot-cue.is-modal-visible
+.fruit-modal-backdrop {
+  opacity: 1;
+}
+
+.fruit-hotspot-cue.is-modal-visible
+.fruit-modal-shell {
+  opacity: 1;
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
+    scale(1);
+}
+
+/* ======================================================
+   CLOSE BUTTON
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-modal-close {
+  position: absolute;
+
+  right:
+    clamp(
+      14px,
+      2vw,
+      24px
+    );
+
+  top:
+    clamp(
+      14px,
+      2vw,
+      24px
+    );
+
+  z-index: 10;
+
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background:
+    rgba(
+      20,
+      39,
+      74,
+      0.07
+    );
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.68
+    );
+
+  cursor: pointer;
+
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.fruit-hotspot-cue
+.fruit-modal-close:hover,
+.fruit-hotspot-cue
+.fruit-modal-close:focus-visible {
+  color: var(--navy);
+
+  background:
+    rgba(
+      245,
+      164,
+      0,
+      0.16
+    );
+
+  outline: none;
+
+  transform:
+    rotate(4deg)
+    scale(1.04);
+}
+
+/* ======================================================
+   MODAL HEADER
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-modal-copy {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(260px, 0.75fr);
+
+  align-items: end;
+
+  gap:
+    clamp(
+      18px,
+      3vw,
+      44px
+    );
+
+  padding-right: 58px;
+
+  padding-bottom:
+    clamp(
+      14px,
+      1.4vw,
+      20px
+    );
+
+  border-bottom:
+    1px solid
+    rgba(20, 39, 74, 0.08);
+}
+
+.fruit-hotspot-cue
+.fruit-modal-copy p,
+.fruit-hotspot-cue
+.fruit-modal-copy h2,
+.fruit-hotspot-cue
+.fruit-modal-copy > span {
+  margin: 0;
+}
+
+.fruit-hotspot-cue
+.fruit-modal-copy p {
+  color:
+    var(--orange-deep);
+
+  font-size:
+    clamp(
+      10px,
+      0.75vw,
+      13px
+    );
+
+  font-weight: 950;
+  letter-spacing: 0.26em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.fruit-hotspot-cue
+.fruit-modal-copy h2 {
+  margin-top: 14px;
+
+  color:
+    #dfc900;
+
+  font-size:
+    clamp(
+      38px,
+      4.6vw,
+      72px
+    );
+
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  line-height: 0.94;
+
+  text-transform: uppercase;
+
+  text-wrap: balance;
+}
+
+.fruit-hotspot-cue
+.fruit-modal-copy > span {
+  max-width: 38ch;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.68
+    );
+
+  font-size:
+    clamp(
+      13px,
+      0.95vw,
+      17px
+    );
+
+  font-weight: 650;
+  line-height: 1.46;
+}
+
+/* ======================================================
+   VARIANT GRID
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-variant-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  grid-template-rows:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    clamp(
+      10px,
+      1.2vw,
+      16px
+    );
+
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+.fruit-hotspot-cue
+.fruit-variant-grid-count-2 {
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 360px)
+    );
+
+  grid-template-rows:
+    minmax(0, 1fr);
+
+  justify-content: center;
+}
+
+/* ======================================================
+   VARIANT CARD
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-variant {
+  display: grid;
+
+  grid-template-rows:
+    minmax(90px, 1fr)
+    auto
+    auto;
+
+  align-items: center;
+  justify-items: center;
+
+  gap:
+    clamp(
+      6px,
+      0.8vw,
+      10px
+    );
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(20, 39, 74, 0.07);
+
+  border-radius:
+    clamp(
+      16px,
+      1.5vw,
+      24px
+    );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.91),
+      rgba(255, 250, 240, 0.77)
+    );
+
+  box-shadow:
+    0 9px 22px
+      rgba(20, 39, 74, 0.045),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.86);
+
+  padding:
+    clamp(
+      10px,
+      1.2vw,
+      18px
+    );
+}
+
+.fruit-hotspot-cue
+.fruit-variant-image {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 80px;
+
+  margin: 0;
+}
+
+.fruit-hotspot-cue
+.fruit-variant-image img {
+  display: block;
+
+  width:
+    clamp(
+      82px,
+      10vw,
+      150px
+    );
+
+  max-width: 80%;
+
+  max-height:
+    clamp(
+      80px,
+      15vh,
+      150px
+    );
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 15px 18px
+      rgba(20, 39, 74, 0.14)
+    )
+    saturate(1.05);
+}
+
+.fruit-variant-heading {
+  display: grid;
+
+  justify-items: center;
+
+  gap: 6px;
+}
+
+.fruit-hotspot-cue
+.fruit-variant h3 {
+  margin: 0;
+
+  max-width: 17ch;
+
+  color:
+    #dfc900;
+
+  font-size:
+    clamp(
+      18px,
+      1.5vw,
+      28px
+    );
+
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1.04;
+
+  text-align: center;
+
+  text-wrap: balance;
+}
+
+.fruit-variant-note {
+  display: inline-flex;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      245,
+      164,
+      0,
+      0.1
+    );
+
+  padding:
+    5px
+    8px;
+
+  color:
+    var(--orange-deep);
+
+  font-size:
+    clamp(
+      8px,
+      0.58vw,
+      10px
+    );
+
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.fruit-hotspot-cue
+.fruit-ingredients {
+  margin: 0;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.61
+    );
+
+  font-size:
+    clamp(
+      10px,
+      0.78vw,
+      13px
+    );
+
+  font-weight: 650;
+  line-height: 1.32;
+
+  text-align: center;
+
+  text-wrap: balance;
+}
+
+.fruit-hotspot-cue
+.fruit-ingredients strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    #dfc900;
+
+  font-size:
+    clamp(
+      8px,
+      0.62vw,
+      10px
+    );
+
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+/* ======================================================
+   WIDE SCREEN
+   ====================================================== */
+
+@media (min-aspect-ratio: 21 / 9) {
+  .fruit-hotspot-hint {
+    top: 38px;
+  }
+
+  .fruit-hotspot-card {
+    top: -4px;
+  }
+
+  .fruit-hotspot-card::after {
+    height:
+      clamp(
+        20px,
+        4vh,
+        42px
+      );
+  }
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 1080px) {
+  .fruit-hotspot-hint-copy small {
+    display: none;
+  }
+
+  .fruit-hotspot-card {
+    padding:
+      7px
+      9px;
+  }
+
+  .fruit-hotspot-copy small {
+    display: none;
+  }
+
+  .fruit-hotspot-arrow {
+    width: 17px;
+    height: 17px;
+
+    font-size: 9px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 680px) {
+  .fruit-hotspot-hint {
+    top: 58px;
+
+    padding:
+      9px
+      13px
+      9px
+      10px;
+  }
+
+  .fruit-hotspot-hint-copy strong {
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+  }
+
+  .fruit-hotspot-card {
+    top: 2%;
+
+    grid-template-columns:
+      auto;
+
+    min-width: 30px;
+    min-height: 30px;
+
+    justify-items: center;
+
+    gap: 0;
+
+    padding: 0;
+  }
+
+  .fruit-hotspot-copy,
+  .fruit-hotspot-arrow {
+    display: none;
+  }
+
+  .fruit-hotspot-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .fruit-hotspot-card::after {
+    top: calc(100% + 4px);
+
+    height: 24px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-modal {
+    padding: 10px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-modal-shell {
+    width:
+      calc(100vw - 20px);
+
+    height:
+      calc(100dvh - 20px);
+
+    max-height:
+      calc(100dvh - 20px);
+
+    gap: 12px;
+
+    border-radius: 20px;
+
+    padding: 16px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-modal-copy {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+
+    padding-right: 42px;
+    padding-bottom: 12px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-modal-copy h2 {
+    margin-top: 8px;
+
+    font-size:
+      clamp(
+        30px,
+        10vw,
+        44px
+      );
+  }
+
+  .fruit-hotspot-cue
+  .fruit-modal-copy > span {
+    max-width: none;
+
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-modal-close {
+    width: 36px;
+    height: 36px;
+
+    font-size: 22px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-variant-grid,
+  .fruit-hotspot-cue
+  .fruit-variant-grid-count-2 {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    grid-template-rows:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 8px;
+
+    overflow-y: auto;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-variant {
+    grid-template-rows:
+      minmax(54px, 1fr)
+      auto
+      auto;
+
+    gap: 5px;
+
+    border-radius: 14px;
+
+    padding: 8px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-variant-image {
+    min-height: 50px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-variant-image img {
+    width:
+      clamp(
+        52px,
+        18vw,
+        78px
+      );
+
+    max-height: 70px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-variant h3 {
+    font-size:
+      clamp(
+        13px,
+        4vw,
+        18px
+      );
+  }
+
+  .fruit-hotspot-cue
+  .fruit-ingredients {
+    font-size: 9px;
+
+    line-height: 1.22;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-ingredients strong {
+    font-size: 8px;
+  }
+
+  .fruit-variant-note {
+    font-size: 7px;
+
+    padding:
+      4px
+      6px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .fruit-hotspot,
+  .fruit-hotspot-focus,
+  .fruit-hotspot-card,
+  .fruit-hotspot-arrow,
+  .fruit-modal-shell,
+  .fruit-modal-backdrop {
+    transition: none !important;
+  }
+
+  .fruit-hotspot-hint-dot::after {
+    animation: none !important;
+  }
+}

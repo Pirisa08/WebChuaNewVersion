@@ -1,0 +1,76 @@
+.experience {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(245, 164, 0, 0.1), transparent 34%),
+    linear-gradient(180deg, #fff9ec 0%, #f7f0df 100%);
+}
+
+.scrub-stage {
+  position: relative;
+  height: 2200vh;
+}
+
+.sticky-frame {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 540px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 52% 50%, rgba(255, 255, 255, 0.42), transparent 38%),
+    #f7f0df;
+  isolation: isolate;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(0, 0, 0) scale(1.003);
+  filter: contrast(1.1) saturate(1.14) brightness(1.02);
+  backface-visibility: hidden;
+  will-change: transform, filter;
+}
+
+/* เอาเฟรมดำออก แต่ยังมีแสงนุ่ม ๆ แบบ clean */
+.grain {
+  display: none;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.shade-top {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 240, 223, 0.42) 0%,
+    rgba(247, 240, 223, 0.1) 28%,
+    transparent 58%
+  );
+}
+
+.shade-bottom {
+  background: linear-gradient(
+    0deg,
+    rgba(247, 240, 223, 0.34) 0%,
+    rgba(247, 240, 223, 0.07) 32%,
+    transparent 62%
+  );
+}
+
+@media (max-width: 720px) {
+  .scrub-stage {
+    height: 1950vh;
+  }
+
+  .sticky-frame {
+    min-height: 100svh;
+  }
+}

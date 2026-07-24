@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.claude/
+README_APPLY_THIS_VERSION.txt
+/Web2.mp4
+.DS_Store
+Thumbs.db
