@@ -1,4 +1,4 @@
-// Master scroll timeline for public/web 16_9.mp4
+// Master scroll timeline for public/web-16_9.mp4
 // Reference clip: 42.3 seconds, 1920x1080, 60 fps.
 //
 // ค่าในไฟล์นี้เป็น Scroll Progress:
