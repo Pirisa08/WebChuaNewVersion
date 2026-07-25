@@ -1,0 +1,4679 @@
+/* ======================================================
+   CHUA — MOBILE LAYOUT CORRECTION
+
+   แก้เฉพาะมือถือแนวตั้ง:
+   1. Striving text ไม่ทับผลไม้
+   2. Fruit detail เป็น Bottom Sheet แบบกระชับ
+   3. สินค้า 2 และ 4 รายการใช้รูปแบบเดียวกัน
+   4. OEM แยกหัวข้อ / ผลไม้ / Services ออกจากกัน
+   5. ไม่กระทบ Desktop
+
+   ต้อง Import เป็น CSS ลำดับสุดท้าย
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"] {
+    --mobile-correction-navy:
+      #14274a;
+
+    --mobile-correction-orange:
+      #f5a400;
+
+    --mobile-correction-orange-deep:
+      #c47b00;
+
+    --mobile-correction-copy:
+      rgba(
+        20,
+        39,
+        74,
+        0.68
+      );
+
+    --mobile-correction-divider:
+      rgba(
+        20,
+        39,
+        74,
+        0.11
+      );
+
+    --mobile-correction-font:
+      var(
+        --chua-premium-font,
+        "IBM Plex Sans Thai",
+        "Inter",
+        "Montserrat",
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif
+      );
+  }
+
+  /* ====================================================
+     1. STRIVING TO UNDERSTAND
+
+     แบ่งพื้นที่:
+     - Navigation ด้านบน
+     - ข้อความอยู่ช่วงบน
+     - ผลไม้อยู่ช่วงกลาง
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      flex !important;
+
+    align-items:
+      flex-start !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    padding:
+      max(
+        94px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          80px
+        )
+      )
+      20px
+      0 !important;
+
+    pointer-events:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-lines {
+    display:
+      grid !important;
+
+    justify-items:
+      center !important;
+
+    align-content:
+      start !important;
+
+    gap:
+      0 !important;
+
+    width:
+      min(
+        82vw,
+        330px
+      ) !important;
+
+    max-width:
+      330px !important;
+
+    margin:
+      0
+      auto !important;
+
+    padding:
+      0 !important;
+
+    text-align:
+      center !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line {
+    width:
+      auto !important;
+
+    margin-left:
+      auto !important;
+
+    margin-right:
+      auto !important;
+
+    font-family:
+      var(
+        --mobile-correction-font
+      ) !important;
+
+    letter-spacing:
+      -0.045em !important;
+
+    text-align:
+      center !important;
+
+    text-shadow:
+      none !important;
+
+    text-wrap:
+      balance;
+  }
+
+  /* Striving to understand */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-1 {
+    max-width:
+      9.4ch !important;
+
+    color:
+      var(
+        --mobile-correction-navy
+      ) !important;
+
+    font-size:
+      clamp(
+        30px,
+        8vw,
+        35px
+      ) !important;
+
+    font-weight:
+      760 !important;
+
+    line-height:
+      0.98 !important;
+  }
+
+  /* your needs */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-2 {
+    max-width:
+      9ch !important;
+
+    margin-top:
+      7px !important;
+
+    color:
+      var(
+        --mobile-correction-orange
+      ) !important;
+
+    font-size:
+      clamp(
+        32px,
+        8.7vw,
+        38px
+      ) !important;
+
+    font-weight:
+      740 !important;
+
+    line-height:
+      0.94 !important;
+  }
+
+  /* before you understand them. */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-3 {
+    max-width:
+      13ch !important;
+
+    margin-top:
+      8px !important;
+
+    color:
+      var(
+        --mobile-correction-navy
+      ) !important;
+
+    font-size:
+      clamp(
+        21px,
+        5.8vw,
+        25px
+      ) !important;
+
+    font-weight:
+      650 !important;
+
+    line-height:
+      1.03 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-lines::after {
+    display:
+      none !important;
+  }
+
+  /* ====================================================
+     2. FRUIT DETAIL MODAL
+
+     รูปแบบตามภาพ:
+     - เป็น Bottom Sheet
+     - Header อยู่บน
+     - การ์ดอยู่ล่าง
+     - ไม่ยาวเต็มหน้าจอ
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal[hidden] {
+    display:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal {
+    position:
+      fixed !important;
+
+    inset:
+      0 !important;
+
+    z-index:
+      1000 !important;
+
+    display:
+      flex !important;
+
+    align-items:
+      flex-end !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    padding:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-backdrop {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    background:
+      rgba(
+        18,
+        18,
+        15,
+        0.52
+      ) !important;
+
+    backdrop-filter:
+      blur(
+        4px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        4px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  #fruitHotspots
+  .fruit-modal-shell,
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell {
+    position:
+      relative !important;
+
+    z-index:
+      2 !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    grid-template-rows:
+      auto
+      auto !important;
+
+    align-content:
+      start !important;
+
+    gap:
+      11px !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    height:
+      auto !important;
+
+    min-height:
+      0 !important;
+
+    max-height:
+      min(
+        78dvh,
+        660px
+      ) !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      16px
+      14px
+      max(
+        16px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          10px
+        )
+      ) !important;
+
+    overflow-x:
+      hidden !important;
+
+    overflow-y:
+      auto !important;
+
+    overscroll-behavior:
+      contain !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-bottom:
+      0 !important;
+
+    border-radius:
+      27px
+      27px
+      0
+      0 !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.99
+        )
+        0%,
+        rgba(
+          255,
+          251,
+          242,
+          0.985
+        )
+        100%
+      ) !important;
+
+    box-shadow:
+      0
+      -24px
+      60px
+      rgba(
+        20,
+        39,
+        74,
+        0.18
+      ) !important;
+
+    font-family:
+      var(
+        --mobile-correction-font
+      ) !important;
+  }
+
+  /* ปิด Handle ด้านบนที่ดันเนื้อหาลง */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell::before {
+    display:
+      none !important;
+  }
+
+  /* ----------------------------------------------------
+     FRUIT MODAL HEADER
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy {
+    position:
+      relative !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    align-items:
+      start !important;
+
+    gap:
+      6px !important;
+
+    width:
+      100% !important;
+
+    min-height:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0
+      44px
+      12px
+      0 !important;
+
+    border-bottom:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.09
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy
+  >
+  div {
+    width:
+      100% !important;
+  }
+
+  /* THAI DRIED FRUIT DETAIL */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy
+  p {
+    margin:
+      0 !important;
+
+    color:
+      var(
+        --fruit-modal-accent-deep,
+        #c47b00
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.17em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  /* DRIED MANGO */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy
+  h2 {
+    width:
+      100% !important;
+
+    max-width:
+      14ch !important;
+
+    margin:
+      7px
+      0
+      0 !important;
+
+    color:
+      var(
+        --fruit-modal-accent,
+        #d1b000
+      ) !important;
+
+    font-size:
+      clamp(
+        27px,
+        7.8vw,
+        34px
+      ) !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      -0.045em !important;
+
+    line-height:
+      0.95 !important;
+
+    text-transform:
+      uppercase !important;
+
+    text-wrap:
+      balance;
+
+    text-shadow:
+      none !important;
+  }
+
+  /* Description */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy
+  >
+  span {
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      43ch !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.67
+      ) !important;
+
+    font-size:
+      8.5px !important;
+
+    font-weight:
+      500 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.4 !important;
+  }
+
+  /* ----------------------------------------------------
+     CLOSE BUTTON
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-close {
+    position:
+      absolute !important;
+
+    top:
+      12px !important;
+
+    right:
+      12px !important;
+
+    z-index:
+      5 !important;
+
+    display:
+      grid !important;
+
+    place-items:
+      center !important;
+
+    width:
+      34px !important;
+
+    height:
+      34px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.055
+      ) !important;
+
+    border-radius:
+      999px !important;
+
+    background:
+      rgba(
+        20,
+        39,
+        74,
+        0.055
+      ) !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.62
+      ) !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  /* ====================================================
+     3. FRUIT PRODUCT GRID
+
+     2 รายการ:
+     □ □
+
+     4 รายการ:
+     □ □
+     □ □
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-2,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-4 {
+    display:
+      grid !important;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    grid-auto-rows:
+      160px !important;
+
+    align-content:
+      start !important;
+
+    gap:
+      8px !important;
+
+    width:
+      100% !important;
+
+    height:
+      auto !important;
+
+    min-height:
+      0 !important;
+
+    max-height:
+      none !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      visible !important;
+  }
+
+  /* สองรายการไม่ขยายเต็มหน้า */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell[
+    data-variant-count="2"
+  ] {
+    max-height:
+      min(
+        56dvh,
+        480px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell[
+    data-variant-count="2"
+  ]
+  .fruit-variant-grid {
+    grid-template-rows:
+      160px !important;
+
+    grid-auto-rows:
+      160px !important;
+  }
+
+  /* สี่รายการ */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell[
+    data-variant-count="4"
+  ] {
+    max-height:
+      min(
+        78dvh,
+        660px
+      ) !important;
+  }
+
+  /* ----------------------------------------------------
+     PRODUCT CARD
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  #fruitHotspots
+  .fruit-variant,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant {
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    grid-template-rows:
+      69px
+      auto
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    align-items:
+      start !important;
+
+    justify-items:
+      center !important;
+
+    gap:
+      3px !important;
+
+    width:
+      100% !important;
+
+    height:
+      160px !important;
+
+    min-height:
+      160px !important;
+
+    max-height:
+      160px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      9px
+      7px !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-radius:
+      16px !important;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.95
+        )
+        0%,
+        rgba(
+          255,
+          251,
+          243,
+          0.83
+        )
+        100%
+      ) !important;
+
+    box-shadow:
+      0
+      6px
+      16px
+      rgba(
+        20,
+        39,
+        74,
+        0.035
+      ) !important;
+
+    text-align:
+      center !important;
+  }
+
+  /* รูปสินค้า */
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-image {
+    grid-column:
+      1 !important;
+
+    grid-row:
+      1 !important;
+
+    display:
+      flex !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      100% !important;
+
+    height:
+      69px !important;
+
+    min-height:
+      69px !important;
+
+    margin:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-image
+  img {
+    width:
+      auto !important;
+
+    height:
+      auto !important;
+
+    max-width:
+      76px !important;
+
+    max-height:
+      60px !important;
+
+    object-fit:
+      contain !important;
+
+    filter:
+      drop-shadow(
+        0
+        7px
+        9px
+        rgba(
+          20,
+          39,
+          74,
+          0.11
+        )
+      ) !important;
+  }
+
+  /* ชื่อสินค้า */
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-heading {
+    grid-column:
+      1 !important;
+
+    grid-row:
+      2 !important;
+
+    display:
+      grid !important;
+
+    justify-items:
+      center !important;
+
+    gap:
+      3px !important;
+
+    width:
+      100% !important;
+
+    margin:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-heading
+  h3,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant
+  h3 {
+    max-width:
+      15ch !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(
+        --fruit-modal-accent,
+        #d1b000
+      ) !important;
+
+    font-size:
+      clamp(
+        12px,
+        3.2vw,
+        14px
+      ) !important;
+
+    font-weight:
+      720 !important;
+
+    letter-spacing:
+      -0.02em !important;
+
+    line-height:
+      1.05 !important;
+
+    text-align:
+      center !important;
+
+    text-wrap:
+      balance;
+  }
+
+  /* No added sugar */
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-note {
+    margin:
+      1px
+      0
+      0 !important;
+
+    padding:
+      3px
+      6px !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      999px !important;
+
+    background:
+      rgba(
+        var(
+          --fruit-modal-accent-rgb,
+          209,
+          176,
+          0
+        ),
+        0.1
+      ) !important;
+
+    color:
+      var(
+        --fruit-modal-accent-deep,
+        #a98e00
+      ) !important;
+
+    font-size:
+      4.8px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.07em !important;
+
+    line-height:
+      1 !important;
+  }
+
+  /* Ingredients */
+
+  html[data-video-mode="mobile"]
+  .fruit-ingredients {
+    grid-column:
+      1 !important;
+
+    grid-row:
+      3 !important;
+
+    align-self:
+      end !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.61
+      ) !important;
+
+    font-size:
+      5.7px !important;
+
+    font-weight:
+      500 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.23 !important;
+
+    text-align:
+      center !important;
+
+    text-wrap:
+      balance;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-ingredients
+  strong {
+    display:
+      block !important;
+
+    margin:
+      0
+      0
+      3px !important;
+
+    color:
+      var(
+        --fruit-modal-accent,
+        #d1b000
+      ) !important;
+
+    font-size:
+      4.9px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.12em !important;
+
+    line-height:
+      1 !important;
+
+    text-align:
+      center !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  /* ====================================================
+     4. OEM — NO OVERLAP
+
+     แบ่งหน้าจอ:
+     80–215px   หัวข้อ
+     ตรงกลาง     ผลไม้จากวิดีโอ
+     ด้านล่าง    Services
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    overflow:
+      hidden !important;
+
+    pointer-events:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    min-height:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene::before {
+    display:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    height:
+      100% !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::before,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::after {
+    display:
+      none !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM HEADING — ด้านบน
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-heading {
+    position:
+      absolute !important;
+
+    z-index:
+      5 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    top:
+      max(
+        88px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          74px
+        )
+      ) !important;
+
+    display:
+      block !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      235px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center !important;
+
+    gap:
+      6px !important;
+
+    margin:
+      0
+      0
+      8px !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    color:
+      var(
+        --mobile-correction-orange-deep
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.16em !important;
+
+    line-height:
+      1 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker::before {
+    content:
+      "";
+
+    display:
+      block;
+
+    width:
+      6px;
+
+    height:
+      6px;
+
+    border-radius:
+      999px;
+
+    background:
+      var(
+        --mobile-correction-orange
+      );
+
+    box-shadow:
+      0
+      0
+      0
+      4px
+      rgba(
+        245,
+        164,
+        0,
+        0.1
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy
+  h2 {
+    width:
+      100% !important;
+
+    max-width:
+      9.5ch !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(
+        --mobile-correction-navy
+      ) !important;
+
+    font-size:
+      clamp(
+        28px,
+        7.7vw,
+        33px
+      ) !important;
+
+    font-weight:
+      760 !important;
+
+    letter-spacing:
+      -0.04em !important;
+
+    line-height:
+      0.95 !important;
+
+    text-wrap:
+      balance;
+
+    text-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy
+  h2
+  span {
+    display:
+      block !important;
+
+    margin-top:
+      2px !important;
+
+    color:
+      var(
+        --mobile-correction-orange
+      ) !important;
+
+    font-weight:
+      730 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    display:
+      block !important;
+
+    max-width:
+      42ch !important;
+
+    margin:
+      8px
+      0
+      0 !important;
+
+    color:
+      var(
+        --mobile-correction-copy
+      ) !important;
+
+    font-size:
+      7.4px !important;
+
+    font-weight:
+      500 !important;
+
+    line-height:
+      1.4 !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM SERVICES — ด้านล่าง
+
+     วางใต้ผลไม้และเหนือ Progress
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    position:
+      absolute !important;
+
+    z-index:
+      6 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    bottom:
+      max(
+        49px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          39px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      0 !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      none !important;
+
+    height:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      0 !important;
+
+    border-top:
+      1px solid
+      var(
+        --mobile-correction-divider
+      ) !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          250,
+          247,
+          239,
+          0.2
+        )
+        0%,
+        rgba(
+          250,
+          247,
+          239,
+          0.82
+        )
+        20%,
+        rgba(
+          250,
+          247,
+          239,
+          0.96
+        )
+        100%
+      ) !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article {
+    display:
+      grid !important;
+
+    grid-template-columns:
+      32px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    grid-template-rows:
+      auto
+      auto !important;
+
+    align-items:
+      center !important;
+
+    column-gap:
+      9px !important;
+
+    row-gap:
+      2px !important;
+
+    width:
+      100% !important;
+
+    min-height:
+      47px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      7px
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article
+  +
+  article {
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+  }
+
+  /* 01 / 02 / 03 */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article
+  >
+  span {
+    grid-column:
+      1 !important;
+
+    grid-row:
+      1 / 3 !important;
+
+    display:
+      block !important;
+
+    width:
+      auto !important;
+
+    height:
+      auto !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    color:
+      var(
+        --mobile-correction-orange-deep
+      ) !important;
+
+    font-size:
+      7px !important;
+
+    font-weight:
+      720 !important;
+
+    letter-spacing:
+      0.08em !important;
+
+    line-height:
+      1 !important;
+  }
+
+  /* Service title */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  strong {
+    grid-column:
+      2 !important;
+
+    grid-row:
+      1 !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(
+        --mobile-correction-navy
+      ) !important;
+
+    font-size:
+      10px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      -0.01em !important;
+
+    line-height:
+      1.18 !important;
+  }
+
+  /* Service description */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  p {
+    grid-column:
+      2 !important;
+
+    grid-row:
+      2 !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.56
+      ) !important;
+
+    font-size:
+      6.3px !important;
+
+    font-weight:
+      480 !important;
+
+    line-height:
+      1.3 !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE — 390px ลงมา
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .about-story-panel {
+    padding-top:
+      max(
+        88px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          74px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-1 {
+    font-size:
+      28px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-2 {
+    font-size:
+      31px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-3 {
+    font-size:
+      20px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell {
+    padding-left:
+      12px !important;
+
+    padding-right:
+      12px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-2,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-4 {
+    grid-auto-rows:
+      152px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant {
+    height:
+      152px !important;
+
+    min-height:
+      152px !important;
+
+    max-height:
+      152px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-heading {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+
+    top:
+      max(
+        82px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          68px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy
+  h2 {
+    font-size:
+      27px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+  }
+}
+/* ======================================================
+   CHUA — OEM & CONTACT MOBILE FINAL LAYOUT
+
+   วางท้ายสุดของ mobile-layout-correction.css
+
+   ปรับเฉพาะ:
+   - มือถือแนวตั้ง
+   - หน้า OEM
+   - หน้า Contact
+   - ไม่กระทบ Desktop
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+
+  /* ====================================================
+     SHARED VARIABLES
+     ==================================================== */
+
+  html[data-video-mode="mobile"] {
+    --final-mobile-navy:
+      #14274a;
+
+    --final-mobile-orange:
+      #f5a400;
+
+    --final-mobile-orange-deep:
+      #c47b00;
+
+    --final-mobile-copy:
+      rgba(
+        20,
+        39,
+        74,
+        0.66
+      );
+
+    --final-mobile-line:
+      rgba(
+        20,
+        39,
+        74,
+        0.09
+      );
+
+    --final-mobile-card:
+      rgba(
+        255,
+        252,
+        245,
+        0.91
+      );
+
+    --final-mobile-font:
+      var(
+        --chua-premium-font,
+        "IBM Plex Sans Thai",
+        "Inter",
+        "Montserrat",
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif
+      );
+  }
+
+  /* ====================================================
+     OEM PAGE
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    overflow:
+      hidden !important;
+
+    font-family:
+      var(
+        --final-mobile-font
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    min-height:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene::before {
+    display:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    height:
+      100% !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::before,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::after {
+    display:
+      none !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM HEADING
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-heading {
+    position:
+      absolute !important;
+
+    z-index:
+      8 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    top:
+      max(
+        88px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          74px
+        )
+      ) !important;
+
+    display:
+      block !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      255px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+  }
+
+  /* OEM & PRIVATE LABEL */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center !important;
+
+    gap:
+      6px !important;
+
+    margin:
+      0
+      0
+      7px !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    color:
+      var(
+        --final-mobile-orange-deep
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      750 !important;
+
+    letter-spacing:
+      0.15em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker::before {
+    content:
+      "";
+
+    display:
+      block !important;
+
+    width:
+      6px !important;
+
+    height:
+      6px !important;
+
+    flex:
+      0 0
+      6px !important;
+
+    border-radius:
+      999px !important;
+
+    background:
+      var(
+        --final-mobile-orange
+      ) !important;
+
+    box-shadow:
+      0
+      0
+      0
+      3px
+      rgba(
+        245,
+        164,
+        0,
+        0.12
+      ) !important;
+  }
+
+  /* Create Your Own Brand Today */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy
+  h2 {
+    width:
+      100% !important;
+
+    max-width:
+      9.5ch !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(
+        --final-mobile-navy
+      ) !important;
+
+    font-size:
+      clamp(
+        29px,
+        8vw,
+        34px
+      ) !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      -0.045em !important;
+
+    line-height:
+      0.95 !important;
+
+    text-wrap:
+      balance;
+
+    text-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy
+  h2
+  span {
+    display:
+      block !important;
+
+    margin-top:
+      2px !important;
+
+    color:
+      var(
+        --final-mobile-orange
+      ) !important;
+
+    font-weight:
+      750 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      42ch !important;
+
+    margin:
+      8px
+      0
+      0 !important;
+
+    color:
+      var(
+        --final-mobile-copy
+      ) !important;
+
+    font-size:
+      7.5px !important;
+
+    font-weight:
+      520 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.38 !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM SERVICE CARD
+
+     อยู่ด้านล่าง เหนือ Progress
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    position:
+      absolute !important;
+
+    z-index:
+      9 !important;
+
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+
+    bottom:
+      max(
+        56px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          46px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      0 !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      none !important;
+
+    height:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      4px
+      12px !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-radius:
+      18px !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.88
+        ),
+        rgba(
+          255,
+          250,
+          239,
+          0.94
+        )
+      ) !important;
+
+    box-shadow:
+      0
+      12px
+      30px
+      rgba(
+        20,
+        39,
+        74,
+        0.08
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      ) !important;
+
+    backdrop-filter:
+      blur(
+        12px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        12px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article {
+    display:
+      grid !important;
+
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    grid-template-rows:
+      auto
+      auto !important;
+
+    align-items:
+      center !important;
+
+    column-gap:
+      8px !important;
+
+    row-gap:
+      2px !important;
+
+    width:
+      100% !important;
+
+    min-height:
+      44px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      7px
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article
+  +
+  article {
+    border-top:
+      1px
+      solid
+      var(
+        --final-mobile-line
+      ) !important;
+  }
+
+  /* 01 / 02 / 03 */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article
+  >
+  span {
+    grid-column:
+      1 !important;
+
+    grid-row:
+      1 / 3 !important;
+
+    display:
+      flex !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      flex-start !important;
+
+    width:
+      auto !important;
+
+    height:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    color:
+      var(
+        --final-mobile-orange-deep
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      0.08em !important;
+
+    line-height:
+      1 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  strong {
+    grid-column:
+      2 !important;
+
+    grid-row:
+      1 !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(
+        --final-mobile-navy
+      ) !important;
+
+    font-size:
+      9.5px !important;
+
+    font-weight:
+      720 !important;
+
+    letter-spacing:
+      -0.01em !important;
+
+    line-height:
+      1.16 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  p {
+    grid-column:
+      2 !important;
+
+    grid-row:
+      2 !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.53
+      ) !important;
+
+    font-size:
+      5.9px !important;
+
+    font-weight:
+      480 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.28 !important;
+  }
+
+  /* ====================================================
+     CONTACT PAGE
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-cue {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    overflow:
+      hidden !important;
+
+    font-family:
+      var(
+        --final-mobile-font
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    min-height:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-scene::before {
+    display:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    height:
+      100% !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::before,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::after {
+    display:
+      none !important;
+  }
+
+  /* ----------------------------------------------------
+     CONTACT TOP BRAND CARD
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    position:
+      absolute !important;
+
+    z-index:
+      8 !important;
+
+    left:
+      18px !important;
+
+    top:
+      max(
+        80px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          66px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      52px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    align-items:
+      center !important;
+
+    column-gap:
+      11px !important;
+
+    width:
+      min(
+        calc(
+          100vw -
+          36px
+        ),
+        286px
+      ) !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      10px
+      12px !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      ) !important;
+
+    border-radius:
+      16px !important;
+
+    background:
+      rgba(
+        255,
+        252,
+        246,
+        0.74
+      ) !important;
+
+    box-shadow:
+      0
+      9px
+      24px
+      rgba(
+        20,
+        39,
+        74,
+        0.055
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      ) !important;
+
+    backdrop-filter:
+      blur(
+        10px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        10px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-logo {
+    display:
+      block !important;
+
+    width:
+      52px !important;
+
+    max-width:
+      52px !important;
+
+    height:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    object-fit:
+      contain !important;
+
+    opacity:
+      0.83 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block
+  p {
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.76
+      ) !important;
+
+    font-size:
+      6.8px !important;
+
+    font-weight:
+      570 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.37 !important;
+  }
+
+  /* ----------------------------------------------------
+     CONTACT ADDRESS CARD — ส่วนบน
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    position:
+      absolute !important;
+
+    z-index:
+      9 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    bottom:
+      max(
+        156px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          146px
+        )
+      ) !important;
+
+    display:
+      block !important;
+
+    width:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      12px
+      14px
+      10px !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-bottom:
+      0 !important;
+
+    border-radius:
+      18px
+      18px
+      0
+      0 !important;
+
+    background:
+      var(
+        --final-mobile-card
+      ) !important;
+
+    box-shadow:
+      0
+      -6px
+      22px
+      rgba(
+        20,
+        39,
+        74,
+        0.045
+      ) !important;
+
+    font-style:
+      normal !important;
+
+    backdrop-filter:
+      blur(
+        12px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        12px
+      ) !important;
+  }
+
+  /* ----------------------------------------------------
+     CONTACT DIRECT CARD — ส่วนล่าง
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    position:
+      absolute !important;
+
+    z-index:
+      9 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    bottom:
+      max(
+        72px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          62px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    align-items:
+      start !important;
+
+    column-gap:
+      12px !important;
+
+    row-gap:
+      10px !important;
+
+    width:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      10px
+      14px
+      12px !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-top:
+      1px
+      solid
+      var(
+        --final-mobile-line
+      ) !important;
+
+    border-radius:
+      0
+      0
+      18px
+      18px !important;
+
+    background:
+      var(
+        --final-mobile-card
+      ) !important;
+
+    box-shadow:
+      0
+      12px
+      30px
+      rgba(
+        20,
+        39,
+        74,
+        0.065
+      ) !important;
+
+    backdrop-filter:
+      blur(
+        12px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        12px
+      ) !important;
+  }
+
+  /* Address / Email / Phone / Follow Us */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block
+  >
+  span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group
+  >
+  span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group
+  >
+  span {
+    display:
+      block !important;
+
+    margin:
+      0
+      0
+      5px !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.84
+      ) !important;
+
+    font-size:
+      5.4px !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      0.17em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block
+  strong {
+    display:
+      block !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.85
+      ) !important;
+
+    font-size:
+      6.4px !important;
+
+    font-weight:
+      570 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.34 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group {
+    min-width:
+      0 !important;
+
+    margin:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group
+  a {
+    display:
+      block !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.86
+      ) !important;
+
+    font-size:
+      6.7px !important;
+
+    font-weight:
+      620 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.3 !important;
+
+    text-decoration:
+      none !important;
+
+    overflow-wrap:
+      anywhere !important;
+
+    pointer-events:
+      auto !important;
+  }
+
+  /* ----------------------------------------------------
+     FOLLOW US
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group {
+    grid-column:
+      1 / -1 !important;
+
+    min-width:
+      0 !important;
+
+    margin:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-links {
+    display:
+      flex !important;
+
+    align-items:
+      center !important;
+
+    flex-wrap:
+      nowrap !important;
+
+    gap:
+      7px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      27px !important;
+
+    height:
+      27px !important;
+
+    flex:
+      0
+      0
+      27px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.08
+      ) !important;
+
+    border-radius:
+      999px !important;
+
+    background:
+      rgba(
+        235,
+        239,
+        245,
+        0.82
+      ) !important;
+
+    box-shadow:
+      0
+      5px
+      12px
+      rgba(
+        20,
+        39,
+        74,
+        0.045
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.8
+      ) !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.88
+      ) !important;
+
+    pointer-events:
+      auto !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link
+  svg,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link
+  svg {
+    display:
+      block !important;
+
+    width:
+      12px !important;
+
+    height:
+      12px !important;
+
+    fill:
+      currentColor !important;
+
+    color:
+      currentColor !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link
+  >
+  span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link
+  >
+  span {
+    display:
+      none !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+
+  html[data-video-mode="mobile"]
+  .oem-contact-heading {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+
+    top:
+      max(
+        82px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          68px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy
+  h2 {
+    font-size:
+      28px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    left:
+      14px !important;
+
+    right:
+      14px !important;
+
+    padding-left:
+      10px !important;
+
+    padding-right:
+      10px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    left:
+      16px !important;
+
+    width:
+      min(
+        calc(
+          100vw -
+          32px
+        ),
+        275px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+  }
+}
+
+/* ======================================================
+   CHUA — CONTACT MOBILE FINAL REFINEMENT
+
+   - ลบโลโก้ซ้ำในหน้า Contact
+   - สร้าง Heading ที่น่าสนใจขึ้น
+   - จัด Address / Email / Phone / Social ให้เป็นระเบียบ
+   - เว้นพื้นที่ตรงกลางสำหรับผลไม้ในวิดีโอ
+   - ไม่กระทบ Desktop
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+
+  /* ====================================================
+     CONTACT SCENE
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-cue {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    overflow:
+      hidden !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100vw !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    min-height:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-scene::before {
+    display:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    height:
+      100% !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::before,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::after {
+    display:
+      none !important;
+  }
+
+  /* ====================================================
+     REMOVE DUPLICATE LOGO
+     ซ่อนโลโก้ภายใน Contact เผื่อ HTML เดิมยังค้างอยู่
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-logo {
+    display:
+      none !important;
+  }
+
+  /* ====================================================
+     CONTACT HEADING
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    position:
+      absolute !important;
+
+    z-index:
+      8 !important;
+
+    left:
+      20px !important;
+
+    right:
+      20px !important;
+
+    top:
+      max(
+        86px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          72px
+        )
+      ) !important;
+
+    display:
+      block !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      310px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      2px
+      0
+      3px
+      15px !important;
+
+    border:
+      0 !important;
+
+    border-left:
+      3px
+      solid
+      #f5a400 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+  /* จุดตกแต่งด้านบน */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block::before {
+    content:
+      "";
+
+    position:
+      absolute;
+
+    left:
+      -6px;
+
+    top:
+      -1px;
+
+    width:
+      9px;
+
+    height:
+      9px;
+
+    border:
+      2px
+      solid
+      rgba(
+        255,
+        252,
+        245,
+        0.96
+      );
+
+    border-radius:
+      999px;
+
+    background:
+      #f5a400;
+
+    box-shadow:
+      0
+      0
+      0
+      3px
+      rgba(
+        245,
+        164,
+        0,
+        0.13
+      );
+  }
+
+  /* LET’S WORK TOGETHER */
+
+  html[data-video-mode="mobile"]
+  .contact-eyebrow {
+    display:
+      block !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      none !important;
+
+    margin:
+      0
+      0
+      8px !important;
+
+    color:
+      #b87300 !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      0.18em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  /* Create Something Fruitful Together */
+
+  html[data-video-mode="mobile"]
+  .contact-title {
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      10ch !important;
+
+    margin:
+      0 !important;
+
+    color:
+      #14274a !important;
+
+    font-size:
+      clamp(
+        29px,
+        8vw,
+        35px
+      ) !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      -0.045em !important;
+
+    line-height:
+      0.94 !important;
+
+    text-wrap:
+      balance;
+
+    text-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-title
+  span {
+    display:
+      block !important;
+
+    margin-top:
+      3px !important;
+
+    color:
+      #f5a400 !important;
+
+    font-weight:
+      750 !important;
+  }
+
+  /* Intro Description */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-intro {
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      42ch !important;
+
+    margin:
+      9px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.64
+      ) !important;
+
+    font-size:
+      7.3px !important;
+
+    font-weight:
+      510 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.42 !important;
+  }
+
+  /* ป้องกัน Style เดิมจาก p ทับค่าใหม่ */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block
+  p {
+    max-width:
+      42ch !important;
+  }
+
+  /* ====================================================
+     ADDRESS CARD
+     เป็นส่วนบนของกล่องข้อมูล
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    position:
+      absolute !important;
+
+    z-index:
+      9 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    bottom:
+      max(
+        162px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          152px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      54px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    align-items:
+      start !important;
+
+    column-gap:
+      10px !important;
+
+    width:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      13px
+      14px
+      12px !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-bottom:
+      0 !important;
+
+    border-radius:
+      19px
+      19px
+      0
+      0 !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.91
+        ),
+        rgba(
+          255,
+          249,
+          237,
+          0.95
+        )
+      ) !important;
+
+    box-shadow:
+      0
+      -8px
+      28px
+      rgba(
+        20,
+        39,
+        74,
+        0.045
+      ) !important;
+
+    font-style:
+      normal !important;
+
+    backdrop-filter:
+      blur(
+        13px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        13px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block
+  >
+  span {
+    grid-column:
+      1 !important;
+
+    margin:
+      2px
+      0
+      0 !important;
+
+    color:
+      #c47b00 !important;
+
+    font-size:
+      5.7px !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      0.16em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block
+  strong {
+    grid-column:
+      2 !important;
+
+    display:
+      block !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.86
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      570 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.35 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  /* ====================================================
+     EMAIL / PHONE / SOCIAL CARD
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    position:
+      absolute !important;
+
+    z-index:
+      9 !important;
+
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    bottom:
+      max(
+        70px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          60px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    align-items:
+      start !important;
+
+    column-gap:
+      0 !important;
+
+    row-gap:
+      12px !important;
+
+    width:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      11px
+      14px
+      12px !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ) !important;
+
+    border-top:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.09
+      ) !important;
+
+    border-radius:
+      0
+      0
+      19px
+      19px !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.91
+        ),
+        rgba(
+          255,
+          249,
+          237,
+          0.95
+        )
+      ) !important;
+
+    box-shadow:
+      0
+      13px
+      30px
+      rgba(
+        20,
+        39,
+        74,
+        0.065
+      ) !important;
+
+    backdrop-filter:
+      blur(
+        13px
+      ) !important;
+
+    -webkit-backdrop-filter:
+      blur(
+        13px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group {
+    min-width:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0
+      10px
+      0
+      0 !important;
+  }
+
+  /* เส้นแบ่ง Email กับ Phone */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group:nth-child(2) {
+    padding:
+      0
+      0
+      0
+      12px !important;
+
+    border-left:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.09
+      ) !important;
+  }
+
+  /* Email / Phone Label */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group
+  >
+  span {
+    display:
+      block !important;
+
+    margin:
+      0
+      0
+      5px !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.82
+      ) !important;
+
+    font-size:
+      5.4px !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      0.17em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group
+  a {
+    display:
+      block !important;
+
+    margin:
+      0 !important;
+
+    color:
+      #14274a !important;
+
+    font-size:
+      6.7px !important;
+
+    font-weight:
+      650 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.3 !important;
+
+    text-decoration:
+      none !important;
+
+    overflow-wrap:
+      anywhere !important;
+
+    pointer-events:
+      auto !important;
+  }
+
+  /* ====================================================
+     FOLLOW US
+     Label กับ Icon อยู่บรรทัดเดียวกัน
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group {
+    grid-column:
+      1 / -1 !important;
+
+    display:
+      flex !important;
+
+    align-items:
+      center !important;
+
+    gap:
+      10px !important;
+
+    min-width:
+      0 !important;
+
+    margin:
+      0 !important;
+
+    padding-top:
+      10px !important;
+
+    border-top:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.08
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group
+  >
+  span {
+    display:
+      block !important;
+
+    flex:
+      0
+      0
+      auto !important;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.82
+      ) !important;
+
+    font-size:
+      5.4px !important;
+
+    font-weight:
+      780 !important;
+
+    letter-spacing:
+      0.16em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-links {
+    display:
+      flex !important;
+
+    align-items:
+      center !important;
+
+    flex-wrap:
+      nowrap !important;
+
+    gap:
+      7px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      26px !important;
+
+    height:
+      26px !important;
+
+    flex:
+      0
+      0
+      26px !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    border:
+      1px
+      solid
+      rgba(
+        20,
+        39,
+        74,
+        0.08
+      ) !important;
+
+    border-radius:
+      999px !important;
+
+    background:
+      rgba(
+        232,
+        238,
+        246,
+        0.76
+      ) !important;
+
+    box-shadow:
+      0
+      5px
+      12px
+      rgba(
+        20,
+        39,
+        74,
+        0.045
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.82
+      ) !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.88
+      ) !important;
+
+    pointer-events:
+      auto !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link
+  svg,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link
+  svg {
+    display:
+      block !important;
+
+    width:
+      11px !important;
+
+    height:
+      11px !important;
+
+    fill:
+      currentColor !important;
+
+    color:
+      currentColor !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link
+  >
+  span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link
+  >
+  span {
+    display:
+      none !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    left:
+      17px !important;
+
+    right:
+      17px !important;
+
+    top:
+      max(
+        82px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          68px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-title {
+    font-size:
+      28px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    grid-template-columns:
+      50px
+      minmax(
+        0,
+        1fr
+      ) !important;
+  }
+}

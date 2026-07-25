@@ -1,0 +1,8143 @@
+/* ======================================================
+   CHUA RESPONSIVE SCENES
+
+   This file contains only the 9:16 mobile composition.
+   Desktop CSS remains controlled by the original style files.
+   ====================================================== */
+
+html,
+body {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     ROOT / VIDEO
+     ==================================================== */
+
+  html[data-video-mode="mobile"],
+  html[data-video-mode="mobile"] body,
+  html[data-video-mode="mobile"] #app,
+  html[data-video-mode="mobile"] .experience {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  html[data-video-mode="mobile"] .sticky-frame {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  html[data-video-mode="mobile"] .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  /* ====================================================
+     NAVIGATION
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .top-nav-brand,
+  html[data-video-mode="mobile"] .top-nav-menu-shell {
+    top: max(
+      10px,
+      env(safe-area-inset-top)
+    );
+  }
+
+  html[data-video-mode="mobile"] .top-nav-brand {
+    left: max(
+      10px,
+      env(safe-area-inset-left)
+    );
+    min-width: 58px;
+    height: 38px;
+    padding: 0 7px;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-logo {
+    width: 56px;
+    max-height: 21px;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-menu-shell {
+    right: max(
+      10px,
+      env(safe-area-inset-right)
+    );
+    height: 38px;
+    padding: 0 6px;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-menu {
+    gap: 9px;
+    padding: 0 5px;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-link {
+    font-size: 8px;
+    letter-spacing: 0.11em;
+  }
+
+  /* ====================================================
+     INTRO LOGO
+     Central whitespace in the 9:16 opening scene.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .intro-logo-group {
+    top: 48%;
+    width: min(90vw, 460px);
+    max-width: 90vw;
+  }
+
+  html[data-video-mode="mobile"] .intro-logo-card {
+    width: min(102%, 430px);
+    overflow: visible !important;
+  }
+
+  html[data-video-mode="mobile"] .intro-logo {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  html[data-video-mode="mobile"] .intro-logo-group::before,
+  html[data-video-mode="mobile"] .intro-logo-group::after,
+  html[data-video-mode="mobile"] .intro-breath-rings,
+  html[data-video-mode="mobile"] .intro-orbit {
+    width: min(100%, 430px);
+  }
+
+  html[data-video-mode="mobile"] .intro-tagline {
+    width: auto;
+    max-width: 88vw;
+    margin-top: -12px;
+    padding: 7px 11px;
+    font-size: clamp(9px, 2.5vw, 12px);
+    line-height: 1.25;
+  }
+
+  html[data-video-mode="mobile"] .intro-subtagline {
+    max-width: 84vw;
+    padding: 5px 9px;
+    font-size: 7px;
+    letter-spacing: 0.09em;
+  }
+
+  /* ====================================================
+     ABOUT / STORY
+     Text uses the empty top and bottom areas of the vertical clip.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .intro-about-text,
+  html[data-video-mode="mobile"] .about-panel {
+    position: absolute;
+    inset: 0;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding:
+      max(
+        84px,
+        calc(env(safe-area-inset-top) + 70px)
+      )
+      20px
+      0;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel .about-lines {
+    width: min(88vw, 430px);
+    text-align: center;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel .about-line {
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  html[data-video-mode="mobile"] .about-ingredient-panel {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding:
+      0
+      20px
+      max(
+        72px,
+        calc(env(safe-area-inset-bottom) + 52px)
+      );
+  }
+
+  html[data-video-mode="mobile"] .ingredient-title {
+    width: min(90vw, 450px);
+    max-width: 90vw;
+    margin: 0;
+    font-size: clamp(32px, 10vw, 50px);
+    line-height: 0.94;
+    text-align: center;
+  }
+
+  /* ====================================================
+     SCROLL CUE
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .scroll-intro-cue {
+    bottom: max(
+      18px,
+      env(safe-area-inset-bottom)
+    );
+    width: calc(100vw - 30px);
+  }
+
+  html[data-video-mode="mobile"] .scroll-intro-cue__button {
+    min-height: 58px;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 20px;
+  }
+
+  html[data-video-mode="mobile"] .scroll-intro-cue__signal {
+    width: 26px;
+    height: 26px;
+  }
+
+  html[data-video-mode="mobile"] .scroll-intro-cue__title {
+    font-size: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  html[data-video-mode="mobile"] .scroll-intro-cue__eyebrow,
+  html[data-video-mode="mobile"] .scroll-intro-cue__meta {
+    font-size: 7px;
+  }
+
+  html[data-video-mode="mobile"] .scroll-intro-cue__motion {
+    width: 28px;
+  }
+
+  /* ====================================================
+     FRUIT HOTSPOTS
+     Positions come from responsiveScenes.js.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .fruit-hotspot-cue,
+  html[data-video-mode="mobile"] .fruit-hotspot-scene,
+  html[data-video-mode="mobile"] .fruit-hotspot-stage,
+  html[data-video-mode="mobile"] .fruit-hotspot-map {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-map {
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-hint {
+    top: max(
+      64px,
+      calc(env(safe-area-inset-top) + 54px)
+    );
+    width: auto;
+    max-width: calc(100vw - 28px);
+    min-width: 0;
+    gap: 8px;
+    padding: 8px 11px 8px 9px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-hint-copy strong {
+    max-width: 72vw;
+    overflow: hidden;
+    font-size: 8px;
+    letter-spacing: 0.11em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-hint-copy small {
+    max-width: 72vw;
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot {
+    border-radius: 30px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-card {
+    column-gap: 6px;
+    padding: 7px 8px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-card::after {
+    height: 20px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-copy strong {
+    font-size: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-copy small {
+    display: none;
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-dot {
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 0 3px rgba(
+      var(--fruit-accent-rgb),
+      0.13
+    );
+  }
+
+  html[data-video-mode="mobile"] .fruit-hotspot-arrow {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+  }
+
+  /* ====================================================
+     FRUIT DETAIL — MOBILE BOTTOM SHEET
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .fruit-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal[hidden] {
+    display: none;
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(19, 30, 48, 0.28);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-shell {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    max-height: min(86dvh, 820px);
+    margin: 0;
+    border-radius: 28px 28px 0 0;
+    padding:
+      20px
+      16px
+      max(
+        20px,
+        calc(env(safe-area-inset-bottom) + 12px)
+      );
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: rgba(255, 252, 244, 0.97);
+    box-shadow: 0 -24px 60px rgba(20, 39, 74, 0.18);
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-shell::before {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 4px;
+    margin: -6px auto 14px;
+    border-radius: 999px;
+    background: rgba(20, 39, 74, 0.16);
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-close {
+    position: sticky;
+    top: 0;
+    margin-left: auto;
+    z-index: 4;
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-copy {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-right: 38px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-copy h2 {
+    font-size: clamp(30px, 9vw, 46px);
+    line-height: 0.96;
+  }
+
+  html[data-video-mode="mobile"] .fruit-modal-copy > span {
+    max-width: none;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  html[data-video-mode="mobile"] .fruit-variant-grid,
+  html[data-video-mode="mobile"] .fruit-variant-grid-count-2,
+  html[data-video-mode="mobile"] .fruit-variant-grid-count-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-variant {
+    border-radius: 18px;
+    padding: 10px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-variant-image {
+    min-height: 108px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-variant-heading h3 {
+    font-size: 12px;
+  }
+
+  html[data-video-mode="mobile"] .fruit-ingredients {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+  /* ====================================================
+     HOUSE BRANDS TITLE
+     Compact title in the empty upper area.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .lineup-header {
+    left: 16px;
+    right: 16px;
+    top: max(
+      64px,
+      calc(env(safe-area-inset-top) + 52px)
+    );
+    width: auto;
+  }
+
+  html[data-video-mode="mobile"] .lineup-content {
+    transform-origin: center top;
+  }
+
+  html[data-video-mode="mobile"] .lineup-title-wrap {
+    min-height: 82px;
+  }
+
+  html[data-video-mode="mobile"] .lineup-title,
+  html[data-video-mode="mobile"] .lineup-title-bridge {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(33px, 10vw, 46px);
+    line-height: 0.91;
+    text-align: center;
+  }
+
+  html[data-video-mode="mobile"] .lineup-title-bridge {
+    inset: 0;
+  }
+
+  html[data-video-mode="mobile"].is-mobile-brand-detail-active
+  .lineup-header {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* ====================================================
+     BRAND LABELS
+     Base positions and movement come from responsiveScenes.js.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .product-labels-topline {
+    display: none !important;
+  }
+
+  html[data-video-mode="mobile"] .product-brand-label {
+    padding: 8px 10px;
+    column-gap: 7px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow:
+      0 12px 30px rgba(20, 39, 74, 0.11),
+      inset 0 1px 0 rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  html[data-video-mode="mobile"] .product-brand-label::before {
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 0 3px rgba(245, 164, 0, 0.14);
+  }
+
+  html[data-video-mode="mobile"] .product-brand-label::after {
+    width: 1px;
+  }
+
+  html[data-video-mode="mobile"] .product-brand-label strong {
+    font-size: 9px;
+    letter-spacing: 0.07em;
+  }
+
+  html[data-video-mode="mobile"] .product-brand-label span {
+    margin-top: 2px;
+    max-width: 31vw;
+    overflow: hidden;
+    font-size: 7px;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ====================================================
+     BRAND DETAIL CARD
+     The mobile products occupy the middle/lower frame, so the card
+     stays compact in the upper whitespace.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .brand-showcase {
+    z-index: 70;
+  }
+
+  html[data-video-mode="mobile"] .brand-copy {
+    max-height: 34dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 22px;
+    padding: 16px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 248, 232, 0.9)
+      );
+    box-shadow:
+      0 18px 46px rgba(20, 39, 74, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  }
+
+  html[data-video-mode="mobile"] .brand-meta {
+    margin-bottom: 9px;
+  }
+
+  html[data-video-mode="mobile"] .brand-kicker {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  html[data-video-mode="mobile"] .brand-count {
+    padding: 5px 7px;
+    font-size: 8px;
+  }
+
+  html[data-video-mode="mobile"] .brand-name {
+    font-size: clamp(25px, 8vw, 36px);
+    line-height: 0.95;
+    white-space: normal;
+  }
+
+  html[data-video-mode="mobile"] .brand-category {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.15;
+  }
+
+  html[data-video-mode="mobile"] .brand-description {
+    display: -webkit-box;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 10px;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  html[data-video-mode="mobile"] .brand-extra-grid {
+    display: none;
+  }
+
+  html[data-video-mode="mobile"] .brand-products {
+    margin-top: 10px;
+  }
+
+  html[data-video-mode="mobile"] .brand-products-label {
+    margin-bottom: 5px;
+    font-size: 7px;
+    letter-spacing: 0.15em;
+  }
+
+  html[data-video-mode="mobile"] .brand-products-list {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 9px;
+    line-height: 1.35;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  html[data-video-mode="mobile"] .brand-progress {
+    margin-top: 10px;
+  }
+
+  html[data-video-mode="mobile"] .brand-dot {
+    width: 20px;
+    height: 3px;
+  }
+
+  /* ====================================================
+     CERTIFICATE / OEM / CONTACT
+     Vertical cards, independent from the desktop two-column layout.
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .certificate-cue,
+  html[data-video-mode="mobile"] .oem-contact-cue,
+  html[data-video-mode="mobile"] .contact-cue {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  html[data-video-mode="mobile"] .certificate-scene,
+  html[data-video-mode="mobile"] .oem-contact-scene,
+  html[data-video-mode="mobile"] .contact-scene {
+    position: relative;
+    inset: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding:
+      max(
+        72px,
+        calc(env(safe-area-inset-top) + 60px)
+      )
+      14px
+      max(
+        28px,
+        calc(env(safe-area-inset-bottom) + 18px)
+      );
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-content: stretch;
+  }
+
+  html[data-video-mode="mobile"] .certificate-scene::before,
+  html[data-video-mode="mobile"] .oem-contact-scene::before,
+  html[data-video-mode="mobile"] .contact-scene::before {
+    display: none;
+  }
+
+  html[data-video-mode="mobile"] .certificate-copy-card,
+  html[data-video-mode="mobile"] .oem-contact-copy,
+  html[data-video-mode="mobile"] .oem-contact-info,
+  html[data-video-mode="mobile"] .contact-copy.contact-right-card {
+    grid-column: 1;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 24px;
+    padding: 20px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 249, 237, 0.9)
+      );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  html[data-video-mode="mobile"] .certificate-copy-card h2,
+  html[data-video-mode="mobile"] .oem-contact-copy h2,
+  html[data-video-mode="mobile"] .oem-contact-info h3,
+  html[data-video-mode="mobile"] .contact-copy h2,
+  html[data-video-mode="mobile"] .contact-copy h3 {
+    max-width: 100%;
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: 0.98;
+  }
+
+  html[data-video-mode="mobile"] .certificate-lead,
+  html[data-video-mode="mobile"] .oem-contact-lead,
+  html[data-video-mode="mobile"] .oem-contact-info > p,
+  html[data-video-mode="mobile"] .contact-copy > p {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 1.48;
+  }
+
+  html[data-video-mode="mobile"] .certificate-logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html[data-video-mode="mobile"] .oem-contact-service-list,
+  html[data-video-mode="mobile"] .oem-contact-methods,
+  html[data-video-mode="mobile"] .contact-detail-list {
+    gap: 9px;
+    margin-top: 16px;
+  }
+
+  html[data-video-mode="mobile"] .oem-contact-service-list article,
+  html[data-video-mode="mobile"] .oem-contact-methods div,
+  html[data-video-mode="mobile"] .contact-detail-group {
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  /* ====================================================
+     PROGRESS / DECORATION
+     ==================================================== */
+
+  html[data-video-mode="mobile"] .scroll-percent {
+    right: max(
+      10px,
+      env(safe-area-inset-right)
+    );
+    bottom: max(
+      10px,
+      env(safe-area-inset-bottom)
+    );
+  }
+
+  html[data-video-mode="mobile"] .grain,
+  html[data-video-mode="mobile"] .shade,
+  html[data-video-mode="mobile"] .hero-video {
+    pointer-events: none !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"] .top-nav-menu {
+    gap: 6px;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-link {
+    font-size: 7px;
+  }
+
+  html[data-video-mode="mobile"] .scroll-intro-cue__meta,
+  html[data-video-mode="mobile"] .product-brand-label span {
+    display: none;
+  }
+
+  html[data-video-mode="mobile"] .lineup-title,
+  html[data-video-mode="mobile"] .lineup-title-bridge {
+    font-size: clamp(30px, 9.6vw, 39px);
+  }
+
+  html[data-video-mode="mobile"] .fruit-variant-grid,
+  html[data-video-mode="mobile"] .fruit-variant-grid-count-2,
+  html[data-video-mode="mobile"] .fruit-variant-grid-count-4 {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-video-mode="mobile"] .fruit-variant-image {
+    min-height: 130px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .hero-video,
+  .product-brand-label,
+  .brand-showcase {
+    transition: none !important;
+  }
+}
+/* ======================================================
+   CHUA MOBILE VISUAL REFINEMENT
+   วางท้ายสุดของ mobile-scenes.css
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     1. TOP NAV
+     ลดขนาดเล็กน้อย ให้มีพื้นที่หายใจมากขึ้น
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .top-nav-brand {
+    min-width: 52px;
+    height: 36px;
+    padding: 0 6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-logo {
+    width: 49px;
+    max-height: 19px;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-menu-shell {
+    height: 36px;
+    padding: 0 5px;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-menu {
+    gap: 8px;
+    padding: 0 4px;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-link {
+    font-size: 7px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ====================================================
+     2. INTRO LOGO
+     ลดจากเกือบเต็มหน้าจอ ให้เหลือประมาณ 65–70%
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .intro-logo-group {
+    top: 49%;
+
+    width:
+      min(
+        68vw,
+        300px
+      );
+
+    max-width: 68vw;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-logo-card {
+    width:
+      min(
+        84%,
+        260px
+      );
+
+    overflow:
+      visible !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-logo {
+    width: 88%;
+    height: 88%;
+
+    max-width: none;
+  }
+
+  /*
+   * ลดวงแสงและ Orbit
+   * ไม่ให้ใหญ่กว่าตัวโลโก้มากเกินไป
+   */
+
+  html[data-video-mode="mobile"]
+  .intro-logo-group::before,
+  html[data-video-mode="mobile"]
+  .intro-logo-group::after,
+  html[data-video-mode="mobile"]
+  .intro-breath-rings,
+  html[data-video-mode="mobile"]
+  .intro-orbit {
+    width:
+      min(
+        92%,
+        280px
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-glow {
+    width: 98%;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-halo-1 {
+    width: 96%;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-halo-2 {
+    width: 78%;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-tagline {
+    max-width: 76vw;
+
+    margin-top: -5px;
+
+    padding:
+      6px
+      10px;
+
+    font-size:
+      clamp(
+        8px,
+        2.2vw,
+        10px
+      );
+
+    line-height: 1.25;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline {
+    max-width: 74vw;
+
+    margin-top: 5px;
+
+    padding:
+      5px
+      8px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.08em;
+  }
+
+  /* ====================================================
+     3. STRIVING MESSAGE
+     จัดเป็น Typographic Stack ที่ตั้งใจ
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel {
+    align-items: flex-start;
+
+    padding:
+      max(
+        88px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          74px
+        )
+      )
+      22px
+      0;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-lines {
+    display: grid;
+
+    width:
+      min(
+        82vw,
+        340px
+      );
+
+    gap: 3px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line {
+    width: auto;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    letter-spacing:
+      -0.045em;
+
+    text-wrap: balance;
+  }
+
+  /*
+   * Striving to understand
+   */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-1 {
+    max-width: 8.7ch;
+
+    color: var(--navy);
+
+    font-size:
+      clamp(
+        34px,
+        9.2vw,
+        42px
+      );
+
+    line-height: 0.97;
+  }
+
+  /*
+   * your needs
+   */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-2 {
+    max-width: 8ch;
+
+    margin-top: 5px;
+
+    color: var(--orange);
+
+    font-size:
+      clamp(
+        38px,
+        10vw,
+        46px
+      );
+
+    line-height: 0.92;
+  }
+
+  /*
+   * before you understand them.
+   */
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-3 {
+    max-width: 10ch;
+
+    margin-top: 7px;
+
+    color: var(--navy);
+
+    font-size:
+      clamp(
+        28px,
+        7.6vw,
+        35px
+      );
+
+    line-height: 0.98;
+  }
+
+  /* Curated fruits */
+
+  html[data-video-mode="mobile"]
+  .ingredient-title {
+    width: auto;
+    max-width: 9ch;
+
+    font-size:
+      clamp(
+        29px,
+        8.4vw,
+        39px
+      );
+
+    line-height: 0.98;
+
+    letter-spacing:
+      -0.04em;
+  }
+
+  /* ====================================================
+     4. FRUIT DETAIL MODAL
+     ลดช่องว่างระหว่างชื่อกับ Description
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell {
+    max-height:
+      min(
+        82dvh,
+        760px
+      );
+
+    gap: 12px;
+
+    padding:
+      16px
+      14px
+      max(
+        18px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          10px
+        )
+      );
+  }
+
+  /*
+   * เปลี่ยน Header จาก Grid Desktop
+   * เป็น Flex Column สำหรับมือถือ
+   */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    width: 100%;
+
+    min-height: 0;
+
+    padding:
+      0
+      40px
+      12px
+      0;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy > div {
+    width: 100%;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy p {
+    font-size: 8px;
+
+    letter-spacing: 0.2em;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy h2 {
+    margin-top: 7px;
+
+    font-size:
+      clamp(
+        27px,
+        7.8vw,
+        35px
+      );
+
+    line-height: 0.96;
+
+    letter-spacing:
+      -0.035em;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy > span {
+    width: 100%;
+    max-width: 42ch;
+
+    margin: 0;
+
+    font-size: 10px;
+
+    line-height: 1.42;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid,
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-2,
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-4 {
+    align-content: start;
+
+    gap: 8px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant {
+    padding: 8px;
+
+    border-radius: 16px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-image {
+    min-height: 90px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-heading h3 {
+    font-size: 10px;
+
+    line-height: 1.2;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-note {
+    font-size: 7px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-ingredients {
+    font-size: 8px;
+
+    line-height: 1.3;
+  }
+
+  /* ====================================================
+     5. HOUSE BRANDS TITLE
+     ลดลงเล็กน้อย ให้สินค้าเด่นกว่า Headline
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .lineup-header {
+    top:
+      max(
+        72px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          60px
+        )
+      );
+
+    left: 18px;
+    right: 18px;
+  }
+
+  html[data-video-mode="mobile"]
+  .lineup-title-wrap {
+    min-height: 72px;
+  }
+
+  html[data-video-mode="mobile"]
+  .lineup-title,
+  html[data-video-mode="mobile"]
+  .lineup-title-bridge {
+    font-size:
+      clamp(
+        30px,
+        8.7vw,
+        39px
+      );
+
+    line-height: 0.93;
+
+    letter-spacing:
+      -0.045em;
+  }
+
+  /* ====================================================
+     6. BRAND LABELS
+     ลด Bubble ให้ไม่แย่งสินค้า
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .product-brand-label {
+    padding:
+      6px
+      8px;
+
+    column-gap: 5px;
+
+    border-radius: 14px;
+
+    box-shadow:
+      0 7px 18px
+        rgba(
+          20,
+          39,
+          74,
+          0.09
+        ),
+      inset 0 1px 0
+        rgba(
+          255,
+          255,
+          255,
+          0.92
+        );
+  }
+
+  html[data-video-mode="mobile"]
+  .product-brand-label::before {
+    width: 6px;
+    height: 6px;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(
+        245,
+        164,
+        0,
+        0.12
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .product-brand-label strong {
+    font-size: 8px;
+
+    letter-spacing:
+      0.06em;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-brand-label span {
+    max-width: 28vw;
+
+    margin-top: 1px;
+
+    font-size: 6px;
+  }
+
+  /* ====================================================
+     7. BRAND DETAIL
+     ทำเป็นการ์ด Compact ไม่ต้องมี Scrollbar ในกล่อง
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase {
+    left: 14px !important;
+    right: 14px !important;
+
+    top:
+      max(
+        76px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          64px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+
+    width:
+      auto !important;
+
+    max-height:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-copy {
+    max-height:
+      none;
+
+    overflow:
+      hidden;
+
+    border-radius: 20px;
+
+    padding: 14px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-meta {
+    margin-bottom: 7px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-kicker {
+    font-size: 7px;
+
+    letter-spacing:
+      0.15em;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-count {
+    padding:
+      4px
+      6px;
+
+    font-size: 7px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-name {
+    font-size:
+      clamp(
+        24px,
+        7.2vw,
+        31px
+      );
+
+    line-height: 0.96;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-category {
+    max-width: 28ch;
+
+    margin-top: 6px;
+
+    font-size: 12px;
+
+    line-height: 1.18;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-description {
+    margin-top: 7px;
+
+    font-size: 9px;
+
+    line-height: 1.35;
+
+    -webkit-line-clamp: 2;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products {
+    margin-top: 8px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-label {
+    margin-bottom: 4px;
+
+    font-size: 6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-list {
+    font-size: 8px;
+
+    line-height: 1.3;
+
+    -webkit-line-clamp: 1;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-progress {
+    margin-top: 7px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-dot {
+    width: 16px;
+    height: 2px;
+  }
+
+  /* ====================================================
+     8. OEM
+     ลดขนาดการ์ดและสร้าง Hierarchy ใหม่
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene {
+    padding:
+      max(
+        78px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          66px
+        )
+      )
+      16px
+      max(
+        26px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+
+    align-content: center;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    width:
+      min(
+        100%,
+        360px
+      );
+
+    max-width: 360px;
+
+    margin: 0 auto;
+
+    border-radius: 22px;
+
+    padding: 18px;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    margin-bottom: 13px;
+
+    padding:
+      7px
+      10px;
+
+    font-size: 8px;
+
+    letter-spacing:
+      0.17em;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    max-width: 9ch;
+
+    font-size:
+      clamp(
+        33px,
+        8.8vw,
+        40px
+      );
+
+    line-height: 0.96;
+
+    letter-spacing:
+      -0.035em;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    max-width: 38ch;
+
+    margin-top: 12px;
+
+    font-size: 9px;
+
+    line-height: 1.45;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    gap: 8px;
+
+    margin-top: 15px;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    grid-template-columns:
+      30px
+      minmax(
+        0,
+        1fr
+      );
+
+    column-gap: 10px;
+
+    border-radius: 14px;
+
+    padding:
+      10px
+      11px;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list span {
+    width: 30px;
+    height: 30px;
+
+    font-size: 9px;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list strong {
+    font-size: 12px;
+
+    line-height: 1.25;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list p {
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .intro-logo-group {
+    width: 64vw;
+    max-width: 64vw;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-1 {
+    font-size: 32px;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-2 {
+    font-size: 36px;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-3 {
+    font-size: 27px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid,
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-2,
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-4 {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+}
+
+/* ======================================================
+   MOBILE BRAND DETAIL FINAL OVERRIDE
+   วางท้ายสุดของ mobile-scenes.css
+
+   Desktop ไม่ได้รับผลกระทบ
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     BRAND SHOWCASE POSITION
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase {
+    z-index: 70;
+
+    left:
+      14px !important;
+
+    right:
+      14px !important;
+
+    width:
+      auto !important;
+
+    max-height:
+      none !important;
+
+    transform-origin:
+      center top;
+  }
+
+  /* ----------------------------------------------------
+     POLNAPA — TOP
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="polnapa"
+  ] {
+    top:
+      max(
+        76px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          62px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+
+    transform-origin:
+      center top;
+  }
+
+  /* ----------------------------------------------------
+     LONGANIC — BOTTOM
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="longanic"
+  ] {
+    top:
+      auto !important;
+
+    bottom:
+      94px !important;
+
+    transform-origin:
+      center bottom;
+  }
+
+  /* ----------------------------------------------------
+     MATSURI — TOP
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ] {
+    top:
+      max(
+        76px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          62px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+
+    transform-origin:
+      center top;
+  }
+
+  /* ====================================================
+     CARD
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-copy {
+    width: 100%;
+
+    max-width: none;
+    max-height: none;
+
+    overflow:
+      hidden;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      );
+
+    border-radius:
+      20px;
+
+    padding:
+      13px
+      14px
+      12px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.95
+        ),
+        rgba(
+          255,
+          249,
+          235,
+          0.91
+        )
+      );
+
+    box-shadow:
+      0 14px 36px
+        rgba(
+          20,
+          39,
+          74,
+          0.11
+        ),
+      inset 0 1px 0
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        );
+
+    backdrop-filter:
+      blur(14px);
+
+    -webkit-backdrop-filter:
+      blur(14px);
+  }
+
+  /* ====================================================
+     CARD DECORATION
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-copy::before {
+    left: -22%;
+    top: -52%;
+
+    width: 54%;
+
+    opacity: 0.52;
+
+    filter:
+      blur(16px);
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-copy::after {
+    right: -25%;
+    bottom: -65%;
+
+    width: 56%;
+
+    opacity: 0.42;
+
+    filter:
+      blur(18px);
+  }
+
+  /* ====================================================
+     META
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-meta {
+    gap: 8px;
+
+    margin-bottom:
+      6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-kicker {
+    font-size:
+      6px;
+
+    letter-spacing:
+      0.16em;
+
+    line-height:
+      1.1;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-count {
+    padding:
+      4px
+      6px;
+
+    font-size:
+      6px;
+
+    letter-spacing:
+      0.1em;
+  }
+
+  /* ====================================================
+     BRAND NAME
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-name {
+    max-width:
+      100%;
+
+    font-size:
+      clamp(
+        23px,
+        6.8vw,
+        30px
+      );
+
+    line-height:
+      0.96;
+
+    letter-spacing:
+      -0.045em;
+
+    white-space:
+      normal;
+
+    text-shadow:
+      none;
+  }
+
+  /*
+   * MATSURI มีชื่อภาษาญี่ปุ่น
+   * จึงลดขนาดเล็กน้อย
+   */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ]
+  .brand-name {
+    font-size:
+      clamp(
+        21px,
+        6.1vw,
+        27px
+      );
+  }
+
+  /* ====================================================
+     CATEGORY
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-category {
+    max-width:
+      30ch;
+
+    margin:
+      5px
+      0
+      0;
+
+    font-size:
+      clamp(
+        10px,
+        2.8vw,
+        12px
+      );
+
+    line-height:
+      1.18;
+
+    letter-spacing:
+      -0.025em;
+  }
+
+  /* ====================================================
+     DESCRIPTION
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-description {
+    display:
+      -webkit-box;
+
+    max-width:
+      100%;
+
+    margin:
+      6px
+      0
+      0;
+
+    overflow:
+      hidden;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.72
+      );
+
+    font-size:
+      clamp(
+        8px,
+        2.15vw,
+        9px
+      );
+
+    line-height:
+      1.36;
+
+    -webkit-box-orient:
+      vertical;
+
+    -webkit-line-clamp:
+      2;
+  }
+
+  /* ====================================================
+     HIDE EXTRA INFO
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-extra-grid {
+    display:
+      none;
+  }
+
+  /* ====================================================
+     PRODUCTS
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-products {
+    margin-top:
+      7px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-label {
+    margin:
+      0
+      0
+      3px;
+
+    font-size:
+      5.5px;
+
+    letter-spacing:
+      0.14em;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-list {
+    display:
+      block;
+
+    width:
+      100%;
+
+    overflow:
+      hidden;
+
+    color:
+      var(--navy);
+
+    font-size:
+      clamp(
+        7px,
+        1.9vw,
+        8px
+      );
+
+    line-height:
+      1.3;
+
+    text-overflow:
+      ellipsis;
+
+    white-space:
+      nowrap;
+  }
+
+  /*
+   * MATSURI มีรายการรสชาติยาว
+   * ให้แสดงไม่เกินสองบรรทัด
+   */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ]
+  .brand-products-list {
+    display:
+      -webkit-box;
+
+    white-space:
+      normal;
+
+    -webkit-box-orient:
+      vertical;
+
+    -webkit-line-clamp:
+      2;
+  }
+
+  /* ====================================================
+     PROGRESS
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-progress {
+    gap: 5px;
+
+    margin-top:
+      7px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-dot {
+    width: 13px;
+    height: 2px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-dot.is-active {
+    width: 28px;
+  }
+
+  /* ====================================================
+     DECORATIVE DOTS
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-card-orbit {
+    opacity: 0.5;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-card-orbit
+  span:nth-child(1) {
+    right: 24px;
+    top: 25px;
+
+    width: 6px;
+    height: 6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-card-orbit
+  span:nth-child(2) {
+    right: 34px;
+    bottom: 22px;
+
+    width: 4px;
+    height: 4px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-card-orbit
+  span:nth-child(3) {
+    display: none;
+  }
+
+  /* ====================================================
+     MOBILE TEXT ANIMATION
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-meta,
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-name,
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-category,
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-description,
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-products,
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-progress {
+    animation:
+      mobileBrandTextIn
+      720ms
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      )
+      both;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-category {
+    animation-delay:
+      50ms;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-description {
+    animation-delay:
+      90ms;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase.is-changing
+  .brand-products {
+    animation-delay:
+      130ms;
+  }
+}
+
+/* ======================================================
+   MOBILE BRAND TEXT ANIMATION
+   ====================================================== */
+
+@keyframes mobileBrandTextIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        12px,
+        0
+      );
+
+    filter:
+      blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+
+    filter:
+      blur(0);
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="longanic"
+  ] {
+    bottom:
+      82px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-copy {
+    padding:
+      12px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-name {
+    font-size:
+      22px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ]
+  .brand-name {
+    font-size:
+      20px;
+  }
+}
+
+/* ======================================================
+   CHUA MOBILE FINAL FIXES
+
+   แก้เฉพาะ Mobile 9:16:
+   1. Fruit Detail ไม่มีพื้นที่ว่างกลาง Modal
+   2. Brand Detail จัดวางสมดุลขึ้น
+   3. Certificate เป็น Bottom Card ที่กระชับ
+   4. OEM และ Contact ใช้รูปแบบเดียวกัน
+
+   Desktop ไม่ได้รับผลกระทบ
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     1. FRUIT DETAIL MODAL
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal {
+    display: flex;
+
+    align-items:
+      flex-end;
+
+    justify-content:
+      center;
+
+    padding:
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell {
+    position:
+      relative;
+
+    display:
+      flex !important;
+
+    flex-direction:
+      column !important;
+
+    justify-content:
+      flex-start !important;
+
+    gap:
+      0 !important;
+
+    width:
+      100% !important;
+
+    height:
+      auto !important;
+
+    min-height:
+      0 !important;
+
+    max-height:
+      min(
+        88dvh,
+        760px
+      ) !important;
+
+    margin:
+      0 !important;
+
+    border-radius:
+      28px
+      28px
+      0
+      0 !important;
+
+    padding:
+      16px
+      14px
+      max(
+        16px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          10px
+        )
+      ) !important;
+
+    overflow-x:
+      hidden;
+
+    overflow-y:
+      auto;
+
+    overscroll-behavior:
+      contain;
+
+    background:
+      linear-gradient(
+        160deg,
+        rgba(
+          255,
+          253,
+          247,
+          0.99
+        ),
+        rgba(
+          255,
+          249,
+          234,
+          0.98
+        )
+      );
+
+    box-shadow:
+      0
+      -20px
+      55px
+      rgba(
+        20,
+        39,
+        74,
+        0.18
+      );
+  }
+
+  /* แถบจับด้านบน */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell::before {
+    content:
+      "";
+
+    display:
+      block;
+
+    flex:
+      0
+      0
+      auto;
+
+    width:
+      42px;
+
+    height:
+      4px;
+
+    margin:
+      -5px
+      auto
+      12px;
+
+    border-radius:
+      999px;
+
+    background:
+      rgba(
+        20,
+        39,
+        74,
+        0.16
+      );
+  }
+
+  /* ปุ่มปิด */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-close {
+    position:
+      absolute !important;
+
+    z-index:
+      20;
+
+    top:
+      13px !important;
+
+    right:
+      13px !important;
+
+    width:
+      34px;
+
+    height:
+      34px;
+
+    margin:
+      0;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      );
+
+    background:
+      rgba(
+        245,
+        246,
+        241,
+        0.94
+      );
+
+    box-shadow:
+      0
+      5px
+      14px
+      rgba(
+        20,
+        39,
+        74,
+        0.08
+      );
+
+    font-size:
+      20px;
+  }
+
+  /* ส่วนข้อความด้านบน */
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy {
+    display:
+      flex !important;
+
+    flex:
+      0
+      0
+      auto;
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    gap:
+      5px !important;
+
+    width:
+      100%;
+
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    padding:
+      5px
+      42px
+      12px
+      0 !important;
+
+    border-bottom:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy > div {
+    width:
+      100%;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy p {
+    margin:
+      0;
+
+    color:
+      var(--orange-deep);
+
+    font-size:
+      7px;
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      0.18em;
+
+    line-height:
+      1.15;
+
+    text-transform:
+      uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy h2 {
+    margin:
+      5px
+      0
+      0;
+
+    color:
+      var(--navy);
+
+    font-size:
+      clamp(
+        27px,
+        7.8vw,
+        34px
+      );
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      -0.045em;
+
+    line-height:
+      0.96;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-modal-copy > span {
+    display:
+      block;
+
+    width:
+      100%;
+
+    max-width:
+      42ch;
+
+    margin:
+      2px
+      0
+      0;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.74
+      );
+
+    font-size:
+      9px;
+
+    font-weight:
+      680;
+
+    line-height:
+      1.4;
+  }
+
+  /* ====================================================
+     FRUIT VARIANT GRID
+     ยกการ์ดขึ้นมาต่อจาก Description
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-2,
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-grid-count-4 {
+    display:
+      grid !important;
+
+    flex:
+      0
+      0
+      auto;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    grid-template-rows:
+      none !important;
+
+    grid-auto-rows:
+      auto !important;
+
+    align-content:
+      start !important;
+
+    justify-content:
+      stretch;
+
+    gap:
+      8px !important;
+
+    width:
+      100%;
+
+    height:
+      auto !important;
+
+    min-height:
+      0 !important;
+
+    max-height:
+      none !important;
+
+    margin-top:
+      10px;
+
+    padding:
+      0;
+
+    overflow:
+      visible !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant {
+    display:
+      grid;
+
+    grid-template-rows:
+      76px
+      auto
+      auto !important;
+
+    align-content:
+      start;
+
+    gap:
+      5px;
+
+    min-height:
+      146px;
+
+    height:
+      auto;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      );
+
+    border-radius:
+      15px;
+
+    padding:
+      8px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.76
+      );
+
+    box-shadow:
+      0
+      8px
+      20px
+      rgba(
+        20,
+        39,
+        74,
+        0.045
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-image {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    min-height:
+      72px !important;
+
+    height:
+      72px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-image img {
+    width:
+      auto;
+
+    max-width:
+      82px;
+
+    height:
+      auto;
+
+    max-height:
+      68px;
+
+    object-fit:
+      contain;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-heading {
+    min-height:
+      25px;
+
+    text-align:
+      center;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-heading h3 {
+    margin:
+      0;
+
+    color:
+      var(--orange-deep);
+
+    font-size:
+      9px;
+
+    line-height:
+      1.15;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-note {
+    display:
+      inline-flex;
+
+    margin-top:
+      3px;
+
+    padding:
+      3px
+      5px;
+
+    font-size:
+      5.5px;
+
+    line-height:
+      1;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-ingredients {
+    margin:
+      0;
+
+    text-align:
+      center;
+
+    font-size:
+      6px;
+
+    line-height:
+      1.24;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-ingredients strong {
+    display:
+      block;
+
+    margin-bottom:
+      2px;
+
+    font-size:
+      5.5px;
+
+    letter-spacing:
+      0.08em;
+  }
+
+  /* ====================================================
+     2. BRAND DETAIL CARD
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase {
+    z-index:
+      70;
+
+    left:
+      12px !important;
+
+    right:
+      12px !important;
+
+    width:
+      auto !important;
+
+    max-height:
+      none !important;
+  }
+
+  /* POLNAPA ด้านบน */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="polnapa"
+  ] {
+    top:
+      max(
+        74px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          60px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+
+    transform-origin:
+      center
+      top;
+  }
+
+  /* LONGANIC ด้านล่าง */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="longanic"
+  ] {
+    top:
+      auto !important;
+
+    bottom:
+      70px !important;
+
+    transform-origin:
+      center
+      bottom;
+  }
+
+  /* MATSURI ด้านบน */
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ] {
+    top:
+      max(
+        74px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          60px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+
+    transform-origin:
+      center
+      top;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-copy {
+    width:
+      100%;
+
+    max-height:
+      none !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      );
+
+    border-radius:
+      19px;
+
+    padding:
+      12px
+      13px
+      11px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        ),
+        rgba(
+          255,
+          249,
+          234,
+          0.93
+        )
+      );
+
+    box-shadow:
+      0
+      12px
+      34px
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.96
+      );
+
+    backdrop-filter:
+      blur(14px);
+
+    -webkit-backdrop-filter:
+      blur(14px);
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-meta {
+    margin-bottom:
+      5px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-kicker {
+    font-size:
+      6px;
+
+    letter-spacing:
+      0.15em;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-count {
+    padding:
+      4px
+      6px;
+
+    font-size:
+      6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-name {
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        22px,
+        6.3vw,
+        28px
+      );
+
+    line-height:
+      0.96;
+
+    white-space:
+      normal;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ]
+  .brand-name {
+    font-size:
+      clamp(
+        20px,
+        5.7vw,
+        25px
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-category {
+    max-width:
+      32ch;
+
+    margin-top:
+      4px;
+
+    font-size:
+      10px;
+
+    line-height:
+      1.18;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-description {
+    display:
+      -webkit-box;
+
+    margin-top:
+      5px;
+
+    overflow:
+      hidden;
+
+    font-size:
+      7.5px;
+
+    line-height:
+      1.34;
+
+    -webkit-box-orient:
+      vertical;
+
+    -webkit-line-clamp:
+      2;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-extra-grid {
+    display:
+      none;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products {
+    margin-top:
+      6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-label {
+    margin-bottom:
+      2px;
+
+    font-size:
+      5px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-list {
+    display:
+      block;
+
+    overflow:
+      hidden;
+
+    font-size:
+      6.5px;
+
+    line-height:
+      1.25;
+
+    text-overflow:
+      ellipsis;
+
+    white-space:
+      nowrap;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="matsuri"
+  ]
+  .brand-products-list {
+    display:
+      -webkit-box;
+
+    white-space:
+      normal;
+
+    -webkit-box-orient:
+      vertical;
+
+    -webkit-line-clamp:
+      2;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-progress {
+    gap:
+      4px;
+
+    margin-top:
+      6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-dot {
+    width:
+      12px;
+
+    height:
+      2px;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-dot.is-active {
+    width:
+      26px;
+  }
+
+  /* ====================================================
+     3. CERTIFICATE
+     เปลี่ยนจาก Card กลางจอเป็น Bottom Editorial Card
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .certificate-cue {
+    overflow:
+      hidden !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-scene {
+    position:
+      relative;
+
+    inset:
+      auto;
+
+    display:
+      flex !important;
+
+    align-items:
+      flex-end !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      100%;
+
+    min-height:
+      100vh;
+
+    min-height:
+      100dvh;
+
+    padding:
+      max(
+        96px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          84px
+        )
+      )
+      12px
+      max(
+        66px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          56px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card {
+    width:
+      100%;
+
+    max-width:
+      360px !important;
+
+    max-height:
+      none;
+
+    margin:
+      0
+      auto;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      );
+
+    border-radius:
+      22px;
+
+    padding:
+      15px;
+
+    overflow:
+      hidden;
+
+    background:
+      linear-gradient(
+        150deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        ),
+        rgba(
+          255,
+          249,
+          235,
+          0.92
+        )
+      );
+
+    box-shadow:
+      0
+      18px
+      48px
+      rgba(
+        20,
+        39,
+        74,
+        0.11
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.96
+      );
+
+    backdrop-filter:
+      blur(16px);
+
+    -webkit-backdrop-filter:
+      blur(16px);
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker,
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-kicker {
+    width:
+      fit-content;
+
+    margin-bottom:
+      9px;
+
+    padding:
+      6px
+      9px;
+
+    font-size:
+      6.5px;
+
+    letter-spacing:
+      0.15em;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    max-width:
+      8ch;
+
+    margin:
+      0;
+
+    font-size:
+      clamp(
+        30px,
+        8vw,
+        37px
+      );
+
+    line-height:
+      0.95;
+
+    letter-spacing:
+      -0.045em;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-lead {
+    max-width:
+      40ch;
+
+    margin-top:
+      9px;
+
+    font-size:
+      8.5px;
+
+    line-height:
+      1.4;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-area {
+    margin-top:
+      11px;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    gap:
+      6px;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    min-height:
+      42px !important;
+
+    border-radius:
+      11px;
+
+    padding:
+      5px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.73
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame img {
+    width:
+      auto;
+
+    max-width:
+      76px;
+
+    height:
+      auto;
+
+    max-height:
+      27px !important;
+
+    object-fit:
+      contain;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-card figcaption {
+    display:
+      none;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap:
+      6px;
+
+    margin-top:
+      10px;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points div {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    min-height:
+      43px;
+
+    border-radius:
+      11px;
+
+    padding:
+      6px;
+
+    text-align:
+      center;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points strong {
+    font-size:
+      8px;
+
+    line-height:
+      1.15;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points span {
+    display:
+      none;
+  }
+
+  /* ====================================================
+     4. OEM / CONTACT
+     ใช้แนวเดียวกับ Certificate
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue,
+
+  html[data-video-mode="mobile"]
+  .contact-cue {
+    overflow:
+      hidden !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    position:
+      relative;
+
+    inset:
+      auto;
+
+    display:
+      flex !important;
+
+    align-items:
+      flex-end !important;
+
+    justify-content:
+      center !important;
+
+    min-height:
+      100vh;
+
+    min-height:
+      100dvh;
+
+    padding:
+      max(
+        92px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          80px
+        )
+      )
+      12px
+      max(
+        66px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          56px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-info,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    width:
+      100%;
+
+    max-width:
+      360px;
+
+    margin:
+      0
+      auto;
+
+    border-radius:
+      22px;
+
+    padding:
+      16px;
+
+    background:
+      linear-gradient(
+        150deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        ),
+        rgba(
+          255,
+          249,
+          235,
+          0.92
+        )
+      );
+
+    box-shadow:
+      0
+      18px
+      48px
+      rgba(
+        20,
+        39,
+        74,
+        0.11
+      );
+
+    backdrop-filter:
+      blur(16px);
+
+    -webkit-backdrop-filter:
+      blur(16px);
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2,
+
+  html[data-video-mode="mobile"]
+  .contact-copy h2,
+
+  html[data-video-mode="mobile"]
+  .contact-copy h3 {
+    max-width:
+      9ch;
+
+    font-size:
+      clamp(
+        30px,
+        8vw,
+        38px
+      );
+
+    line-height:
+      0.96;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead,
+
+  html[data-video-mode="mobile"]
+  .contact-copy > p {
+    font-size:
+      8.5px;
+
+    line-height:
+      1.42;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .fruit-modal-shell {
+    max-height:
+      90dvh !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant {
+    min-height:
+      140px;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-variant-image {
+    height:
+      68px;
+
+    min-height:
+      68px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-showcase[
+    data-brand-key="longanic"
+  ] {
+    bottom:
+      64px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card {
+    padding:
+      13px;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame {
+    min-height:
+      39px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points div {
+    min-height:
+      40px;
+  }
+}
+
+/* ======================================================
+   MOBILE OEM + CONTACT — FINAL LAYOUT
+
+   วางท้ายสุดของ mobile-scenes.css
+   แก้เฉพาะมือถือแนวตั้ง
+   Desktop ไม่เปลี่ยน
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     SHARED SCENE
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue,
+
+  html[data-video-mode="mobile"]
+  .contact-cue {
+    overflow:
+      hidden !important;
+
+    overscroll-behavior:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    position:
+      relative !important;
+
+    inset:
+      auto !important;
+
+    display:
+      flex !important;
+
+    flex-direction:
+      column;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      flex-end !important;
+
+    width:
+      100%;
+
+    min-height:
+      100vh !important;
+
+    min-height:
+      100dvh !important;
+
+    grid-template-columns:
+      none !important;
+
+    gap:
+      0 !important;
+
+    padding:
+      max(
+        88px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          74px
+        )
+      )
+      14px
+      max(
+        62px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          52px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene::before,
+
+  html[data-video-mode="mobile"]
+  .contact-scene::before {
+    display:
+      none !important;
+  }
+
+  /* ====================================================
+     OEM CARD
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    position:
+      relative;
+
+    grid-column:
+      auto !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      360px !important;
+
+    max-height:
+      none !important;
+
+    margin:
+      0 auto !important;
+
+    overflow:
+      hidden !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      );
+
+    border-radius:
+      22px !important;
+
+    padding:
+      16px !important;
+
+    background:
+      linear-gradient(
+        150deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        ),
+        rgba(
+          255,
+          249,
+          234,
+          0.93
+        )
+      ) !important;
+
+    box-shadow:
+      0
+      18px
+      46px
+      rgba(
+        20,
+        39,
+        74,
+        0.12
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.96
+      );
+
+    backdrop-filter:
+      blur(16px);
+
+    -webkit-backdrop-filter:
+      blur(16px);
+  }
+
+  /*
+   * ลดวงตกแต่งด้านหลัง
+   * เพื่อให้ข้อความอ่านง่ายขึ้น
+   */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::before {
+    opacity:
+      0.42;
+
+    transform:
+      scale(0.82);
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::after {
+    opacity:
+      0.32;
+
+    transform:
+      scale(0.78);
+  }
+
+  /* ====================================================
+     OEM KICKER
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    display:
+      inline-flex;
+
+    align-items:
+      center;
+
+    gap:
+      7px;
+
+    width:
+      fit-content;
+
+    margin:
+      0
+      0
+      12px !important;
+
+    padding:
+      6px
+      9px !important;
+
+    border-radius:
+      999px;
+
+    font-size:
+      6.5px !important;
+
+    letter-spacing:
+      0.15em !important;
+
+    line-height:
+      1;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker span {
+    width:
+      6px;
+
+    height:
+      6px;
+
+    box-shadow:
+      0
+      0
+      0
+      4px
+      rgba(
+        245,
+        164,
+        0,
+        0.12
+      );
+  }
+
+  /* ====================================================
+     OEM HEADLINE
+     จัดเป็น 2–3 บรรทัด ไม่ตัดทีละคำ
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    width:
+      100%;
+
+    max-width:
+      100% !important;
+
+    margin:
+      0;
+
+    color:
+      var(--navy);
+
+    font-size:
+      clamp(
+        31px,
+        8.2vw,
+        38px
+      ) !important;
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      -0.045em !important;
+
+    line-height:
+      0.94 !important;
+
+    text-wrap:
+      balance;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 span {
+    display:
+      inline !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(--orange);
+  }
+
+  /*
+   * ป้องกันไม่ให้คำแยกทีละคำ
+   */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 br {
+    display:
+      none;
+  }
+
+  /* ====================================================
+     OEM LEAD
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    width:
+      100%;
+
+    max-width:
+      42ch !important;
+
+    margin:
+      10px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.7
+      );
+
+    font-size:
+      8px !important;
+
+    font-weight:
+      680;
+
+    line-height:
+      1.42 !important;
+  }
+
+  /* ====================================================
+     OEM SERVICES
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      7px !important;
+
+    width:
+      100%;
+
+    margin:
+      13px
+      0
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    display:
+      grid;
+
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    grid-template-rows:
+      auto
+      auto;
+
+    align-items:
+      center;
+
+    column-gap:
+      9px !important;
+
+    row-gap:
+      1px;
+
+    min-height:
+      58px;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      );
+
+    border-radius:
+      14px !important;
+
+    padding:
+      9px
+      10px !important;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.72
+      );
+
+    box-shadow:
+      0
+      7px
+      18px
+      rgba(
+        20,
+        39,
+        74,
+        0.04
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article > span {
+    grid-column:
+      1;
+
+    grid-row:
+      1 / 3;
+
+    display:
+      inline-flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    width:
+      28px !important;
+
+    height:
+      28px !important;
+
+    border-radius:
+      999px;
+
+    background:
+      var(--navy);
+
+    color:
+      white;
+
+    font-size:
+      8px !important;
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      0.06em;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list strong {
+    grid-column:
+      2;
+
+    margin:
+      0;
+
+    color:
+      var(--navy);
+
+    font-size:
+      11px !important;
+
+    font-weight:
+      950;
+
+    line-height:
+      1.2 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list p {
+    grid-column:
+      2;
+
+    margin:
+      2px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.58
+      );
+
+    font-size:
+      7.5px !important;
+
+    font-weight:
+      650;
+
+    line-height:
+      1.35 !important;
+  }
+
+  /* ====================================================
+     ซ่อน OEM CONTACT INFO ซ้ำ
+     หากอยู่ใน Scene เดียวกับ OEM
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene
+  .oem-contact-info {
+    display:
+      none !important;
+  }
+
+  /* ====================================================
+     CONTACT CARD
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    position:
+      relative;
+
+    grid-column:
+      auto !important;
+
+    justify-self:
+      auto !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      360px !important;
+
+    max-height:
+      min(
+        72dvh,
+        620px
+      );
+
+    margin:
+      0 auto !important;
+
+    overflow-x:
+      hidden;
+
+    overflow-y:
+      auto;
+
+    overscroll-behavior:
+      contain;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.06
+      );
+
+    border-radius:
+      22px !important;
+
+    padding:
+      17px !important;
+
+    background:
+      linear-gradient(
+        150deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        ),
+        rgba(
+          255,
+          249,
+          235,
+          0.93
+        )
+      ) !important;
+
+    box-shadow:
+      0
+      18px
+      46px
+      rgba(
+        20,
+        39,
+        74,
+        0.12
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.96
+      );
+
+    backdrop-filter:
+      blur(16px);
+
+    -webkit-backdrop-filter:
+      blur(16px);
+  }
+
+  /* ====================================================
+     CONTACT BRAND
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    display:
+      grid;
+
+    gap:
+      10px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-logo {
+    width:
+      62px !important;
+
+    max-width:
+      62px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block p {
+    max-width:
+      42ch;
+
+    margin:
+      0;
+
+    font-size:
+      8.5px !important;
+
+    line-height:
+      1.42 !important;
+  }
+
+  /* ====================================================
+     CONTACT ADDRESS
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    margin:
+      12px
+      0
+      0;
+
+    padding-top:
+      12px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block > span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group > span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group > span {
+    margin:
+      0
+      0
+      6px !important;
+
+    font-size:
+      6.5px !important;
+
+    letter-spacing:
+      0.16em !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block strong {
+    font-size:
+      8.5px !important;
+
+    line-height:
+      1.42 !important;
+
+    text-transform:
+      none !important;
+  }
+
+  /* ====================================================
+     CONTACT DIRECT DETAILS
+     Email และ Phone อยู่ 2 คอลัมน์
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    gap:
+      10px !important;
+
+    margin-top:
+      12px;
+
+    padding-top:
+      12px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group {
+    min-width:
+      0;
+
+    padding:
+      0 !important;
+
+    border:
+      0;
+
+    background:
+      transparent;
+
+    box-shadow:
+      none;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group a,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group strong {
+    font-size:
+      8px !important;
+
+    line-height:
+      1.4 !important;
+
+    overflow-wrap:
+      anywhere;
+  }
+
+  /* ====================================================
+     CONTACT SOCIAL
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group {
+    grid-column:
+      1 / -1;
+
+    margin-top:
+      2px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-links {
+    display:
+      flex;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      6px !important;
+
+    margin:
+      0;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link {
+    width:
+      28px !important;
+
+    height:
+      28px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link svg,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link svg {
+    width:
+      12px !important;
+
+    height:
+      12px !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    padding-left:
+      11px !important;
+
+    padding-right:
+      11px !important;
+
+    padding-bottom:
+      54px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    padding:
+      14px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    font-size:
+      30px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    min-height:
+      55px;
+
+    padding:
+      8px
+      9px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    padding:
+      15px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    grid-template-columns:
+      1fr
+      1fr !important;
+
+    gap:
+      8px !important;
+  }
+}
+
+/* ======================================================
+   MOBILE CERTIFICATE HEADER
+   CERTIFIED QUALITY อยู่ด้านบน
+   Built on Trust อยู่ด้านล่างและเป็นบรรทัดเดียว
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* จัดเนื้อหาการ์ดเป็นแนวตั้ง */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* CERTIFIED QUALITY */
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker {
+    display: inline-flex !important;
+    align-items: center;
+
+    width: fit-content;
+
+    margin:
+      0
+      0
+      12px !important;
+
+    padding:
+      6px
+      9px !important;
+
+    font-size:
+      6.5px !important;
+
+    letter-spacing:
+      0.15em !important;
+
+    line-height: 1;
+  }
+
+  /* Built on Trust */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    display: flex !important;
+    align-items: baseline;
+    flex-wrap: nowrap;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    gap: 0.18em;
+
+    margin: 0 !important;
+
+    font-size:
+      clamp(
+        28px,
+        7.5vw,
+        34px
+      ) !important;
+
+    line-height:
+      0.98 !important;
+
+    letter-spacing:
+      -0.045em !important;
+
+    white-space:
+      nowrap !important;
+
+    text-wrap:
+      nowrap !important;
+  }
+
+  /* Trust ยังเป็นสีส้ม แต่ไม่ขึ้นบรรทัดใหม่ */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 span {
+    display: inline !important;
+
+    margin: 0 !important;
+
+    color:
+      var(--orange);
+  }
+
+  /* ลบการขึ้นบรรทัดจาก br ถ้ามีใน HTML */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 br {
+    display:
+      none !important;
+  }
+
+  /* คำอธิบายต่อจากหัวข้อ */
+
+  html[data-video-mode="mobile"]
+  .certificate-lead {
+    width: 100%;
+
+    margin:
+      10px
+      0
+      0 !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    gap:
+      0.14em;
+
+    font-size:
+      26px !important;
+  }
+}
+/* ======================================================
+   MOBILE FOOD SAFETY CERTIFICATIONS
+   8 โลโก้ = 4 คอลัมน์ × 2 แถว
+   Desktop ไม่เปลี่ยน
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* พื้นที่รวมของหมวด Food Safety */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-area {
+    width: 100%;
+
+    margin-top: 11px !important;
+  }
+
+  /* หัวข้อ FOOD SAFETY CERTIFICATIONS */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-kicker {
+    display: inline-flex !important;
+
+    width: fit-content;
+
+    margin:
+      0
+      0
+      8px !important;
+
+    padding:
+      6px
+      9px !important;
+
+    font-size:
+      6.5px !important;
+
+    letter-spacing:
+      0.14em !important;
+
+    line-height: 1;
+  }
+
+  /* 4 คอลัมน์ ทำให้ 8 รายการเป็น 2 แถว */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-grid {
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    grid-template-rows:
+      repeat(
+        2,
+        auto
+      ) !important;
+
+    gap:
+      6px !important;
+
+    width:
+      100%;
+
+    margin:
+      0;
+
+    padding:
+      0;
+  }
+
+  /* การ์ดแต่ละใบ */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-card {
+    min-width: 0;
+
+    margin: 0;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame {
+    display: flex !important;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    width:
+      100%;
+
+    min-width:
+      0;
+
+    min-height:
+      48px !important;
+
+    height:
+      48px;
+
+    border-radius:
+      10px !important;
+
+    padding:
+      5px !important;
+
+    overflow:
+      hidden;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.76
+      );
+
+    box-shadow:
+      0
+      6px
+      15px
+      rgba(
+        20,
+        39,
+        74,
+        0.04
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      );
+  }
+
+  /* ลดขนาดโลโก้ให้พอดีกับ 4 คอลัมน์ */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame img {
+    display: block;
+
+    width:
+      auto !important;
+
+    max-width:
+      52px !important;
+
+    height:
+      auto !important;
+
+    max-height:
+      27px !important;
+
+    object-fit:
+      contain;
+  }
+
+  /* ซ่อนชื่อใต้โลโก้ในมือถือ */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-card figcaption {
+    display:
+      none !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .certificate-logo-grid {
+    gap:
+      5px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame {
+    min-height:
+      43px !important;
+
+    height:
+      43px;
+
+    padding:
+      4px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame img {
+    max-width:
+      46px !important;
+
+    max-height:
+      24px !important;
+  }
+}
+
+/* ======================================================
+   CHUA MOBILE — INTEGRATED EDITORIAL OVERLAY
+
+   Video + Text เป็นส่วนเดียวกัน
+   ไม่มีการ์ดลอย ไม่มีเงา ไม่มี Blur
+
+   วางท้ายสุดของ:
+   src/styles/mobile-scenes.css
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     SHARED OVERLAY SYSTEM
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .certificate-cue,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue,
+
+  html[data-video-mode="mobile"]
+  .contact-cue {
+    position: absolute !important;
+    inset: 0 !important;
+
+    overflow: hidden !important;
+
+    background: transparent !important;
+
+    pointer-events: none;
+  }
+
+  /*
+   * Gradient บาง ๆ ช่วยให้อ่านข้อความได้
+   * แต่ยังเห็นวิดีโอครบ
+   */
+
+  html[data-video-mode="mobile"]
+  .certificate-cue::after,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue::after,
+
+  html[data-video-mode="mobile"]
+  .contact-cue::after {
+    content: "";
+
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(250, 247, 239, 0.94) 0%,
+        rgba(250, 247, 239, 0.76) 13%,
+        rgba(250, 247, 239, 0.28) 25%,
+        transparent 35%,
+        transparent 66%,
+        rgba(250, 247, 239, 0.24) 73%,
+        rgba(250, 247, 239, 0.82) 87%,
+        rgba(250, 247, 239, 0.97) 100%
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-scene,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    position: absolute !important;
+    z-index: 2;
+    inset: 0 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+
+    min-height: 0 !important;
+
+    padding:
+      max(
+        76px,
+        calc(
+          env(safe-area-inset-top) +
+          62px
+        )
+      )
+      20px
+      max(
+        52px,
+        calc(
+          env(safe-area-inset-bottom) +
+          42px
+        )
+      ) !important;
+
+    overflow: hidden !important;
+
+    pointer-events: none;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-scene::before,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene::before,
+
+  html[data-video-mode="mobile"]
+  .contact-scene::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* ====================================================
+     REMOVE ALL FLOATING CARD STYLES
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-info,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    overflow: visible !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card::before,
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card::after,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::before,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::after,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::before,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* ====================================================
+     1. BUILD ON TRUST
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card {
+    display: grid !important;
+
+    grid-template-columns: 1fr;
+
+    grid-template-rows:
+      auto
+      auto
+      auto
+      minmax(0, 1fr)
+      auto
+      auto;
+
+    align-items: start;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+  }
+
+  /* ----------------------------------------------------
+     CERTIFIED QUALITY
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker {
+    grid-row: 1;
+
+    display: inline-flex !important;
+
+    align-items: center;
+
+    gap: 7px;
+
+    width: fit-content;
+
+    margin:
+      0
+      0
+      8px !important;
+
+    padding:
+      0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    color: var(--orange-deep);
+
+    font-size: 7px !important;
+    font-weight: 950;
+
+    letter-spacing: 0.18em !important;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 999px;
+
+    background: var(--orange);
+
+    box-shadow:
+      0 0 0 4px
+      rgba(245, 164, 0, 0.13);
+  }
+
+  /*
+   * ปิดจุดซ้ำจาก HTML ถ้ามี span อยู่แล้ว
+   */
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker > span {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------------
+     BUILT ON TRUST — บรรทัดเดียว
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    grid-row: 2;
+
+    display: flex !important;
+
+    align-items: baseline;
+
+    flex-wrap: nowrap;
+
+    gap: 0.17em;
+
+    width: max-content !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+
+    color: var(--navy);
+
+    font-size:
+      clamp(
+        29px,
+        7.8vw,
+        36px
+      ) !important;
+
+    font-weight: 950;
+
+    letter-spacing:
+      -0.05em !important;
+
+    line-height:
+      0.96 !important;
+
+    white-space: nowrap !important;
+
+    text-wrap: nowrap !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 span {
+    display: inline !important;
+
+    margin: 0 !important;
+
+    color: var(--orange);
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 br {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------------
+     CERTIFICATE DESCRIPTION
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-lead {
+    grid-row: 3;
+
+    width: 100%;
+    max-width: 38ch;
+
+    margin:
+      8px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.72
+      );
+
+    font-size: 8.5px !important;
+    font-weight: 680;
+
+    line-height: 1.4 !important;
+  }
+
+  /* ----------------------------------------------------
+     ช่องกลางเว้นให้ผลไม้
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-area {
+    grid-row: 5;
+
+    align-self: end;
+
+    width: 100%;
+
+    margin: 0 !important;
+  }
+
+  /* ----------------------------------------------------
+     FOOD SAFETY CERTIFICATIONS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-kicker {
+    display: flex !important;
+
+    align-items: center;
+
+    width: 100%;
+
+    margin:
+      0
+      0
+      7px !important;
+
+    padding:
+      0
+      0
+      6px !important;
+
+    border: 0 !important;
+
+    border-bottom:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.11
+      ) !important;
+
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    color: var(--orange-deep);
+
+    font-size: 6.5px !important;
+    font-weight: 950;
+
+    letter-spacing: 0.16em !important;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-kicker > span {
+    display: none !important;
+  }
+
+  /* 8 โลโก้ = 4 คอลัมน์ × 2 แถว */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-grid {
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    grid-template-rows:
+      repeat(
+        2,
+        36px
+      ) !important;
+
+    gap:
+      3px
+      8px !important;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-card {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame {
+    display: flex !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+    height: 36px !important;
+
+    min-height: 0 !important;
+
+    margin: 0;
+    padding: 2px !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame img {
+    display: block;
+
+    width: auto !important;
+    height: auto !important;
+
+    max-width: 52px !important;
+    max-height: 27px !important;
+
+    object-fit: contain;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-card figcaption {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------------
+     FOOD SAFETY / EXPORT READY / OEM CONFIDENCE
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points {
+    grid-row: 6;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap: 0 !important;
+
+    width: 100%;
+
+    margin:
+      7px
+      0
+      0 !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.11
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points div {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 30px;
+
+    padding:
+      7px
+      5px !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    text-align: center;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points div + div {
+    border-left:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points strong {
+    color: var(--navy);
+
+    font-size: 7.5px !important;
+    font-weight: 950;
+
+    line-height: 1.15 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points span {
+    display: none !important;
+  }
+
+  /* ====================================================
+     2. OEM & PRIVATE LABEL
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    display: grid !important;
+
+    grid-template-columns: 1fr;
+
+    grid-template-rows:
+      auto
+      auto
+      auto
+      minmax(0, 1fr)
+      auto;
+
+    align-items: start;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+  }
+
+  /* ----------------------------------------------------
+     OEM KICKER
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    grid-row: 1;
+
+    display: inline-flex !important;
+
+    align-items: center;
+
+    gap: 7px;
+
+    width: fit-content;
+
+    margin:
+      0
+      0
+      8px !important;
+
+    padding:
+      0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    color: var(--orange-deep);
+
+    font-size: 7px !important;
+    font-weight: 950;
+
+    letter-spacing: 0.18em !important;
+
+    line-height: 1;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker span {
+    width: 7px !important;
+    height: 7px !important;
+
+    border-radius: 999px;
+
+    background: var(--orange);
+
+    box-shadow:
+      0 0 0 4px
+      rgba(245, 164, 0, 0.13) !important;
+  }
+
+  /* ----------------------------------------------------
+     CREATE YOUR OWN BRAND TODAY
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    grid-row: 2;
+
+    width: 100%;
+    max-width: 11ch !important;
+
+    margin: 0 !important;
+
+    color: var(--navy);
+
+    font-size:
+      clamp(
+        30px,
+        8vw,
+        37px
+      ) !important;
+
+    font-weight: 950;
+
+    letter-spacing:
+      -0.05em !important;
+
+    line-height:
+      0.94 !important;
+
+    text-wrap: balance;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 span {
+    display: inline !important;
+
+    margin: 0 !important;
+
+    color: var(--orange);
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 br {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM LEAD
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    grid-row: 3;
+
+    width: 100%;
+    max-width: 39ch !important;
+
+    margin:
+      8px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.7
+      );
+
+    font-size: 8px !important;
+    font-weight: 680;
+
+    line-height: 1.4 !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM SERVICE LIST — ด้านล่าง
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    grid-row: 5;
+
+    display: grid !important;
+
+    grid-template-columns: 1fr !important;
+
+    gap: 0 !important;
+
+    align-self: end;
+
+    width: 100%;
+
+    margin: 0 !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.13
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    display: grid !important;
+
+    grid-template-columns:
+      30px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    grid-template-rows:
+      auto
+      auto;
+
+    align-items: center;
+
+    column-gap: 9px !important;
+    row-gap: 2px;
+
+    min-height: 49px;
+
+    margin: 0;
+
+    padding:
+      8px
+      0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article + article {
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article > span {
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+
+    color: var(--orange-deep);
+
+    font-size: 9px !important;
+    font-weight: 950;
+
+    letter-spacing: 0.08em;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list strong {
+    grid-column: 2;
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 10.5px !important;
+    font-weight: 950;
+
+    line-height: 1.2 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list p {
+    grid-column: 2;
+
+    margin: 0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.58
+      );
+
+    font-size: 7px !important;
+    font-weight: 650;
+
+    line-height: 1.32 !important;
+  }
+
+  /*
+   * ซ่อนกล่อง Contact ซ้ำที่อยู่ใน OEM Scene
+   */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene
+  .oem-contact-info {
+    display: none !important;
+  }
+
+  /* ====================================================
+     3. CONTACT
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    display: grid !important;
+
+    grid-template-columns: 1fr;
+
+    grid-template-rows:
+      auto
+      minmax(0, 1fr)
+      auto
+      auto;
+
+    align-items: start;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: auto;
+  }
+
+  /* ----------------------------------------------------
+     CONTACT BRAND — ด้านบน
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    grid-row: 1;
+
+    display: grid !important;
+
+    gap: 7px !important;
+
+    width: 100%;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-logo {
+    display: block;
+
+    width: 62px !important;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block p {
+    width: 100%;
+    max-width: 38ch;
+
+    margin: 0;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.76
+      );
+
+    font-size: 8px !important;
+    font-weight: 680;
+
+    line-height: 1.4 !important;
+  }
+
+  /* ----------------------------------------------------
+     ADDRESS — ด้านล่าง
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    grid-row: 3;
+
+    width: 100%;
+
+    margin: 0 !important;
+
+    padding:
+      8px
+      0
+      10px !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.13
+      ) !important;
+
+    font-style: normal;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block > span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group > span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group > span {
+    display: block;
+
+    margin:
+      0
+      0
+      5px !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.78
+      );
+
+    font-size: 6px !important;
+    font-weight: 900;
+
+    letter-spacing:
+      0.17em !important;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block strong {
+    display: block;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.88
+      );
+
+    font-size: 8px !important;
+    font-weight: 650;
+
+    line-height: 1.42 !important;
+
+    text-transform: none !important;
+  }
+
+  /* ----------------------------------------------------
+     EMAIL / PHONE / SOCIAL
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    grid-row: 4;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    gap:
+      8px
+      12px !important;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding:
+      9px
+      0
+      0 !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group {
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group a,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group strong {
+    display: block;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.88
+      );
+
+    font-size: 7.5px !important;
+    font-weight: 650;
+
+    line-height: 1.38 !important;
+
+    text-decoration: none;
+
+    overflow-wrap: anywhere;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group {
+    grid-column: 1 / -1;
+
+    margin-top: 1px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-links {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px !important;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 27px !important;
+    height: 27px !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+
+    border-radius: 999px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.48
+      ) !important;
+
+    box-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link svg,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .certificate-scene,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+
+    padding-bottom:
+      max(
+        48px,
+        calc(
+          env(safe-area-inset-bottom) +
+          38px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    font-size: 28px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-grid {
+    grid-template-rows:
+      repeat(
+        2,
+        33px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame {
+    height: 33px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-frame img {
+    max-width: 47px !important;
+    max-height: 24px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    font-size: 29px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    min-height: 46px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-logo {
+    width: 56px !important;
+  }
+}
+
+/* ======================================================
+   CHUA MOBILE OEM + CONTACT FINAL
+
+   - Video และข้อความเป็นงานเดียวกัน
+   - ปล่อยผลไม้ตรงกลาง
+   - ไม่มีการ์ดลอย
+   - ไม่มี Nested Scroll
+   - แก้ปัญหา 100% แล้วเลื่อนย้อนกลับไม่ได้
+
+   Desktop ไม่เปลี่ยน
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     RESTORE PAGE SCROLL
+     ==================================================== */
+
+  html[data-video-mode="mobile"],
+  html[data-video-mode="mobile"] body,
+  html[data-video-mode="mobile"] #app,
+  html[data-video-mode="mobile"] .experience,
+  html[data-video-mode="mobile"] .scrub-stage,
+  html[data-video-mode="mobile"] .sticky-frame {
+    overscroll-behavior-y:
+      auto !important;
+
+    touch-action:
+      pan-y !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue,
+
+  html[data-video-mode="mobile"]
+  .contact-cue {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    overflow:
+      hidden !important;
+
+    overflow-y:
+      hidden !important;
+
+    overscroll-behavior:
+      auto !important;
+
+    overscroll-behavior-y:
+      auto !important;
+
+    touch-action:
+      pan-y !important;
+
+    background:
+      transparent !important;
+
+    pointer-events:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    position:
+      absolute !important;
+
+    inset:
+      0 !important;
+
+    width:
+      100% !important;
+
+    height:
+      100vh !important;
+
+    height:
+      100dvh !important;
+
+    min-height:
+      0 !important;
+
+    padding:
+      max(
+        74px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          60px
+        )
+      )
+      20px
+      max(
+        52px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          42px
+        )
+      ) !important;
+
+    overflow:
+      hidden !important;
+
+    overscroll-behavior:
+      auto !important;
+
+    touch-action:
+      pan-y !important;
+
+    pointer-events:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-scene::before,
+
+  html[data-video-mode="mobile"]
+  .contact-scene::before {
+    display:
+      none !important;
+
+    content:
+      none !important;
+  }
+
+  /* ====================================================
+     SHARED GRADIENT
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-cue::after,
+
+  html[data-video-mode="mobile"]
+  .contact-cue::after {
+    content:
+      "";
+
+    position:
+      absolute;
+
+    z-index:
+      0;
+
+    inset:
+      0;
+
+    pointer-events:
+      none;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(
+          250,
+          247,
+          239,
+          0.94
+        )
+        0%,
+
+        rgba(
+          250,
+          247,
+          239,
+          0.66
+        )
+        15%,
+
+        rgba(
+          250,
+          247,
+          239,
+          0.08
+        )
+        30%,
+
+        transparent
+        39%,
+
+        transparent
+        67%,
+
+        rgba(
+          250,
+          247,
+          239,
+          0.14
+        )
+        74%,
+
+        rgba(
+          250,
+          247,
+          239,
+          0.82
+        )
+        88%,
+
+        rgba(
+          250,
+          247,
+          239,
+          0.98
+        )
+        100%
+      );
+  }
+
+  /* ====================================================
+     REMOVE CARD STYLE
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card {
+    position:
+      relative !important;
+
+    z-index:
+      2;
+
+    display:
+      block !important;
+
+    width:
+      100% !important;
+
+    max-width:
+      none !important;
+
+    height:
+      100% !important;
+
+    max-height:
+      none !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      0 !important;
+
+    overflow:
+      visible !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+
+    pointer-events:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::before,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy::after,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::before,
+
+  html[data-video-mode="mobile"]
+  .contact-copy.contact-right-card::after {
+    display:
+      none !important;
+
+    content:
+      none !important;
+  }
+
+  /* ====================================================
+     OEM — TOP HEADING
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-heading {
+    position:
+      absolute;
+
+    top:
+      0;
+
+    left:
+      0;
+
+    right:
+      0;
+
+    max-width:
+      330px;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center;
+
+    gap:
+      7px;
+
+    width:
+      fit-content;
+
+    margin:
+      0
+      0
+      9px !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    color:
+      var(--orange-deep);
+
+    font-size:
+      7px !important;
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      0.17em !important;
+
+    line-height:
+      1;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker span {
+    width:
+      7px !important;
+
+    height:
+      7px !important;
+
+    border-radius:
+      999px;
+
+    background:
+      var(--orange);
+
+    box-shadow:
+      0
+      0
+      0
+      4px
+      rgba(
+        245,
+        164,
+        0,
+        0.13
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    width:
+      100%;
+
+    max-width:
+      100% !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(--navy);
+
+    font-size:
+      clamp(
+        30px,
+        8vw,
+        37px
+      ) !important;
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      -0.05em !important;
+
+    line-height:
+      0.93 !important;
+
+    text-wrap:
+      balance;
+  }
+
+  /*
+   * จัดหัวข้อเป็นสองบรรทัด:
+   * Create Your
+   * Own Brand Today!
+   */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 span {
+    display:
+      block !important;
+
+    margin:
+      2px
+      0
+      0 !important;
+
+    color:
+      var(--orange);
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    max-width:
+      36ch !important;
+
+    margin:
+      9px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.7
+      );
+
+    font-size:
+      8px !important;
+
+    font-weight:
+      680;
+
+    line-height:
+      1.4 !important;
+  }
+
+  /* ====================================================
+     OEM — BOTTOM SERVICES
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list {
+    position:
+      absolute !important;
+
+    left:
+      0;
+
+    right:
+      0;
+
+    bottom:
+      0;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      0 !important;
+
+    width:
+      100%;
+
+    margin:
+      0 !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.14
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    display:
+      grid !important;
+
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    grid-template-rows:
+      auto
+      auto;
+
+    align-items:
+      center;
+
+    column-gap:
+      9px !important;
+
+    row-gap:
+      2px;
+
+    min-height:
+      47px;
+
+    margin:
+      0;
+
+    padding:
+      7px
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article + article {
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article > span {
+    grid-column:
+      1;
+
+    grid-row:
+      1 / 3;
+
+    display:
+      block;
+
+    width:
+      auto !important;
+
+    height:
+      auto !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    color:
+      var(--orange-deep);
+
+    font-size:
+      8px !important;
+
+    font-weight:
+      950;
+
+    letter-spacing:
+      0.08em;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list strong {
+    grid-column:
+      2;
+
+    margin:
+      0;
+
+    color:
+      var(--navy);
+
+    font-size:
+      10.5px !important;
+
+    font-weight:
+      950;
+
+    line-height:
+      1.2 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list p {
+    grid-column:
+      2;
+
+    margin:
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.58
+      );
+
+    font-size:
+      6.8px !important;
+
+    font-weight:
+      650;
+
+    line-height:
+      1.32 !important;
+  }
+
+  /* ====================================================
+     CONTACT — TOP BRAND BLOCK
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block {
+    position:
+      absolute !important;
+
+    top:
+      0;
+
+    left:
+      0;
+
+    right:
+      0;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      58px
+      minmax(
+        0,
+        1fr
+      );
+
+    align-items:
+      start;
+
+    gap:
+      12px !important;
+
+    width:
+      100%;
+
+    max-width:
+      330px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-logo {
+    display:
+      block;
+
+    width:
+      58px !important;
+
+    max-width:
+      58px;
+
+    height:
+      auto;
+
+    margin:
+      0;
+
+    object-fit:
+      contain;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-brand-block p {
+    max-width:
+      31ch;
+
+    margin:
+      0;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.78
+      );
+
+    font-size:
+      7.8px !important;
+
+    font-weight:
+      680;
+
+    line-height:
+      1.42 !important;
+  }
+
+  /* ====================================================
+     CONTACT — ADDRESS
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    position:
+      absolute !important;
+
+    left:
+      0;
+
+    right:
+      0;
+
+    bottom:
+      91px;
+
+    width:
+      100%;
+
+    margin:
+      0 !important;
+
+    padding:
+      8px
+      0
+      9px !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.14
+      ) !important;
+
+    font-style:
+      normal;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block > span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group > span,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group > span {
+    display:
+      block;
+
+    margin:
+      0
+      0
+      5px !important;
+
+    color:
+      rgba(
+        38,
+        76,
+        135,
+        0.78
+      );
+
+    font-size:
+      6px !important;
+
+    font-weight:
+      900;
+
+    letter-spacing:
+      0.17em !important;
+
+    line-height:
+      1;
+
+    text-transform:
+      uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block strong {
+    display:
+      block;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.88
+      );
+
+    font-size:
+      7.7px !important;
+
+    font-weight:
+      650;
+
+    line-height:
+      1.38 !important;
+
+    text-transform:
+      none !important;
+  }
+
+  /* ====================================================
+     CONTACT — EMAIL / PHONE / SOCIAL
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-direct-block {
+    position:
+      absolute !important;
+
+    left:
+      0;
+
+    right:
+      0;
+
+    bottom:
+      0;
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    gap:
+      7px
+      14px !important;
+
+    width:
+      100%;
+
+    margin:
+      0;
+
+    padding:
+      8px
+      0
+      0 !important;
+
+    border-top:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group {
+    min-width:
+      0;
+
+    margin:
+      0;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-detail-group a {
+    display:
+      block;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.9
+      );
+
+    font-size:
+      7.5px !important;
+
+    font-weight:
+      680;
+
+    line-height:
+      1.35 !important;
+
+    text-decoration:
+      none;
+
+    overflow-wrap:
+      anywhere;
+
+    pointer-events:
+      auto !important;
+
+    touch-action:
+      pan-y !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-group {
+    grid-column:
+      1 / -1;
+
+    margin-top:
+      1px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-links {
+    display:
+      flex;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      6px !important;
+
+    margin:
+      0;
+
+    padding:
+      0;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-social-link,
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-social-link {
+    display:
+      inline-flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    width:
+      26px !important;
+
+    height:
+      26px !important;
+
+    border:
+      1px solid
+      rgba(
+        20,
+        39,
+        74,
+        0.1
+      ) !important;
+
+    border-radius:
+      999px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.5
+      ) !important;
+
+    box-shadow:
+      none !important;
+
+    pointer-events:
+      auto !important;
+
+    touch-action:
+      pan-y !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .oem-contact-scene,
+
+  html[data-video-mode="mobile"]
+  .contact-scene {
+    padding-left:
+      17px !important;
+
+    padding-right:
+      17px !important;
+
+    padding-bottom:
+      48px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    font-size:
+      29px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list article {
+    min-height:
+      45px;
+  }
+
+  html[data-video-mode="mobile"]
+  .contact-right-card
+  .contact-address-block {
+    bottom:
+      88px;
+  }
+}
+
+/* ======================================================
+   CHUA MOBILE PREMIUM TYPOGRAPHY — FINAL OVERRIDE
+
+   Build on Trust + OEM
+   คงเนื้อหาเดิมและ Layout วิดีโอเดิม
+
+   วางท้ายสุดของ mobile-scenes.css
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ====================================================
+     SHARED FONT SYSTEM
+     ==================================================== */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card,
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy {
+    font-family:
+      "IBM Plex Sans Thai",
+      "Inter",
+      "Montserrat",
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif !important;
+
+    -webkit-font-smoothing:
+      antialiased;
+
+    text-rendering:
+      geometricPrecision;
+  }
+
+  /* ====================================================
+     BUILD ON TRUST
+     ==================================================== */
+
+  /* ----------------------------------------------------
+     CERTIFIED QUALITY
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center;
+
+    gap:
+      7px;
+
+    width:
+      fit-content;
+
+    margin:
+      0
+      0
+      9px !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    color:
+      rgba(
+        194,
+        119,
+        0,
+        0.92
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.18em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker::before {
+    content:
+      "";
+
+    width:
+      6px;
+
+    height:
+      6px;
+
+    flex:
+      0
+      0
+      auto;
+
+    border-radius:
+      999px;
+
+    background:
+      var(--orange);
+
+    box-shadow:
+      0
+      0
+      0
+      4px
+      rgba(
+        245,
+        164,
+        0,
+        0.11
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-kicker > span {
+    display:
+      none !important;
+  }
+
+  /* ----------------------------------------------------
+     BUILT ON TRUST — ONE LINE
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    display:
+      flex !important;
+
+    align-items:
+      baseline;
+
+    flex-wrap:
+      nowrap;
+
+    gap:
+      0.16em;
+
+    width:
+      max-content !important;
+
+    max-width:
+      100% !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(--navy);
+
+    font-size:
+      clamp(
+        27px,
+        7.2vw,
+        31px
+      ) !important;
+
+    font-weight:
+      760 !important;
+
+    letter-spacing:
+      -0.035em !important;
+
+    line-height:
+      1 !important;
+
+    white-space:
+      nowrap !important;
+
+    text-wrap:
+      nowrap !important;
+
+    text-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 span {
+    display:
+      inline !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(--orange);
+
+    font-weight:
+      720 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 br {
+    display:
+      none !important;
+  }
+
+  /* ----------------------------------------------------
+     CERTIFICATE DESCRIPTION
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-lead {
+    width:
+      100%;
+
+    max-width:
+      39ch !important;
+
+    margin:
+      8px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.7
+      ) !important;
+
+    font-size:
+      8px !important;
+
+    font-weight:
+      520 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.46 !important;
+  }
+
+  /* ----------------------------------------------------
+     FOOD SAFETY CERTIFICATIONS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-logo-kicker {
+    color:
+      rgba(
+        194,
+        119,
+        0,
+        0.9
+      ) !important;
+
+    font-size:
+      6px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.15em !important;
+
+    line-height:
+      1 !important;
+  }
+
+  /* ----------------------------------------------------
+     QUALITY POINTS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .certificate-copy-points strong {
+    color:
+      var(--navy);
+
+    font-size:
+      7.2px !important;
+
+    font-weight:
+      680 !important;
+
+    letter-spacing:
+      -0.005em;
+
+    line-height:
+      1.18 !important;
+  }
+
+  /* ====================================================
+     OEM & PRIVATE LABEL
+     ==================================================== */
+
+  /* ----------------------------------------------------
+     OEM KICKER
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker {
+    display:
+      inline-flex !important;
+
+    align-items:
+      center;
+
+    gap:
+      7px;
+
+    width:
+      fit-content;
+
+    margin:
+      0
+      0
+      9px !important;
+
+    padding:
+      0 !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    box-shadow:
+      none !important;
+
+    color:
+      rgba(
+        194,
+        119,
+        0,
+        0.92
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.18em !important;
+
+    line-height:
+      1 !important;
+
+    text-transform:
+      uppercase;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-kicker span {
+    width:
+      6px !important;
+
+    height:
+      6px !important;
+
+    flex:
+      0
+      0
+      auto;
+
+    border-radius:
+      999px;
+
+    background:
+      var(--orange);
+
+    box-shadow:
+      0
+      0
+      0
+      4px
+      rgba(
+        245,
+        164,
+        0,
+        0.11
+      ) !important;
+  }
+
+  /* ----------------------------------------------------
+     CREATE YOUR OWN BRAND TODAY
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    width:
+      100%;
+
+    max-width:
+      11.5ch !important;
+
+    margin:
+      0 !important;
+
+    color:
+      var(--navy);
+
+    font-size:
+      clamp(
+        27px,
+        7.4vw,
+        32px
+      ) !important;
+
+    font-weight:
+      760 !important;
+
+    letter-spacing:
+      -0.036em !important;
+
+    line-height:
+      0.99 !important;
+
+    text-wrap:
+      balance;
+
+    text-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 span {
+    display:
+      block !important;
+
+    margin:
+      2px
+      0
+      0 !important;
+
+    color:
+      var(--orange);
+
+    font-weight:
+      720 !important;
+  }
+
+  /* ----------------------------------------------------
+     OEM DESCRIPTION
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    width:
+      100%;
+
+    max-width:
+      38ch !important;
+
+    margin:
+      8px
+      0
+      0 !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.7
+      ) !important;
+
+    font-size:
+      7.8px !important;
+
+    font-weight:
+      520 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.45 !important;
+  }
+
+  /* ----------------------------------------------------
+     01 / 02 / 03
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list
+  article > span {
+    color:
+      var(--orange-deep) !important;
+
+    font-size:
+      7.5px !important;
+
+    font-weight:
+      680 !important;
+
+    letter-spacing:
+      0.1em !important;
+
+    line-height:
+      1.2 !important;
+  }
+
+  /* ----------------------------------------------------
+     SERVICE TITLE
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list strong {
+    color:
+      var(--navy);
+
+    font-size:
+      9.7px !important;
+
+    font-weight:
+      680 !important;
+
+    letter-spacing:
+      -0.01em !important;
+
+    line-height:
+      1.25 !important;
+  }
+
+  /* ----------------------------------------------------
+     SERVICE DESCRIPTION
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list p {
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.56
+      ) !important;
+
+    font-size:
+      6.5px !important;
+
+    font-weight:
+      480 !important;
+
+    letter-spacing:
+      0 !important;
+
+    line-height:
+      1.4 !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE TYPOGRAPHY
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .certificate-copy-card h2 {
+    font-size:
+      25px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .certificate-lead {
+    font-size:
+      7.5px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-copy h2 {
+    font-size:
+      26px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-lead {
+    font-size:
+      7.4px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list strong {
+    font-size:
+      9.2px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .oem-contact-service-list p {
+    font-size:
+      6.2px !important;
+  }
+}

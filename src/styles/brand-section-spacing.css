@@ -1,0 +1,687 @@
+/* ======================================================
+   CHUA — BRAND SECTION SPACING FINAL
+
+   แก้ปัญหา:
+   - Our House Brands ชิดโลโก้ Top Navigation
+   - การ์ด POLNAPA / LONGANIC / MATSURI ชิดหัวข้อ
+   - รักษาตำแหน่งสินค้าและ Animation เดิม
+   - รองรับ Desktop / Tablet / Mobile
+
+   ต้อง Import หลัง premium-typography.css
+   ====================================================== */
+
+/* ======================================================
+   LARGE DESKTOP
+   1280px ขึ้นไป
+   ====================================================== */
+
+@media (min-width: 1280px) {
+  /* ----------------------------------------------------
+     OUR HOUSE BRANDS TITLE
+     ---------------------------------------------------- */
+
+  html body #lineupHeader.lineup-header {
+    left:
+      clamp(
+        60px,
+        5.2vw,
+        106px
+      ) !important;
+
+    top:
+      clamp(
+        120px,
+        14.5vh,
+        148px
+      ) !important;
+
+    width:
+      min(
+        58vw,
+        860px
+      ) !important;
+
+    max-width:
+      860px !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-content {
+    width:
+      100% !important;
+
+    transform-origin:
+      left top !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      clamp(
+        142px,
+        10.5vw,
+        184px
+      ) !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-bridge {
+    width:
+      max-content !important;
+
+    max-width:
+      min(
+        54vw,
+        760px
+      ) !important;
+  }
+
+  /*
+   * เว้นระยะระหว่าง Our และ House Brands
+   * เล็กน้อย เพื่อให้ดูโปร่งขึ้น
+   */
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-house-row {
+    margin-top:
+      0.1em !important;
+  }
+
+  /* ----------------------------------------------------
+     BRAND DETAIL CARD
+     POLNAPA / LONGANIC / MATSURI
+     ---------------------------------------------------- */
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  ) {
+    top:
+      clamp(
+        330px,
+        41.5vh,
+        385px
+      ) !important;
+
+    left:
+      clamp(
+        60px,
+        5.2vw,
+        106px
+      ) !important;
+
+    width:
+      min(
+        35vw,
+        560px
+      ) !important;
+  }
+
+  /*
+   * ทำให้มีช่องว่างระหว่างหัวข้อกับการ์ด
+   */
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  )
+  .brand-copy {
+    margin-top:
+      0 !important;
+  }
+}
+
+/* ======================================================
+   NORMAL DESKTOP
+   1024px–1279px
+   ====================================================== */
+
+@media (
+  min-width: 1024px
+) and (
+  max-width: 1279px
+) {
+  html body #lineupHeader.lineup-header {
+    left:
+      clamp(
+        44px,
+        4.8vw,
+        66px
+      ) !important;
+
+    top:
+      clamp(
+        108px,
+        13.5vh,
+        126px
+      ) !important;
+
+    width:
+      min(
+        60vw,
+        720px
+      ) !important;
+
+    max-width:
+      720px !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      clamp(
+        126px,
+        12vw,
+        162px
+      ) !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-bridge {
+    width:
+      max-content !important;
+
+    max-width:
+      min(
+        57vw,
+        680px
+      ) !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-house-row {
+    margin-top:
+      0.09em !important;
+  }
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  ) {
+    top:
+      clamp(
+        302px,
+        39vh,
+        348px
+      ) !important;
+
+    left:
+      clamp(
+        44px,
+        4.8vw,
+        66px
+      ) !important;
+
+    width:
+      min(
+        39vw,
+        510px
+      ) !important;
+  }
+}
+
+/* ======================================================
+   SHORT DESKTOP HEIGHT
+   สำหรับ Notebook หรือจอความสูงไม่มาก
+   ====================================================== */
+
+@media (
+  min-width: 1024px
+) and (
+  max-height: 760px
+) {
+  html body #lineupHeader.lineup-header {
+    top:
+      102px !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      118px !important;
+  }
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  ) {
+    top:
+      286px !important;
+  }
+}
+
+/* ======================================================
+   TABLET
+   768px–1023px
+   ====================================================== */
+
+@media (
+  min-width: 768px
+) and (
+  max-width: 1023px
+) {
+  html body #lineupHeader.lineup-header {
+    left:
+      28px !important;
+
+    right:
+      28px !important;
+
+    top:
+      98px !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      none !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-content {
+    width:
+      100% !important;
+
+    transform-origin:
+      left top !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      clamp(
+        112px,
+        20vw,
+        146px
+      ) !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-bridge {
+    max-width:
+      88% !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-house-row {
+    margin-top:
+      0.08em !important;
+  }
+
+  /*
+   * Tablet ให้วาง Brand Card ด้านล่าง
+   * เพื่อไม่ให้ชนหัวข้อและสินค้า
+   */
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  ) {
+    top:
+      auto !important;
+
+    left:
+      28px !important;
+
+    right:
+      28px !important;
+
+    bottom:
+      66px !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      560px !important;
+  }
+}
+
+/* ======================================================
+   MOBILE PORTRAIT
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  /* ----------------------------------------------------
+     OUR HOUSE BRANDS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header {
+    left:
+      18px !important;
+
+    right:
+      18px !important;
+
+    top:
+      max(
+        86px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          74px
+        )
+      ) !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header
+  .lineup-content {
+    width:
+      100% !important;
+
+    transform-origin:
+      center top !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      clamp(
+        100px,
+        27vw,
+        132px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header
+  .lineup-title-bridge {
+    width:
+      100% !important;
+
+    max-width:
+      100% !important;
+
+    text-align:
+      center !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header
+  .lineup-title-house-row {
+    margin-top:
+      4px !important;
+  }
+
+  /* ----------------------------------------------------
+     BRAND DETAIL CARD
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  ) {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      none !important;
+  }
+
+  /*
+   * POLNAPA:
+   * วางด้านบน แต่เว้นจาก Navigation
+   */
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase[
+    data-brand-key="polnapa"
+  ] {
+    top:
+      max(
+        102px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          90px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+  }
+
+  /*
+   * LONGANIC:
+   * วางด้านล่างเพราะสินค้าหลักอยู่ด้านบน
+   */
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase[
+    data-brand-key="longanic"
+  ] {
+    top:
+      auto !important;
+
+    bottom:
+      max(
+        68px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          54px
+        )
+      ) !important;
+  }
+
+  /*
+   * MATSURI:
+   * วางด้านบน
+   */
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase[
+    data-brand-key="matsuri"
+  ] {
+    top:
+      max(
+        102px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          90px
+        )
+      ) !important;
+
+    bottom:
+      auto !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header {
+    left:
+      16px !important;
+
+    right:
+      16px !important;
+
+    top:
+      max(
+        82px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          70px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      96px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase[
+    data-brand-key="polnapa"
+  ],
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase[
+    data-brand-key="matsuri"
+  ] {
+    top:
+      max(
+        94px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          82px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #brandShowcase.brand-showcase[
+    data-brand-key="longanic"
+  ] {
+    bottom:
+      max(
+        62px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          50px
+        )
+      ) !important;
+  }
+}
+
+/* ======================================================
+   VERY SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header {
+    left:
+      14px !important;
+
+    right:
+      14px !important;
+
+    top:
+      max(
+        78px,
+        calc(
+          env(
+            safe-area-inset-top
+          ) +
+          66px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      92px !important;
+  }
+}
+
+/* ======================================================
+   LANDSCAPE MOBILE
+   ====================================================== */
+
+@media (
+  max-height: 600px
+) and (
+  orientation: landscape
+) {
+  html body #lineupHeader.lineup-header {
+    top:
+      78px !important;
+
+    left:
+      34px !important;
+  }
+
+  html body
+  #lineupHeader.lineup-header
+  .lineup-title-wrap {
+    min-height:
+      104px !important;
+  }
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  ) {
+    top:
+      220px !important;
+
+    bottom:
+      auto !important;
+  }
+}

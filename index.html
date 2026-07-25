@@ -494,6 +494,71 @@
     <main id="app" class="experience" aria-label="Scroll driven video">
       <section class="scrub-stage" aria-label="Video sequence">
         <div class="sticky-frame">
+          <!-- ============================================
+               LUXURY EDITORIAL NAVIGATION
+
+               25%:
+               เริ่มแสดงพร้อมกรอบ Glass บาง ๆ
+
+               29–34%:
+               กรอบค่อย ๆ จางหาย
+
+               หลัง 34%:
+               เหลือ Logo ซ้าย + Text Navigation ขวา
+               ============================================ -->
+          <nav
+            id="topNav"
+            class="top-nav"
+            aria-label="Primary navigation"
+          >
+            <a
+              class="top-nav-brand"
+              href="#app"
+              data-nav-target="top"
+              aria-label="Go to CHUA Group introduction"
+            >
+              <img
+                id="topNavLogo"
+                class="top-nav-logo"
+                alt="CHUA Group"
+              />
+            </a>
+
+            <div class="top-nav-menu-shell">
+              <ul class="top-nav-menu">
+                <li class="top-nav-item">
+                  <button
+                    class="top-nav-link"
+                    type="button"
+                    data-nav-target="brand"
+                  >
+                    Brand
+                  </button>
+                </li>
+
+                <li class="top-nav-item">
+                  <button
+                    class="top-nav-link"
+                    type="button"
+                    data-nav-target="oem"
+                  >
+                    OEM
+                  </button>
+                </li>
+
+                <li class="top-nav-item">
+                  <button
+                    class="top-nav-link"
+                    type="button"
+                    data-nav-target="contact"
+                  >
+                    Contact
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
           <video
             class="hero-video"
             muted

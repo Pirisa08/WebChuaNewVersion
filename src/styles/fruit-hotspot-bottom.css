@@ -1,0 +1,618 @@
+/* ======================================================
+   CHUA — FRUIT HOTSPOT HINT BOTTOM
+
+   ย้าย:
+   Explore Our Thai Dried Fruit Collection
+
+   จากด้านบนลงด้านล่าง
+   รองรับ Desktop / Tablet / Mobile
+   ====================================================== */
+
+/* ======================================================
+   DESKTOP
+   ====================================================== */
+
+.fruit-hotspot-cue
+.fruit-hotspot-hint {
+  left: 50% !important;
+
+  top: auto !important;
+
+  bottom:
+    clamp(
+      54px,
+      7vh,
+      82px
+    ) !important;
+
+  z-index: 45;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  width: fit-content;
+
+  max-width:
+    min(
+      88vw,
+      780px
+    );
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding:
+    9px
+    15px
+    9px
+    11px;
+
+  transform:
+    translate3d(
+      -50%,
+      0,
+      0
+    ) !important;
+
+  border:
+    1px solid
+    rgba(
+      20,
+      39,
+      74,
+      0.07
+    );
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      252,
+      244,
+      0.82
+    );
+
+  box-shadow:
+    0
+    12px
+    30px
+    rgba(
+      20,
+      39,
+      74,
+      0.065
+    ),
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.95
+    );
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+  pointer-events: none;
+}
+
+/* จุดสีส้ม */
+
+.fruit-hotspot-cue
+.fruit-hotspot-hint-dot {
+  width: 8px;
+  height: 8px;
+
+  flex: 0 0 auto;
+
+  background:
+    var(--orange);
+
+  box-shadow:
+    0
+    0
+    0
+    4px
+    rgba(
+      245,
+      164,
+      0,
+      0.12
+    );
+}
+
+/* กลุ่มข้อความ */
+
+.fruit-hotspot-cue
+.fruit-hotspot-hint-copy {
+  display: grid;
+
+  gap: 3px;
+
+  min-width: 0;
+}
+
+/* Explore Our Thai Dried Fruit Collection */
+
+.fruit-hotspot-cue
+.fruit-hotspot-hint-copy strong {
+  max-width: 100%;
+
+  overflow: visible;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.86
+    );
+
+  font-size:
+    clamp(
+      9px,
+      0.7vw,
+      12px
+    );
+
+  font-weight: 680;
+
+  letter-spacing:
+    0.13em;
+
+  line-height: 1.1;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  text-overflow: clip;
+
+  white-space: nowrap;
+}
+
+/* Discover grades... */
+
+.fruit-hotspot-cue
+.fruit-hotspot-hint-copy small {
+  display: block;
+
+  max-width: 100%;
+
+  overflow: visible;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.5
+    );
+
+  font-size:
+    clamp(
+      7px,
+      0.52vw,
+      9px
+    );
+
+  font-weight: 500;
+
+  letter-spacing:
+    0.02em;
+
+  line-height: 1.25;
+
+  text-align: left;
+
+  text-overflow: clip;
+
+  white-space: nowrap;
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (
+  min-width: 768px
+) and (
+  max-width: 1080px
+) {
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint {
+    top: auto !important;
+
+    bottom:
+      58px !important;
+
+    max-width:
+      calc(
+        100vw -
+        44px
+      );
+
+    padding:
+      8px
+      13px
+      8px
+      10px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy strong {
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.11em;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy small {
+    display: block;
+
+    font-size:
+      7px;
+  }
+}
+
+/* ======================================================
+   MOBILE PORTRAIT
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint {
+    left:
+      50% !important;
+
+    right:
+      auto !important;
+
+    top:
+      auto !important;
+
+    bottom:
+      max(
+        66px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          54px
+        )
+      ) !important;
+
+    display:
+      inline-flex !important;
+
+    align-items:
+      center;
+
+    justify-content:
+      flex-start;
+
+    gap:
+      7px !important;
+
+    width:
+      auto !important;
+
+    max-width:
+      calc(
+        100vw -
+        34px
+      ) !important;
+
+    min-width:
+      0 !important;
+
+    padding:
+      7px
+      10px
+      7px
+      8px !important;
+
+    transform:
+      translate3d(
+        -50%,
+        0,
+        0
+      ) !important;
+
+    border-radius:
+      16px !important;
+
+    background:
+      rgba(
+        255,
+        252,
+        244,
+        0.88
+      ) !important;
+
+    box-shadow:
+      0
+      8px
+      22px
+      rgba(
+        20,
+        39,
+        74,
+        0.07
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-dot {
+    width:
+      6px !important;
+
+    height:
+      6px !important;
+
+    box-shadow:
+      0
+      0
+      0
+      3px
+      rgba(
+        245,
+        164,
+        0,
+        0.11
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy {
+    gap:
+      2px;
+
+    min-width:
+      0;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy strong {
+    display:
+      block;
+
+    max-width:
+      calc(
+        100vw -
+        76px
+      ) !important;
+
+    overflow:
+      visible !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.86
+      ) !important;
+
+    font-size:
+      clamp(
+        7px,
+        1.9vw,
+        8.5px
+      ) !important;
+
+    font-weight:
+      680 !important;
+
+    letter-spacing:
+      0.08em !important;
+
+    line-height:
+      1.15 !important;
+
+    text-align:
+      left;
+
+    text-overflow:
+      clip !important;
+
+    white-space:
+      normal !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy small {
+    display:
+      block !important;
+
+    max-width:
+      calc(
+        100vw -
+        76px
+      ) !important;
+
+    overflow:
+      visible !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.48
+      ) !important;
+
+    font-size:
+      clamp(
+        5.5px,
+        1.45vw,
+        6.5px
+      ) !important;
+
+    font-weight:
+      480 !important;
+
+    line-height:
+      1.25 !important;
+
+    text-align:
+      left;
+
+    text-overflow:
+      clip !important;
+
+    white-space:
+      normal !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint {
+    bottom:
+      max(
+        61px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          49px
+        )
+      ) !important;
+
+    max-width:
+      calc(
+        100vw -
+        28px
+      ) !important;
+
+    padding:
+      7px
+      9px
+      7px
+      8px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy strong {
+    font-size:
+      7px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy small {
+    font-size:
+      5.5px !important;
+  }
+}
+
+/* ======================================================
+   VERY SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint {
+    bottom:
+      max(
+        58px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          46px
+        )
+      ) !important;
+  }
+
+  /*
+   * จอเล็กมาก ซ่อนคำอธิบายรอง
+   * เหลือเฉพาะข้อความหลัก
+   */
+
+  html[data-video-mode="mobile"]
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy small {
+    display:
+      none !important;
+  }
+}
+
+/* ======================================================
+   SHORT LANDSCAPE
+   ====================================================== */
+
+@media (
+  max-height: 600px
+) and (
+  orientation: landscape
+) {
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint {
+    top:
+      auto !important;
+
+    bottom:
+      42px !important;
+
+    padding:
+      7px
+      11px;
+  }
+
+  .fruit-hotspot-cue
+  .fruit-hotspot-hint-copy small {
+    display:
+      none;
+  }
+}

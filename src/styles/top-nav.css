@@ -1,0 +1,863 @@
+/* ======================================================
+   CHUA LUXURY EDITORIAL NAVIGATION
+
+   0–25%:
+   ซ่อน Navbar
+
+   25–29%:
+   ค่อย ๆ แสดงพร้อมกรอบ Glass บาง ๆ
+
+   29–34%:
+   กรอบค่อย ๆ จางหาย
+
+   หลัง 34%:
+   เหลือ Logo ซ้าย + Text Navigation ขวา
+   ====================================================== */
+
+.top-nav {
+  --nav-visibility: 0;
+  --nav-frame: 1;
+  --nav-content-opacity: 1;
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 120;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--navy);
+
+  opacity: var(--nav-visibility);
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 220ms ease,
+    visibility 220ms ease;
+
+  will-change:
+    opacity,
+    visibility;
+}
+
+.top-nav.is-visible {
+  visibility: visible;
+}
+
+/* เปิด Fruit Detail แล้วซ่อน Navbar */
+
+html.is-fruit-modal-open .top-nav {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ======================================================
+   SHARED POSITION
+   ====================================================== */
+
+.top-nav-brand,
+.top-nav-menu-shell {
+  position: fixed;
+
+  top:
+    clamp(
+      18px,
+      2.2vh,
+      28px
+    );
+
+  z-index: 121;
+
+  min-height:
+    clamp(
+      42px,
+      4vw,
+      50px
+    );
+
+  opacity:
+    var(--nav-content-opacity);
+
+  pointer-events: auto;
+
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+
+  will-change:
+    opacity,
+    transform;
+}
+
+/*
+ * กรอบ Glass อยู่ใน pseudo-element
+ * เพื่อให้ค่อย ๆ จางหายได้
+ */
+
+.top-nav-brand::before,
+.top-nav-menu-shell::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  border:
+    1px solid
+    rgba(
+      20,
+      39,
+      74,
+      0.075
+    );
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+
+  box-shadow:
+    0 12px 32px
+      rgba(
+        20,
+        39,
+        74,
+        0.065
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      );
+
+  opacity:
+    var(--nav-frame);
+
+  backdrop-filter:
+    blur(15px)
+    saturate(1.06);
+
+  -webkit-backdrop-filter:
+    blur(15px)
+    saturate(1.06);
+
+  transition:
+    opacity 220ms ease;
+
+  pointer-events: none;
+}
+
+/*
+ * เมื่อเมาส์อยู่บน Navbar
+ * ให้กลับมาชัดเพื่อกดง่าย
+ */
+
+.top-nav:hover
+.top-nav-brand,
+.top-nav:hover
+.top-nav-menu-shell {
+  opacity: 1;
+}
+
+/* ======================================================
+   LOGO — LEFT
+   ====================================================== */
+
+.top-nav-brand {
+  left:
+    clamp(
+      24px,
+      3vw,
+      50px
+    );
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-width:
+    clamp(
+      118px,
+      10vw,
+      156px
+    );
+
+  height:
+    clamp(
+      42px,
+      4vw,
+      50px
+    );
+
+  border-radius: 999px;
+
+  padding:
+    0
+    clamp(
+      13px,
+      1.4vw,
+      18px
+    );
+
+  color: var(--navy);
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transform:
+    translate3d(
+      calc(
+        -16px *
+        (
+          1 -
+          var(--nav-visibility)
+        )
+      ),
+      0,
+      0
+    );
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+.top-nav-logo {
+  display: block;
+
+  width:
+    clamp(
+      92px,
+      8vw,
+      124px
+    );
+
+  max-height: 31px;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0.98;
+
+  filter:
+    contrast(1.18)
+    brightness(0.7)
+    saturate(0.86)
+    drop-shadow(
+      0 1px 5px
+      rgba(255, 255, 255, 0.92)
+    )
+    drop-shadow(
+      0 4px 12px
+      rgba(20, 39, 74, 0.08)
+    );
+
+  mix-blend-mode: multiply;
+
+  pointer-events: none;
+
+  transition:
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.top-nav-brand:hover
+.top-nav-logo {
+  filter:
+    contrast(1.22)
+    brightness(0.65)
+    saturate(0.9)
+    drop-shadow(
+      0 2px 7px
+      rgba(255, 255, 255, 1)
+    )
+    drop-shadow(
+      0 6px 15px
+      rgba(20, 39, 74, 0.12)
+    );
+
+  transform:
+    translate3d(
+      0,
+      -1px,
+      0
+    );
+}
+
+.top-nav-brand:active {
+  transform:
+    translate3d(
+      calc(
+        -16px *
+        (
+          1 -
+          var(--nav-visibility)
+        )
+      ),
+      0,
+      0
+    )
+    scale(0.97);
+}
+
+/* ======================================================
+   MENU SHELL — RIGHT
+   ====================================================== */
+
+.top-nav-menu-shell {
+  right:
+    clamp(
+      24px,
+      3vw,
+      50px
+    );
+
+  display: inline-flex;
+  align-items: center;
+
+  height:
+    clamp(
+      42px,
+      4vw,
+      50px
+    );
+
+  border-radius: 999px;
+
+  padding:
+    0
+    clamp(
+      8px,
+      0.8vw,
+      12px
+    );
+
+  transform:
+    translate3d(
+      calc(
+        16px *
+        (
+          1 -
+          var(--nav-visibility)
+        )
+      ),
+      0,
+      0
+    );
+}
+
+.top-nav-menu {
+  display: inline-flex;
+  align-items: center;
+
+  gap:
+    clamp(
+      15px,
+      2vw,
+      30px
+    );
+
+  margin: 0;
+
+  padding:
+    0
+    clamp(
+      7px,
+      0.8vw,
+      11px
+    );
+
+  list-style: none;
+}
+
+.top-nav-item {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+}
+
+/* ======================================================
+   TEXT NAVIGATION
+   ไม่มีปุ่ม Pill ใหญ่
+   ====================================================== */
+
+.top-nav-link {
+  appearance: none;
+  -webkit-appearance: none;
+
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  height:
+    clamp(
+      35px,
+      3.4vw,
+      42px
+    );
+
+  border: 0;
+
+  background: transparent;
+
+  padding:
+    0
+    2px;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.64
+    );
+
+  font-family: inherit;
+
+  font-size:
+    clamp(
+      10px,
+      0.76vw,
+      13px
+    );
+
+  font-weight: 660;
+  letter-spacing: 0.095em;
+  line-height: 1;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  text-shadow:
+    0 1px 4px
+      rgba(
+        255,
+        255,
+        255,
+        0.88
+      );
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+/* จุดสีส้ม Active */
+
+.top-nav-link::before {
+  content: "";
+
+  display: block;
+
+  width: 5px;
+  height: 5px;
+
+  flex: 0 0 auto;
+
+  border-radius: 999px;
+
+  background:
+    var(--orange);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(
+        245,
+        164,
+        0,
+        0.1
+      );
+
+  opacity: 0;
+
+  transform:
+    scale(0.35);
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+/* เส้นใต้ Active */
+
+.top-nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 3px;
+
+  width: 100%;
+  height: 1px;
+
+  border-radius: 999px;
+
+  background:
+    var(--orange);
+
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    scaleX(0.25);
+
+  transform-origin:
+    center;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.top-nav-link:hover {
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.95
+    );
+
+  transform:
+    translate3d(
+      0,
+      -1px,
+      0
+    );
+}
+
+.top-nav-link:hover::after {
+  opacity: 0.24;
+
+  transform:
+    translateX(-50%)
+    scaleX(0.8);
+}
+
+.top-nav-link.is-active {
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.96
+    );
+}
+
+.top-nav-link.is-active::before {
+  opacity: 1;
+
+  transform:
+    scale(1);
+}
+
+.top-nav-link.is-active::after {
+  opacity: 0.8;
+
+  transform:
+    translateX(-50%)
+    scaleX(1);
+}
+
+.top-nav-link:active {
+  transform:
+    scale(0.96);
+}
+
+/* ======================================================
+   FRAMELESS STATE
+   หลังกรอบหาย ให้ลด padding ลงเล็กน้อย
+   ====================================================== */
+
+.top-nav.is-frameless
+.top-nav-brand {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.top-nav.is-frameless
+.top-nav-menu-shell {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+/*
+ * หลังกรอบหาย
+ * ตัวอักษรที่ไม่ Active โปร่งขึ้นเล็กน้อย
+ */
+
+.top-nav.is-frameless
+.top-nav-link:not(.is-active):not(:hover) {
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.55
+    );
+}
+
+/* ======================================================
+   CONTENT-SAFE MODE
+   ====================================================== */
+
+.top-nav.is-content-heavy
+.top-nav-link:not(.is-active):not(:hover) {
+  opacity: 0.7;
+}
+
+/*
+ * ป้องกัน Navbar บัง Fruit Hotspot ตรงกลางบน
+ * ขยับซ้ายและขวาออกจากกลางเพิ่ม
+ */
+
+.top-nav.is-content-heavy
+.top-nav-brand {
+  transform:
+    translate3d(
+      -5px,
+      0,
+      0
+    );
+}
+
+.top-nav.is-content-heavy
+.top-nav-menu-shell {
+  transform:
+    translate3d(
+      5px,
+      0,
+      0
+    );
+}
+
+/* ======================================================
+   ACCESSIBILITY
+   ====================================================== */
+
+.top-nav-link:focus-visible,
+.top-nav-brand:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      245,
+      164,
+      0,
+      0.42
+    );
+
+  outline-offset: 4px;
+
+  border-radius: 8px;
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 900px) {
+  .top-nav-brand,
+  .top-nav-menu-shell {
+    top: 14px;
+  }
+
+  .top-nav-brand {
+    left: 16px;
+
+    min-width: 100px;
+    height: 44px;
+
+    padding:
+      0
+      11px;
+  }
+
+  .top-nav-logo {
+    width: 84px;
+    max-height: 26px;
+  }
+
+  .top-nav-menu-shell {
+    right: 16px;
+
+    height: 44px;
+  }
+
+  .top-nav-menu {
+    gap: 15px;
+
+    padding:
+      0
+      7px;
+  }
+
+  .top-nav-link {
+    height: 36px;
+
+    font-size: 10px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 640px) {
+  .top-nav-brand,
+  .top-nav-menu-shell {
+    top: 9px;
+  }
+
+  .top-nav-brand {
+    left: 9px;
+
+    min-width: 62px;
+    height: 40px;
+
+    padding:
+      0
+      8px;
+  }
+
+  .top-nav-logo {
+    width: 61px;
+    max-height: 22px;
+  }
+
+  .top-nav-menu-shell {
+    right: 8px;
+
+    height: 40px;
+
+    padding:
+      0
+      6px;
+  }
+
+  .top-nav-menu {
+    gap: 10px;
+
+    padding:
+      0
+      3px;
+  }
+
+  .top-nav-link {
+    height: 34px;
+
+    gap: 4px;
+
+    font-size: 8px;
+    letter-spacing: 0.055em;
+  }
+
+  .top-nav-link::before {
+    width: 4px;
+    height: 4px;
+
+    box-shadow:
+      0 0 0 3px
+        rgba(
+          245,
+          164,
+          0,
+          0.1
+        );
+  }
+
+  .top-nav-link::after {
+    bottom: 2px;
+  }
+}
+
+/* ======================================================
+   VERY SMALL MOBILE
+   ====================================================== */
+
+@media (max-width: 410px) {
+  .top-nav-brand {
+    min-width: 52px;
+
+    padding:
+      0
+      6px;
+  }
+
+  .top-nav-logo {
+    width: 51px;
+  }
+
+  .top-nav-menu {
+    gap: 7px;
+  }
+
+  .top-nav-link {
+    font-size: 7px;
+  }
+}
+
+/* ======================================================
+   FALLBACK
+   ====================================================== */
+
+@supports not (
+  backdrop-filter:
+    blur(12px)
+) {
+  .top-nav-brand::before,
+  .top-nav-menu-shell::before {
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      );
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .top-nav,
+  .top-nav-brand,
+  .top-nav-menu-shell,
+  .top-nav-brand::before,
+  .top-nav-menu-shell::before,
+  .top-nav-logo,
+  .top-nav-link,
+  .top-nav-link::before,
+  .top-nav-link::after {
+    transition:
+      none !important;
+  }
+}

@@ -1,10 +1,15 @@
 import "./styles/index.css";
 import "./styles/fruitHotspots.css";
+import "./styles/mobile-scenes.css";
+import "./styles/premium-typography.css";
+import "./styles/brand-section-spacing.css";
+import "./styles/mobile-layout-correction.css";
 
 import logoUrl from "./assets/Logo Chua.png";
 
 import { clamp } from "./utils/animation.js";
 import { VIDEO_SCROLL_KEYFRAMES } from "./config/timing.js";
+import { getResponsiveScene } from "./config/responsiveScenes.js";
 
 import { updateAmbientBackground } from "./effects/ambientBackground.js";
 import { updateIntroLogo } from "./effects/introLogo.js";
@@ -18,232 +23,516 @@ import { updateCertificateCue } from "./effects/certificate.js";
 import { updateOemContactCue } from "./effects/oemContactCue.js";
 import { updateContactCue } from "./effects/contactCue.js";
 
-// ======================================================
-// MAIN ELEMENTS
-// ======================================================
-
-const stage = document.querySelector(".scrub-stage");
-const stickyFrame = document.querySelector(".sticky-frame");
-const video = document.querySelector(".hero-video");
-
-const progressBar = document.querySelector("#progressBar");
-const scrollPercent = document.querySelector("#scrollPercent");
+import "./effects/topNav.js";
+import "./effects/scrollIntroCue.js";
 
 // ======================================================
-// OVERLAY ELEMENTS
+// ELEMENTS
 // ======================================================
 
-const introLogo = document.querySelector("#introLogo");
-const introLogoGroup = document.querySelector("#introLogoGroup");
-const introAboutText = document.querySelector("#introAboutText");
+const stage =
+  document.querySelector(
+    ".scrub-stage"
+  );
 
-const fruitHotspots = document.querySelector("#fruitHotspots");
+const stickyFrame =
+  document.querySelector(
+    ".sticky-frame"
+  );
 
-const lineupHeader = document.querySelector("#lineupHeader");
-const brandShowcase = document.querySelector("#brandShowcase");
-const brandNameCue = document.querySelector("#brandNameCue");
-const productBrandLabels = document.querySelector("#productBrandLabels");
+const video =
+  document.querySelector(
+    ".hero-video"
+  );
 
-const certificateCue = document.querySelector("#certificateCue");
-const oemContactCue = document.querySelector("#oemContactCue");
-const contactCue = document.querySelector("#contactCue");
+const progressBar =
+  document.querySelector(
+    "#progressBar"
+  );
+
+const scrollPercent =
+  document.querySelector(
+    "#scrollPercent"
+  );
+
+const introLogo =
+  document.querySelector(
+    "#introLogo"
+  );
+
+const introLogoGroup =
+  document.querySelector(
+    "#introLogoGroup"
+  );
+
+const introAboutText =
+  document.querySelector(
+    "#introAboutText"
+  );
+
+const fruitHotspots =
+  document.querySelector(
+    "#fruitHotspots"
+  );
+
+const lineupHeader =
+  document.querySelector(
+    "#lineupHeader"
+  );
+
+const brandShowcase =
+  document.querySelector(
+    "#brandShowcase"
+  );
+
+const brandNameCue =
+  document.querySelector(
+    "#brandNameCue"
+  );
+
+const productBrandLabels =
+  document.querySelector(
+    "#productBrandLabels"
+  );
+
+const certificateCue =
+  document.querySelector(
+    "#certificateCue"
+  );
+
+const oemContactCue =
+  document.querySelector(
+    "#oemContactCue"
+  );
+
+const contactCue =
+  document.querySelector(
+    "#contactCue"
+  );
 
 // ======================================================
-// VIDEO
+// RESPONSIVE VIDEO
 // ======================================================
 
-const videoUrl =
-  `${import.meta.env.BASE_URL}web 16_9.mp4`;
+const MOBILE_VIDEO_QUERY =
+  "(max-width: 767px) and (orientation: portrait)";
 
-const initialVideoFrame = 0.04;
+const mobileVideoMedia =
+  window.matchMedia(
+    MOBILE_VIDEO_QUERY
+  );
+
+const initialVideoFrame =
+  0.04;
+
+const getPreferredVideoMode =
+  () =>
+    mobileVideoMedia.matches
+      ? "mobile"
+      : "desktop";
+
+const getVideoUrl = (
+  mode
+) => {
+  const scene =
+    getResponsiveScene(
+      mode
+    );
+
+  return (
+    `${import.meta.env.BASE_URL}` +
+    `${scene.video}`
+  );
+};
 
 // ======================================================
-// SCROLL / VIDEO STATE
+// STATE
 // ======================================================
 
 let duration = 1;
 
 let targetTime = 0;
+
 let displayedTime = 0;
 
-let hasMetadata = false;
 let scrollProgress = 0;
+
+let hasMetadata = false;
+
 let renderQueued = false;
 
+let currentVideoMode =
+  null;
+
+let videoLoadToken = 0;
+
+let resizeTimer = null;
+
+let isFruitDetailOpen =
+  false;
+
+let frozenFruitVideoTime =
+  0;
+
+let frozenFruitScrollProgress =
+  0;
+
 // ======================================================
-// FRUIT DETAIL FREEZE STATE
+// SEEK SETTINGS
 // ======================================================
 
-let isFruitDetailOpen = false;
+/*
+ * จำกัดการสั่ง Seek ประมาณ 25 ครั้งต่อวินาที
+ * ป้องกัน Browser รับคำสั่ง currentTime ซ้อนกัน
+ */
 
-let frozenFruitVideoTime = 0;
-let frozenFruitScrollProgress = 0;
+const SEEK_MIN_INTERVAL =
+  40;
+
+/*
+ * ถ้า Scroll ข้ามมากกว่า 0.65 วินาที
+ * ให้เฟรมกระโดดตามทันที
+ */
+
+const FAST_JUMP_DISTANCE =
+  0.65;
+
+/*
+ * ระยะกลาง ใช้ความเร็วตามเฟรมสูงขึ้น
+ */
+
+const MEDIUM_JUMP_DISTANCE =
+  0.18;
+
+const SEEK_EPSILON =
+  0.025;
+
+let lastSeekRequestAt =
+  0;
+
+let pendingSeekTime =
+  null;
 
 // ======================================================
 // VIDEO SETUP
 // ======================================================
 
-if (video) {
-  video.src = videoUrl;
-  video.muted = true;
-  video.playsInline = true;
-  video.defaultMuted = true;
-  video.preload = "auto";
+const setupVideoAttributes =
+  () => {
+    if (!video) {
+      return;
+    }
 
-  video.load();
-}
+    video.muted = true;
 
-// ======================================================
-// UPDATE OVERLAYS
-// ======================================================
+    video.defaultMuted =
+      true;
 
-const updateOverlayState = () => {
-  // Background Motion Layer
-  updateAmbientBackground({
-    element: stickyFrame,
-    progress: scrollProgress,
-  });
+    video.playsInline =
+      true;
 
-  // Intro logo
-  updateIntroLogo({
-    element: introLogoGroup,
-    progress: scrollProgress,
-  });
+    video.preload =
+      "auto";
 
-  // Striving / Curated
-  updateAboutText({
-    element: introAboutText,
-    time: displayedTime,
-    progress: scrollProgress,
-  });
+    video.autoplay =
+      false;
 
-  // Fruit hotspots ช่วงประมาณ 43%
-  updateFruitHotspots({
-    element: fruitHotspots,
-    progress: scrollProgress,
-  });
+    video.loop =
+      false;
 
-  // Our House Brands
-  updateLineupHeader({
-    element: lineupHeader,
-    time: displayedTime,
-    progress: scrollProgress,
-  });
+    video.controls =
+      false;
 
-  // Product brand labels
-  updateProductBrandLabels({
-    element: productBrandLabels,
-    progress: scrollProgress,
-  });
+    video.disablePictureInPicture =
+      true;
 
-  // Brand name cue เดิม
-  updateBrandNameCue({
-    element: brandNameCue,
-    progress: scrollProgress,
-  });
+    video.setAttribute(
+      "muted",
+      ""
+    );
 
-  // Brand detail card
-  updateBrandShowcase({
-    element: brandShowcase,
-    time: displayedTime,
-    progress: scrollProgress,
-  });
+    video.setAttribute(
+      "playsinline",
+      ""
+    );
 
-  // Certificate
-  updateCertificateCue({
-    element: certificateCue,
-    progress: scrollProgress,
-  });
+    video.setAttribute(
+      "webkit-playsinline",
+      ""
+    );
 
-  // OEM
-  updateOemContactCue({
-    element: oemContactCue,
-    progress: scrollProgress,
-  });
+    video.setAttribute(
+      "preload",
+      "auto"
+    );
 
-  // Contact
-  updateContactCue({
-    element: contactCue,
-    progress: scrollProgress,
-  });
+    video.setAttribute(
+      "disablepictureinpicture",
+      ""
+    );
+  };
+
+const setVideoMode = (
+  mode
+) => {
+  currentVideoMode =
+    mode;
+
+  document.documentElement
+    .dataset
+    .videoMode =
+    mode;
+
+  if (!video) {
+    return;
+  }
+
+  video.classList.toggle(
+    "is-mobile-video",
+    mode === "mobile"
+  );
+
+  video.classList.toggle(
+    "is-desktop-video",
+    mode === "desktop"
+  );
 };
+
+// ======================================================
+// OVERLAYS
+// ======================================================
+
+const updateOverlayState =
+  () => {
+    const mode =
+      currentVideoMode ??
+      getPreferredVideoMode();
+
+    const scene =
+      getResponsiveScene(
+        mode
+      );
+
+    updateAmbientBackground({
+      element:
+        stickyFrame,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateIntroLogo({
+      element:
+        introLogoGroup,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateAboutText({
+      element:
+        introAboutText,
+
+      time:
+        displayedTime,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateFruitHotspots({
+      element:
+        fruitHotspots,
+
+      progress:
+        scrollProgress,
+
+      mode,
+
+      scene,
+    });
+
+    updateLineupHeader({
+      element:
+        lineupHeader,
+
+      time:
+        displayedTime,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateProductBrandLabels({
+      element:
+        productBrandLabels,
+
+      progress:
+        scrollProgress,
+
+      mode,
+
+      scene,
+    });
+
+    updateBrandNameCue({
+      element:
+        brandNameCue,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateBrandShowcase({
+      element:
+        brandShowcase,
+
+      time:
+        displayedTime,
+
+      progress:
+        scrollProgress,
+
+      mode,
+
+      scene,
+    });
+
+    updateCertificateCue({
+      element:
+        certificateCue,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateOemContactCue({
+      element:
+        oemContactCue,
+
+      progress:
+        scrollProgress,
+    });
+
+    updateContactCue({
+      element:
+        contactCue,
+
+      progress:
+        scrollProgress,
+    });
+  };
 
 // ======================================================
 // RENDER QUEUE
 // ======================================================
 
-const scheduleRender = () => {
-  if (renderQueued) return;
+const scheduleRender =
+  () => {
+    if (renderQueued) {
+      return;
+    }
 
-  renderQueued = true;
+    renderQueued =
+      true;
 
-  requestAnimationFrame(render);
-};
+    requestAnimationFrame(
+      render
+    );
+  };
 
 // ======================================================
-// LOGO SOURCE
+// BASIC PAGE SETUP
 // ======================================================
 
 if (introLogo) {
-  introLogo.src = logoUrl;
+  introLogo.src =
+    logoUrl;
+}
+
+if (
+  "scrollRestoration" in
+  window.history
+) {
+  window.history
+    .scrollRestoration =
+    "manual";
 }
 
 // ======================================================
-// SCROLL RESTORATION
+// SCROLL PROGRESS
 // ======================================================
 
-if ("scrollRestoration" in window.history) {
-  window.history.scrollRestoration = "manual";
-}
+const getScrollProgress =
+  () => {
+    if (!stage) {
+      return 0;
+    }
+
+    const rect =
+      stage
+        .getBoundingClientRect();
+
+    const scrollable =
+      rect.height -
+      window.innerHeight;
+
+    if (
+      scrollable <= 0
+    ) {
+      return 0;
+    }
+
+    return clamp(
+      -rect.top /
+        scrollable,
+
+      0,
+
+      1
+    );
+  };
+
+const updateProgressUi =
+  () => {
+    if (progressBar) {
+      progressBar
+        .style
+        .transform =
+        `scaleX(${scrollProgress})`;
+    }
+
+    if (scrollPercent) {
+      scrollPercent
+        .textContent =
+        `${Math.round(
+          scrollProgress *
+          100
+        )}%`;
+    }
+  };
 
 // ======================================================
-// GET SCROLL PROGRESS
+// SCROLL TO VIDEO TIMELINE
 // ======================================================
 
-const getScrollProgress = () => {
-  if (!stage) return 0;
-
-  const rect = stage.getBoundingClientRect();
-
-  const scrollable =
-    rect.height - window.innerHeight;
-
-  if (scrollable <= 0) {
-    return 0;
-  }
-
-  return clamp(
-    -rect.top / scrollable,
-    0,
-    1
-  );
-};
-
-// ======================================================
-// PERCENT DISPLAY
-// ======================================================
-
-const updatePercent = (progress) => {
-  const percent =
-    Math.round(progress * 100);
-
-  if (scrollPercent) {
-    scrollPercent.textContent =
-      `${percent}%`;
-  }
-};
-
-// ======================================================
-// SCROLL PROGRESS → VIDEO PROGRESS
-// ======================================================
-
-const getVideoProgress = (progress) => {
+const getVideoProgress = (
+  progress
+) => {
   const normalizedProgress =
-    clamp(progress, 0, 1);
+    clamp(
+      progress,
+      0,
+      1
+    );
 
   for (
     let index = 1;
-    index < VIDEO_SCROLL_KEYFRAMES.length;
+
+    index <
+    VIDEO_SCROLL_KEYFRAMES
+      .length;
+
     index += 1
   ) {
     const [
@@ -263,10 +552,12 @@ const getVideoProgress = (progress) => {
       ];
 
     if (
-      normalizedProgress <= nextScroll
+      normalizedProgress <=
+      nextScroll
     ) {
       const segmentLength =
-        nextScroll - previousScroll;
+        nextScroll -
+        previousScroll;
 
       const localProgress =
         segmentLength > 0
@@ -288,25 +579,429 @@ const getVideoProgress = (progress) => {
     }
   }
 
-  return VIDEO_SCROLL_KEYFRAMES.at(-1)[1];
+  return (
+    VIDEO_SCROLL_KEYFRAMES
+      .at(-1)[1]
+  );
 };
 
+const getTimeFromScrollProgress =
+  (
+    progress,
+
+    videoDuration =
+      duration
+  ) => {
+    const mappedProgress =
+      getVideoProgress(
+        progress
+      );
+
+    return clamp(
+      mappedProgress *
+        videoDuration,
+
+      0,
+
+      Math.max(
+        videoDuration -
+          0.01,
+
+        0
+      )
+    );
+  };
+
 // ======================================================
-// FRUIT DETAIL EVENTS
+// SEEK MANAGER
+// latest request wins
+// ======================================================
+
+const getSafeVideoTime = (
+  time
+) =>
+  clamp(
+    Number.isFinite(
+      time
+    )
+      ? time
+      : 0,
+
+    0,
+
+    Math.max(
+      duration - 0.01,
+      0
+    )
+  );
+
+const requestVideoSeek = (
+  time,
+
+  {
+    force = false,
+  } = {}
+) => {
+  if (
+    !video ||
+    !hasMetadata
+  ) {
+    return;
+  }
+
+  const safeTime =
+    getSafeVideoTime(
+      time
+    );
+
+  /*
+   * จำเฉพาะตำแหน่งล่าสุด
+   * คำสั่งก่อนหน้าที่ไม่ทันจะถูกทิ้ง
+   */
+
+  pendingSeekTime =
+    safeTime;
+
+  /*
+   * Browser กำลังถอดรหัสเฟรมเดิม
+   * รอ seeked แล้วค่อยไปคำสั่งล่าสุด
+   */
+
+  if (
+    video.seeking &&
+    !force
+  ) {
+    return;
+  }
+
+  const now =
+    performance.now();
+
+  if (
+    !force &&
+    now -
+      lastSeekRequestAt <
+      SEEK_MIN_INTERVAL
+  ) {
+    return;
+  }
+
+  if (
+    Math.abs(
+      video.currentTime -
+      safeTime
+    ) <=
+    SEEK_EPSILON
+  ) {
+    pendingSeekTime =
+      null;
+
+    return;
+  }
+
+  const nextTime =
+    pendingSeekTime;
+
+  pendingSeekTime =
+    null;
+
+  lastSeekRequestAt =
+    now;
+
+  try {
+    video.currentTime =
+      nextTime;
+  } catch (error) {
+    pendingSeekTime =
+      nextTime;
+
+    console.warn(
+      "[CHUA] Video seek was skipped.",
+      error
+    );
+  }
+};
+
+const flushPendingVideoSeek =
+  () => {
+    if (
+      pendingSeekTime ===
+        null ||
+      !video ||
+      !hasMetadata ||
+      video.seeking
+    ) {
+      return;
+    }
+
+    requestVideoSeek(
+      pendingSeekTime,
+
+      {
+        force: true,
+      }
+    );
+  };
+
+// ======================================================
+// LOAD / SWITCH VIDEO
+// ======================================================
+
+const loadResponsiveVideo =
+  ({
+    mode =
+      getPreferredVideoMode(),
+
+    preserveTimeline =
+      true,
+
+    resetScroll =
+      false,
+  } = {}) => {
+    if (!video) {
+      return;
+    }
+
+    const nextMode =
+      mode === "mobile"
+        ? "mobile"
+        : "desktop";
+
+    const nextUrl =
+      getVideoUrl(
+        nextMode
+      );
+
+    if (
+      currentVideoMode ===
+        nextMode &&
+      video.getAttribute(
+        "src"
+      ) === nextUrl &&
+      hasMetadata
+    ) {
+      return;
+    }
+
+    const preservedScrollProgress =
+      resetScroll
+        ? 0
+        : preserveTimeline
+          ? getScrollProgress()
+          : scrollProgress;
+
+    const loadToken =
+      ++videoLoadToken;
+
+    hasMetadata =
+      false;
+
+    pendingSeekTime =
+      null;
+
+    setVideoMode(
+      nextMode
+    );
+
+    document.documentElement
+      .classList
+      .add(
+        "is-video-switching"
+      );
+
+    const handleLoadedMetadata =
+      () => {
+        if (
+          loadToken !==
+          videoLoadToken
+        ) {
+          return;
+        }
+
+        duration =
+          video.duration ||
+          1;
+
+        hasMetadata =
+          true;
+
+        if (
+          resetScroll
+        ) {
+          window.scrollTo(
+            0,
+            0
+          );
+        }
+
+        scrollProgress =
+          clamp(
+            preservedScrollProgress,
+            0,
+            1
+          );
+
+        const nextTime =
+          scrollProgress <=
+          0.0001
+            ? Math.min(
+                initialVideoFrame,
+
+                Math.max(
+                  duration -
+                    0.01,
+
+                  0
+                )
+              )
+            : getTimeFromScrollProgress(
+                scrollProgress,
+
+                duration
+              );
+
+        targetTime =
+          nextTime;
+
+        displayedTime =
+          nextTime;
+
+        if (
+          isFruitDetailOpen
+        ) {
+          frozenFruitScrollProgress =
+            scrollProgress;
+
+          frozenFruitVideoTime =
+            nextTime;
+        }
+
+        requestVideoSeek(
+          nextTime,
+
+          {
+            force: true,
+          }
+        );
+
+        video.pause();
+
+        updateProgressUi();
+
+        updateOverlayState();
+
+        document.documentElement
+          .classList
+          .remove(
+            "is-video-switching"
+          );
+
+        document.documentElement
+          .classList
+          .add(
+            "is-ready"
+          );
+
+        scheduleRender();
+
+        console.info(
+          `[CHUA] ${nextMode} video ready: ${nextUrl}`
+        );
+      };
+
+    const handleVideoError =
+      () => {
+        if (
+          loadToken !==
+          videoLoadToken
+        ) {
+          return;
+        }
+
+        document.documentElement
+          .classList
+          .remove(
+            "is-video-switching"
+          );
+
+        /*
+         * มือถือโหลดไม่ได้
+         * ให้ใช้ Desktop แทน
+         */
+
+        if (
+          nextMode ===
+          "mobile"
+        ) {
+          console.warn(
+            "[CHUA] Mobile video could not be loaded. Falling back to desktop video."
+          );
+
+          loadResponsiveVideo({
+            mode:
+              "desktop",
+
+            preserveTimeline:
+              true,
+
+            resetScroll:
+              false,
+          });
+
+          return;
+        }
+
+        console.error(
+          `[CHUA] Video could not be loaded: ${nextUrl}`
+        );
+      };
+
+    video.addEventListener(
+      "loadedmetadata",
+
+      handleLoadedMetadata,
+
+      {
+        once: true,
+      }
+    );
+
+    video.addEventListener(
+      "error",
+
+      handleVideoError,
+
+      {
+        once: true,
+      }
+    );
+
+    video.src =
+      nextUrl;
+
+    video.load();
+  };
+
+// ======================================================
+// FRUIT DETAIL FREEZE
 // ======================================================
 
 window.addEventListener(
   "fruit-detail:open",
+
   () => {
-    if (isFruitDetailOpen) return;
+    if (
+      isFruitDetailOpen
+    ) {
+      return;
+    }
 
-    isFruitDetailOpen = true;
+    isFruitDetailOpen =
+      true;
 
-    // เก็บเฟรมที่กำลังแสดงจริง
     frozenFruitVideoTime =
       displayedTime;
 
-    // เก็บเปอร์เซ็นต์ก่อนเปิด Modal
     frozenFruitScrollProgress =
       scrollProgress;
 
@@ -322,68 +1017,144 @@ window.addEventListener(
     ) {
       video.pause();
 
-      video.currentTime =
-        frozenFruitVideoTime;
+      requestVideoSeek(
+        frozenFruitVideoTime,
+
+        {
+          force: true,
+        }
+      );
     }
   }
 );
 
 window.addEventListener(
   "fruit-detail:close",
-  () => {
-    isFruitDetailOpen = false;
 
-    // คืน Scroll Progress เดิม
+  () => {
+    isFruitDetailOpen =
+      false;
+
     scrollProgress =
       frozenFruitScrollProgress;
 
-    /*
-     * displayedTime เริ่มต่อจากเฟรมที่หยุดไว้
-     * ส่วน targetTime ใช้ตำแหน่ง Scroll จริง
-     * เพื่อให้วิดีโอค่อย ๆ กลับเข้าสู่ Timeline
-     */
     displayedTime =
       frozenFruitVideoTime;
 
     targetTime =
-      getVideoProgress(
+      getTimeFromScrollProgress(
         frozenFruitScrollProgress
-      ) * duration;
+      );
 
-    if (
-      video &&
-      hasMetadata
-    ) {
-      video.currentTime =
-        frozenFruitVideoTime;
-    }
+    requestVideoSeek(
+      frozenFruitVideoTime,
 
-    if (progressBar) {
-      progressBar.style.transform =
-        `scaleX(${scrollProgress})`;
-    }
+      {
+        force: true,
+      }
+    );
 
-    updatePercent(scrollProgress);
+    updateProgressUi();
+
     updateOverlayState();
+
     scheduleRender();
   }
 );
 
 // ======================================================
-// UPDATE TARGET
+// UPDATE TARGET FROM SCROLL
 // ======================================================
 
-const updateTarget = () => {
-  /*
-   * Modal เปิดอยู่:
-   * ไม่อ่านค่า Scroll ใหม่
-   * ไม่อัปเดตเฟรมวิดีโอ
-   */
-  if (isFruitDetailOpen) {
-    targetTime =
+const updateTarget =
+  () => {
+    if (
+      isFruitDetailOpen
+    ) {
+      targetTime =
+        frozenFruitVideoTime;
+
+      displayedTime =
+        frozenFruitVideoTime;
+
+      if (
+        video &&
+        hasMetadata &&
+        Math.abs(
+          video.currentTime -
+          frozenFruitVideoTime
+        ) >
+          0.01
+      ) {
+        requestVideoSeek(
+          frozenFruitVideoTime,
+
+          {
+            force: true,
+          }
+        );
+      }
+
+      return;
+    }
+
+    scrollProgress =
+      getScrollProgress();
+
+    if (
+      hasMetadata
+    ) {
+      targetTime =
+        getTimeFromScrollProgress(
+          scrollProgress
+        );
+
+      /*
+       * Scroll ข้ามไกล
+       * ให้เฟรมตามทันที
+       */
+
+      if (
+        Math.abs(
+          targetTime -
+          displayedTime
+        ) >
+        FAST_JUMP_DISTANCE
+      ) {
+        displayedTime =
+          targetTime;
+
+        requestVideoSeek(
+          displayedTime
+        );
+      }
+    }
+
+    updateProgressUi();
+
+    updateOverlayState();
+
+    scheduleRender();
+  };
+
+// ======================================================
+// ADAPTIVE RENDER
+// ======================================================
+
+function render(
+  now =
+    performance.now()
+) {
+  renderQueued =
+    false;
+
+  if (
+    isFruitDetailOpen
+  ) {
+    displayedTime =
       frozenFruitVideoTime;
 
-    displayedTime =
+    targetTime =
       frozenFruitVideoTime;
 
     if (
@@ -392,140 +1163,171 @@ const updateTarget = () => {
       Math.abs(
         video.currentTime -
         frozenFruitVideoTime
-      ) > 0.01
+      ) >
+        0.01
     ) {
-      video.currentTime =
-        frozenFruitVideoTime;
+      requestVideoSeek(
+        frozenFruitVideoTime,
+
+        {
+          force: true,
+        }
+      );
     }
 
     return;
   }
 
-  scrollProgress =
-    getScrollProgress();
+  const difference =
+    targetTime -
+    displayedTime;
 
-  targetTime =
-    getVideoProgress(
-      scrollProgress
-    ) * duration;
-
-  if (progressBar) {
-    progressBar.style.transform =
-      `scaleX(${scrollProgress})`;
-  }
-
-  updatePercent(scrollProgress);
-  updateOverlayState();
-  scheduleRender();
-};
-
-// ======================================================
-// DEBUG LABEL
-// ======================================================
-
-console.info(
-  "[CHUA] 16:9 timeline + fruit hotspots + modal freeze loaded"
-);
-
-document.documentElement.dataset.chuaPatch =
-  "new-video-fruit-hotspots-modal-freeze";
-
-// ======================================================
-// VIDEO RENDER
-// ======================================================
-
-const render = () => {
-  renderQueued = false;
+  const distance =
+    Math.abs(
+      difference
+    );
 
   /*
-   * Modal เปิด:
-   * ค้างวิดีโอไว้ที่เฟรมเดิมตลอด
+   * ระยะไกล:
+   * กระโดดตาม Scroll ทันที
+   *
+   * ระยะกลาง:
+   * เคลื่อนตามเร็ว
+   *
+   * ระยะใกล้:
+   * เคลื่อนนุ่ม
    */
-  if (isFruitDetailOpen) {
+
+  if (
+    distance >
+    FAST_JUMP_DISTANCE
+  ) {
     displayedTime =
-      frozenFruitVideoTime;
+      targetTime;
+  } else {
+    const followStrength =
+      distance >
+      MEDIUM_JUMP_DISTANCE
+        ? 0.46
+        : 0.24;
 
-    targetTime =
-      frozenFruitVideoTime;
-
-    if (
-      video &&
-      hasMetadata &&
-      Math.abs(
-        video.currentTime -
-        frozenFruitVideoTime
-      ) > 0.01
-    ) {
-      video.currentTime =
-        frozenFruitVideoTime;
-    }
-
-    return;
+    displayedTime +=
+      difference *
+      followStrength;
   }
-
-  /*
-   * ทำให้วิดีโอค่อย ๆ วิ่งตาม Scroll
-   * ลด 0.1 ลง = นุ่มและช้าขึ้น
-   * เพิ่ม 0.1 ขึ้น = ตอบสนองไวขึ้น
-   */
-  displayedTime +=
-    (
-      targetTime -
-      displayedTime
-    ) * 0.1;
 
   if (
     video &&
     hasMetadata &&
-    Number.isFinite(displayedTime) &&
-    Math.abs(
-      video.currentTime -
+    Number.isFinite(
       displayedTime
-    ) > 0.025
+    )
   ) {
-    video.currentTime =
-      displayedTime;
+    if (
+      now -
+        lastSeekRequestAt >=
+      SEEK_MIN_INTERVAL
+    ) {
+      requestVideoSeek(
+        displayedTime
+      );
+    } else {
+      pendingSeekTime =
+        getSafeVideoTime(
+          displayedTime
+        );
+    }
   }
 
   if (
     Math.abs(
       targetTime -
       displayedTime
-    ) > 0.025
+    ) >
+    0.018
   ) {
     scheduleRender();
   }
-};
+}
 
 // ======================================================
 // RESET
 // ======================================================
 
-const resetToTop = () => {
-  window.scrollTo(0, 0);
+const resetToTop =
+  () => {
+    window.scrollTo(
+      0,
+      0
+    );
 
-  targetTime = 0;
-  displayedTime = 0;
-  scrollProgress = 0;
+    targetTime =
+      0;
 
-  isFruitDetailOpen = false;
-  frozenFruitVideoTime = 0;
-  frozenFruitScrollProgress = 0;
+    displayedTime =
+      0;
 
-  document.documentElement.classList.remove(
-    "is-fruit-modal-open"
-  );
+    scrollProgress =
+      0;
 
-  if (
-    video &&
-    hasMetadata
-  ) {
-    video.currentTime =
-      initialVideoFrame;
-  }
+    isFruitDetailOpen =
+      false;
 
-  updateTarget();
-};
+    frozenFruitVideoTime =
+      0;
+
+    frozenFruitScrollProgress =
+      0;
+
+    pendingSeekTime =
+      null;
+
+    lastSeekRequestAt =
+      0;
+
+    document.documentElement
+      .classList
+      .remove(
+        "is-fruit-modal-open"
+      );
+
+    if (
+      video &&
+      hasMetadata
+    ) {
+      const safeInitialTime =
+        Math.min(
+          initialVideoFrame,
+
+          Math.max(
+            duration -
+              0.01,
+
+            0
+          )
+        );
+
+      targetTime =
+        safeInitialTime;
+
+      displayedTime =
+        safeInitialTime;
+
+      requestVideoSeek(
+        safeInitialTime,
+
+        {
+          force: true,
+        }
+      );
+    }
+
+    updateProgressUi();
+
+    updateOverlayState();
+
+    scheduleRender();
+  };
 
 // ======================================================
 // VIDEO EVENTS
@@ -533,31 +1335,74 @@ const resetToTop = () => {
 
 if (video) {
   video.addEventListener(
-    "loadedmetadata",
-    () => {
-      duration =
-        video.duration || 1;
+    "seeked",
 
-      hasMetadata = true;
-
-      if (
-        video.duration >
-        initialVideoFrame
-      ) {
-        video.currentTime =
-          initialVideoFrame;
-      }
-
-      resetToTop();
-    }
+    flushPendingVideoSeek
   );
 
   video.addEventListener(
     "canplay",
+
     () => {
       video.pause();
     }
   );
+
+  video.addEventListener(
+    "play",
+
+    () => {
+      video.pause();
+    }
+  );
+}
+
+// ======================================================
+// RESPONSIVE EVENTS
+// ======================================================
+
+const handleResponsiveVideoChange =
+  () => {
+    const preferredMode =
+      getPreferredVideoMode();
+
+    if (
+      preferredMode ===
+      currentVideoMode
+    ) {
+      updateTarget();
+
+      return;
+    }
+
+    loadResponsiveVideo({
+      mode:
+        preferredMode,
+
+      preserveTimeline:
+        true,
+
+      resetScroll:
+        false,
+    });
+  };
+
+if (
+  typeof mobileVideoMedia
+    .addEventListener ===
+  "function"
+) {
+  mobileVideoMedia
+    .addEventListener(
+      "change",
+
+      handleResponsiveVideoChange
+    );
+} else {
+  mobileVideoMedia
+    .addListener(
+      handleResponsiveVideoChange
+    );
 }
 
 // ======================================================
@@ -566,7 +1411,9 @@ if (video) {
 
 window.addEventListener(
   "scroll",
+
   updateTarget,
+
   {
     passive: true,
   }
@@ -574,16 +1421,64 @@ window.addEventListener(
 
 window.addEventListener(
   "resize",
+
   () => {
-    updateTarget();
+    window.clearTimeout(
+      resizeTimer
+    );
+
+    resizeTimer =
+      window.setTimeout(
+        () => {
+          handleResponsiveVideoChange();
+
+          updateTarget();
+        },
+
+        160
+      );
+  }
+);
+
+window.addEventListener(
+  "orientationchange",
+
+  () => {
+    window.setTimeout(
+      handleResponsiveVideoChange,
+
+      180
+    );
   }
 );
 
 window.addEventListener(
   "pageshow",
+
   () => {
     requestAnimationFrame(
-      resetToTop
+      () => {
+        const preferredMode =
+          getPreferredVideoMode();
+
+        if (
+          preferredMode !==
+          currentVideoMode
+        ) {
+          loadResponsiveVideo({
+            mode:
+              preferredMode,
+
+            preserveTimeline:
+              false,
+
+            resetScroll:
+              true,
+          });
+        } else {
+          resetToTop();
+        }
+      }
     );
   }
 );
@@ -592,12 +1487,40 @@ window.addEventListener(
 // INITIAL LOAD
 // ======================================================
 
-updateTarget();
+setupVideoAttributes();
 
-requestAnimationFrame(() => {
-  document.documentElement.classList.add(
-    "is-ready"
-  );
+loadResponsiveVideo({
+  mode:
+    getPreferredVideoMode(),
 
-  scheduleRender();
+  preserveTimeline:
+    false,
+
+  resetScroll:
+    true,
 });
+
+updateProgressUi();
+
+updateOverlayState();
+
+requestAnimationFrame(
+  () => {
+    document.documentElement
+      .classList
+      .add(
+        "is-ready"
+      );
+
+    scheduleRender();
+  }
+);
+
+console.info(
+  "[CHUA] Responsive desktop/mobile adaptive video scrub loaded"
+);
+
+document.documentElement
+  .dataset
+  .chuaPatch =
+  "responsive-adaptive-video-scrub";

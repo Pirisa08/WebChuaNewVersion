@@ -445,3 +445,311 @@
     transition: none !important;
   }
 }
+/* ======================================================
+   PRODUCT SEO TOPLINE — BOTTOM POSITION
+
+   ย้ายข้อความ SEO จากด้านบนลงด้านล่าง
+   โดยไม่กระทบป้าย POLNAPA / LONGANIC / MATSURI
+   ====================================================== */
+
+.product-labels-topline {
+  top: auto !important;
+
+  bottom:
+    clamp(
+      38px,
+      6vh,
+      64px
+    ) !important;
+
+  width:
+    min(
+      88vw,
+      1180px
+    ) !important;
+
+  align-items:
+    center;
+
+  transform:
+    translate3d(
+      -50%,
+      -8px,
+      0
+    );
+}
+
+/* ข้อความหลัก */
+
+.product-labels-topline p {
+  color:
+    rgba(
+      194,
+      119,
+      0,
+      0.94
+    );
+
+  font-size:
+    clamp(
+      10px,
+      0.72vw,
+      13px
+    );
+
+  font-weight:
+    680;
+
+  letter-spacing:
+    0.18em;
+
+  white-space:
+    nowrap;
+}
+
+/* กลุ่ม Keyword */
+
+.product-labels-topline-tags {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    6px;
+}
+
+.product-labels-topline-tags span {
+  padding:
+    6px
+    10px;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.62
+    );
+
+  font-size:
+    clamp(
+      7px,
+      0.5vw,
+      9px
+    );
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.08em;
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (
+  min-width: 768px
+) and (
+  max-width: 1080px
+) {
+  .product-labels-topline {
+    top:
+      auto !important;
+
+    bottom:
+      54px !important;
+
+    width:
+      calc(
+        100vw -
+        44px
+      ) !important;
+
+    gap:
+      9px;
+  }
+
+  .product-labels-topline p {
+    font-size:
+      9px;
+
+    letter-spacing:
+      0.14em;
+  }
+
+  .product-labels-topline-tags span {
+    padding:
+      5px
+      8px;
+
+    font-size:
+      7px;
+  }
+}
+
+/* ======================================================
+   MOBILE PORTRAIT
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .product-labels-topline {
+    top:
+      auto !important;
+
+    bottom:
+      max(
+        50px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          40px
+        )
+      ) !important;
+
+    display:
+      grid !important;
+
+    justify-items:
+      center;
+
+    gap:
+      7px !important;
+
+    width:
+      calc(
+        100vw -
+        30px
+      ) !important;
+
+    transform:
+      translate3d(
+        -50%,
+        -5px,
+        0
+      );
+  }
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline::before,
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline::after {
+    display:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline p {
+    max-width:
+      92vw;
+
+    overflow:
+      hidden;
+
+    font-size:
+      clamp(
+        7px,
+        1.9vw,
+        8.5px
+      ) !important;
+
+    letter-spacing:
+      0.1em !important;
+
+    text-align:
+      center;
+
+    text-overflow:
+      ellipsis;
+
+    white-space:
+      nowrap;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline-tags {
+    display:
+      flex !important;
+
+    flex-wrap:
+      wrap;
+
+    justify-content:
+      center;
+
+    gap:
+      4px !important;
+
+    max-width:
+      92vw;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline-tags span {
+    padding:
+      4px
+      6px !important;
+
+    font-size:
+      5.5px !important;
+
+    letter-spacing:
+      0.06em !important;
+  }
+}
+
+/* มือถือขนาดเล็ก */
+
+@media (
+  max-width: 390px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .product-labels-topline {
+    bottom:
+      max(
+        46px,
+        calc(
+          env(
+            safe-area-inset-bottom
+          ) +
+          36px
+        )
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline-tags {
+    max-width:
+      88vw;
+  }
+
+  /*
+   * ซ่อน Keyword ที่ยาวที่สุด
+   * ป้องกันมือถือแน่นเกินไป
+   */
+
+  html[data-video-mode="mobile"]
+  .product-labels-topline-tags
+  span:last-child {
+    display:
+      none;
+  }
+}

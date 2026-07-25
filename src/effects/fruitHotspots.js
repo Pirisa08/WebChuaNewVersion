@@ -493,6 +493,10 @@ const openModal = (
 ) => {
   if (
     !state.modal ||
+    !state.modalShell ||
+    !state.modalTitle ||
+    !state.modalCopy ||
+    !state.modalGrid ||
     !product ||
     state.isModalOpen
   ) {
@@ -507,11 +511,38 @@ const openModal = (
       ? document.activeElement
       : null;
 
+  /* ------------------------------------------------------
+     MODAL CONTENT
+     ------------------------------------------------------ */
+
   state.modalTitle.textContent =
     product.detailTitle;
 
   state.modalCopy.textContent =
     product.detailCopy;
+
+  /* ------------------------------------------------------
+     MODAL THEME + LAYOUT DATA
+
+     CSS จะอ่านค่า:
+     data-fruit-id="strawberry"
+     data-variant-count="2"
+     ------------------------------------------------------ */
+
+  state.modalShell.dataset.fruitId =
+    product.id;
+
+  state.modalShell.dataset.variantCount =
+    String(product.variants.length);
+
+  state.modal.setAttribute(
+    "aria-label",
+    `${product.detailTitle} product details`
+  );
+
+  /* ------------------------------------------------------
+     PRODUCT GRID
+     ------------------------------------------------------ */
 
   state.modalGrid.className =
     [
@@ -524,6 +555,10 @@ const openModal = (
       .map(createVariantCard)
       .join("");
 
+  /* ------------------------------------------------------
+     OPEN MODAL
+     ------------------------------------------------------ */
+
   state.modal.hidden = false;
 
   lockPageScroll();
@@ -534,6 +569,8 @@ const openModal = (
       {
         detail: {
           fruitId: product.id,
+          variantCount:
+            product.variants.length,
         },
       }
     )
@@ -588,6 +625,21 @@ const closeModal = (element) => {
 
     state.modal.hidden = true;
 
+    /* ----------------------------------------------------
+       RESET MODAL THEME + CONTENT
+       ---------------------------------------------------- */
+
+    if (state.modalShell) {
+      delete state.modalShell.dataset.fruitId;
+      delete state.modalShell.dataset.variantCount;
+    }
+
+    state.modal.removeAttribute(
+      "aria-label"
+    );
+
+    state.modalGrid?.replaceChildren();
+
     unlockPageScroll();
 
     window.dispatchEvent(
@@ -621,7 +673,7 @@ const ensureContent = (element) => {
   element.innerHTML = `
     <section
       class="fruit-hotspot-scene"
-      aria-label="Explore dried fruit details"
+      aria-label="Explore Thai dried fruit products, grades and ingredients"
     >
       <div class="fruit-hotspot-hint">
         <span
@@ -631,11 +683,11 @@ const ensureContent = (element) => {
 
         <span class="fruit-hotspot-hint-copy">
           <strong>
-            Explore the fruit collection
+            Explore Our Thai Dried Fruit Collection
           </strong>
 
           <small>
-            Click a fruit to discover grades &amp; ingredients
+            Discover grades, ingredients, OEM &amp; private label options
           </small>
         </span>
       </div>
@@ -654,7 +706,7 @@ const ensureContent = (element) => {
                 "
                 type="button"
                 data-fruit-id="${hotspot.id}"
-                aria-label="View ${product.shortName} grades and ingredients"
+                aria-label="Explore ${product.shortName} dried fruit grades and ingredients"
               >
                 <span
                   class="fruit-hotspot-focus"
@@ -719,7 +771,7 @@ const ensureContent = (element) => {
         <header class="fruit-modal-copy">
           <div>
             <p>
-              FRUIT DETAIL
+              THAI DRIED FRUIT DETAIL
             </p>
 
             <h2 id="fruitModalTitle"></h2>
@@ -817,28 +869,110 @@ const ensureContent = (element) => {
 };
 
 /* ======================================================
+   RESPONSIVE SCENE LAYOUT
+   ====================================================== */
+
+const applyResponsiveHotspotLayout = ({
+  element,
+  mode = "desktop",
+  scene = null,
+}) => {
+  if (!element) return;
+
+  const positions =
+    scene?.fruitHotspots;
+
+  element.dataset.sceneMode =
+    mode;
+
+  if (!positions) return;
+
+  Object.entries(positions)
+    .forEach(([fruitId, position]) => {
+      const hotspot =
+        element.querySelector(
+          `.fruit-hotspot-${fruitId}`
+        );
+
+      if (!hotspot) return;
+
+      if (Number.isFinite(position.left)) {
+        hotspot.style.left =
+          `${position.left}%`;
+      }
+
+      if (Number.isFinite(position.top)) {
+        hotspot.style.top =
+          `${position.top}%`;
+      }
+
+      if (
+        Number.isFinite(
+          position.width
+        )
+      ) {
+        hotspot.style.setProperty(
+          "--hotspot-width",
+          `${position.width}%`
+        );
+      }
+
+      if (
+        Number.isFinite(
+          position.height
+        )
+      ) {
+        hotspot.style.setProperty(
+          "--hotspot-height",
+          `${position.height}%`
+        );
+      }
+    });
+};
+
+/* ======================================================
    UPDATE HOTSPOTS
    ====================================================== */
 
 export const updateFruitHotspots = ({
   element,
   progress = 0,
+  mode = "desktop",
+  scene = null,
 }) => {
-  if (!element) return;
+  if (!element) {
+    return;
+  }
 
   ensureContent(element);
 
-  const cueIn = smoothstep(
-    FRUIT_HOTSPOT_IN_START,
-    FRUIT_HOTSPOT_IN_FULL,
-    progress
-  );
+  /*
+   * เลือกตำแหน่ง Hotspot
+   * ระหว่าง Desktop 16:9 และ Mobile 9:16
+   */
+  applyResponsiveHotspotLayout({
+    element,
+    mode,
+    scene,
+  });
 
-  const cueOut = smoothstep(
-    FRUIT_HOTSPOT_OUT_START,
-    FRUIT_HOTSPOT_OUT_END,
-    progress
-  );
+  /* ------------------------------------------------------
+     SCENE VISIBILITY
+     ------------------------------------------------------ */
+
+  const cueIn =
+    smoothstep(
+      FRUIT_HOTSPOT_IN_START,
+      FRUIT_HOTSPOT_IN_FULL,
+      progress
+    );
+
+  const cueOut =
+    smoothstep(
+      FRUIT_HOTSPOT_OUT_START,
+      FRUIT_HOTSPOT_OUT_END,
+      progress
+    );
 
   const opacity =
     cueIn *
@@ -858,9 +992,13 @@ export const updateFruitHotspots = ({
       ? "visible"
       : "hidden";
 
+  /*
+   * เริ่มกด Hotspot ได้ทันที
+   * เมื่อ Hotspot เริ่มมองเห็น
+   */
   element.style.pointerEvents =
     state.isModalOpen ||
-    opacity > 0.55
+    opacity > 0.02
       ? "auto"
       : "none";
 
@@ -871,35 +1009,52 @@ export const updateFruitHotspots = ({
       : "true"
   );
 
-  const scene =
+  /* ------------------------------------------------------
+     FRUIT HOTSPOT SCENE
+
+     ใช้ชื่อ sceneElement แทน scene
+     เพราะ scene ถูกใช้เป็น Parameter อยู่แล้ว
+     ------------------------------------------------------ */
+
+  const sceneElement =
     element.querySelector(
       ".fruit-hotspot-scene"
     );
 
-  if (scene) {
+  if (sceneElement) {
     const sceneY =
-      (1 - cueIn) * 12 +
-      cueOut * -8;
+      (1 - cueIn) *
+        12 +
+      cueOut *
+        -8;
 
     const sceneBlur =
-      (1 - cueIn) * 5 +
-      cueOut * 5;
+      (1 - cueIn) *
+        5 +
+      cueOut *
+        5;
 
-    scene.style.opacity =
+    sceneElement.style.opacity =
       opacity.toFixed(3);
 
-    scene.style.transform =
-      `translate3d(
+    sceneElement.style.transform = `
+      translate3d(
         0,
         ${sceneY.toFixed(2)}px,
         0
-      )`;
+      )
+    `;
 
-    scene.style.filter =
-      `blur(${sceneBlur.toFixed(
-        2
-      )}px)`;
+    sceneElement.style.filter = `
+      blur(
+        ${sceneBlur.toFixed(2)}px
+      )
+    `;
   }
+
+  /* ------------------------------------------------------
+     INDIVIDUAL HOTSPOTS
+     ------------------------------------------------------ */
 
   const hotspots =
     element.querySelectorAll(
@@ -907,14 +1062,25 @@ export const updateFruitHotspots = ({
     );
 
   hotspots.forEach(
-    (hotspot, index) => {
+    (
+      hotspot,
+      index
+    ) => {
+      /*
+       * ให้แต่ละ Hotspot
+       * ปรากฏเหลื่อมกันเล็กน้อย
+       */
+
       const itemStart =
         FRUIT_HOTSPOT_IN_START +
-        index * 0.0022;
+        index *
+          0.0022;
 
       const itemEnd =
         Math.min(
-          itemStart + 0.016,
+          itemStart +
+            0.016,
+
           FRUIT_HOTSPOT_IN_FULL
         );
 
@@ -928,8 +1094,11 @@ export const updateFruitHotspots = ({
       const itemOut =
         smoothstep(
           FRUIT_HOTSPOT_OUT_START +
-            index * 0.0006,
+            index *
+              0.0006,
+
           FRUIT_HOTSPOT_OUT_END,
+
           progress
         );
 
@@ -942,13 +1111,17 @@ export const updateFruitHotspots = ({
         );
 
       const itemY =
-        (1 - itemIn) * 14 +
-        itemOut * -8;
+        (1 - itemIn) *
+          14 +
+        itemOut *
+          -8;
 
       const itemScale =
         0.965 +
-        itemIn * 0.035 -
-        itemOut * 0.025;
+        itemIn *
+          0.035 -
+        itemOut *
+          0.025;
 
       hotspot.style.opacity =
         itemOpacity.toFixed(3);
@@ -958,17 +1131,19 @@ export const updateFruitHotspots = ({
           ? "visible"
           : "hidden";
 
-      hotspot.style.transform =
-        `translate3d(
+      hotspot.style.transform = `
+        translate3d(
           -50%,
-          calc(-50% + ${itemY.toFixed(
-            2
-          )}px),
+          calc(
+            -50% +
+            ${itemY.toFixed(2)}px
+          ),
           0
         )
-        scale(${itemScale.toFixed(
-          3
-        )})`;
+        scale(
+          ${itemScale.toFixed(3)}
+        )
+      `;
     }
   );
 };

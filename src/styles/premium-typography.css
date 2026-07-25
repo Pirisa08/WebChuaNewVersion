@@ -1,0 +1,2806 @@
+/* ======================================================
+   CHUA PREMIUM TYPOGRAPHY — FINAL OVERRIDE
+
+   ใช้กับ:
+   1. Striving to understand...
+   2. Curated fruits from Thailand...
+   3. Our House Brands
+   4. Product Brand Labels
+   5. Brand Detail Card
+
+   คงข้อความและ Animation เดิมทั้งหมด
+   เปลี่ยนเฉพาะ Typography และความพรีเมียม
+   ====================================================== */
+
+:root {
+  --chua-premium-font:
+    "IBM Plex Sans Thai",
+    "Inter",
+    "Montserrat",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* ใช้ Font System เดียวกันทุกส่วน */
+.intro-about-text,
+.lineup-header,
+.product-brand-labels,
+.brand-showcase {
+  font-family: var(--chua-premium-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+/* ======================================================
+   1. ABOUT STORY
+   Striving to understand your needs...
+   ====================================================== */
+
+.about-panel::before {
+  opacity: 0.52;
+  filter: blur(30px);
+}
+
+/* เส้นด้านซ้ายให้เรียบและบางลง */
+.about-panel::after {
+  left: -18px;
+  top: 7px;
+
+  width: 3px;
+  height: clamp(68px, 7vw, 110px);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--orange) 0%,
+      rgba(245, 164, 0, 0.34) 65%,
+      transparent 100%
+    );
+
+  box-shadow: none;
+}
+
+/* Kicker เช่น WHO WE ARE */
+.about-kicker {
+  gap: 10px;
+
+  margin:
+    0
+    0
+    clamp(15px, 1.4vw, 22px);
+
+  color: rgba(194, 119, 0, 0.92);
+
+  font-size:
+    clamp(
+      9px,
+      0.68vw,
+      11px
+    );
+
+  font-weight: 680;
+  letter-spacing: 0.22em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.about-kicker::after {
+  width: clamp(52px, 5vw, 88px);
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(245, 164, 0, 0.78),
+      transparent
+    );
+}
+
+.about-ingredient-panel .about-kicker::before {
+  top: -20px;
+
+  color: rgba(20, 39, 74, 0.4);
+
+  font-size:
+    clamp(
+      8px,
+      0.55vw,
+      10px
+    );
+
+  font-weight: 580;
+  letter-spacing: 0.17em;
+}
+
+/* ระยะระหว่างบรรทัด */
+.about-lines {
+  gap: clamp(2px, 0.28vw, 6px);
+}
+
+/* Base Typography */
+.about-line {
+  color: var(--navy);
+
+  font-size:
+    clamp(
+      38px,
+      3.8vw,
+      68px
+    );
+
+  font-weight: 760;
+  letter-spacing: -0.042em;
+  line-height: 1;
+
+  text-shadow: none;
+}
+
+/* Striving to understand */
+.about-story-panel .about-line-1 {
+  max-width: 10ch;
+
+  font-size:
+    clamp(
+      44px,
+      4.1vw,
+      74px
+    );
+
+  font-weight: 760;
+  line-height: 0.99;
+}
+
+/* your needs */
+.about-story-panel .about-line-2 {
+  max-width: 9ch;
+
+  margin-top: 0.08em;
+
+  color: var(--orange);
+
+  font-size:
+    clamp(
+      48px,
+      4.35vw,
+      78px
+    );
+
+  font-weight: 730;
+  line-height: 0.96;
+
+  text-shadow: none;
+}
+
+/* before you understand them. */
+.about-story-panel .about-line-3 {
+  max-width: 16ch;
+
+  margin-top: clamp(8px, 0.65vw, 13px);
+
+  color: var(--navy);
+
+  font-size:
+    clamp(
+      30px,
+      2.85vw,
+      50px
+    );
+
+  font-weight: 640;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+/* รองรับกรณี JS ใส่ is-accent */
+.about-line.is-accent {
+  color: var(--orange);
+  text-shadow: none;
+}
+
+/* เส้นใต้ข้อความ */
+.about-lines::after {
+  left: 1px;
+  bottom: -22px;
+
+  width: clamp(72px, 7vw, 120px);
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--orange),
+      rgba(245, 164, 0, 0)
+    );
+
+  opacity: 0.78;
+}
+
+/* ======================================================
+   2. CURATED FRUITS
+   ====================================================== */
+
+.ingredient-title {
+  width: max-content;
+  max-width: min(43vw, 15ch);
+
+  margin: 0;
+
+  color: var(--navy);
+
+  font-size:
+    clamp(
+      40px,
+      4vw,
+      72px
+    );
+
+  font-weight: 760;
+  letter-spacing: -0.045em;
+  line-height: 0.99;
+
+  text-transform: none;
+  text-wrap: balance;
+  text-shadow: none;
+}
+
+.ingredient-title span {
+  display: block;
+
+  margin-top: 0.08em;
+
+  color: var(--orange);
+
+  font-weight: 720;
+}
+
+.ingredient-copy {
+  max-width: 52ch;
+
+  margin:
+    clamp(15px, 1.2vw, 20px)
+    0
+    0;
+
+  color: rgba(20, 39, 74, 0.68);
+
+  font-size:
+    clamp(
+      12px,
+      0.88vw,
+      15px
+    );
+
+  font-weight: 520;
+  letter-spacing: 0;
+  line-height: 1.62;
+}
+
+/* Ingredient chips */
+.ingredient-list {
+  gap: 8px;
+
+  margin-top:
+    clamp(
+      18px,
+      1.7vw,
+      28px
+    );
+}
+
+.ingredient-list span {
+  min-height: 34px;
+
+  border-color: rgba(20, 39, 74, 0.07);
+
+  padding: 8px 14px;
+
+  background: rgba(255, 255, 255, 0.62);
+
+  box-shadow:
+    0 7px 18px rgba(20, 39, 74, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+  color: rgba(20, 39, 74, 0.76);
+
+  font-size:
+    clamp(
+      10px,
+      0.74vw,
+      13px
+    );
+
+  font-weight: 580;
+  letter-spacing: 0.01em;
+}
+
+/* ======================================================
+   3. OUR HOUSE BRANDS
+   ====================================================== */
+
+.lineup-title {
+  color: var(--navy);
+
+  font-weight: 760;
+  letter-spacing: -0.048em;
+  line-height: 0.98;
+
+  text-shadow: none;
+}
+
+.lineup-title-bridge {
+  max-width: min(52vw, 740px);
+
+  font-size:
+    clamp(
+      48px,
+      4.75vw,
+      86px
+    );
+
+  font-weight: 760;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.lineup-title-house-row {
+  display: block;
+
+  margin-top: 0.06em;
+}
+
+.lineup-title-bridge .lineup-title-accent {
+  display: inline;
+
+  color: var(--orange);
+
+  font-weight: 720;
+  letter-spacing: -0.045em;
+}
+
+.lineup-kicker {
+  margin-bottom: 10px;
+
+  color: rgba(194, 119, 0, 0.9);
+
+  font-size:
+    clamp(
+      9px,
+      0.62vw,
+      11px
+    );
+
+  font-weight: 680;
+  letter-spacing: 0.22em;
+}
+
+/* ======================================================
+   4. PRODUCT BRAND LABELS
+   ====================================================== */
+
+/* หัวข้อด้านบน */
+.product-labels-topline p {
+  color: rgba(194, 119, 0, 0.92);
+
+  font-size:
+    clamp(
+      10px,
+      0.76vw,
+      13px
+    );
+
+  font-weight: 680;
+  letter-spacing: 0.22em;
+  line-height: 1;
+
+  text-shadow: none;
+}
+
+/* เส้นซ้าย-ขวาของหัวข้อ */
+.product-labels-topline::before,
+.product-labels-topline::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(245, 164, 0, 0.3),
+      transparent
+    );
+}
+
+/* DRIED FRUIT / OEM / PRIVATE LABEL / EXPORT */
+.product-labels-topline-tags span {
+  border-color: rgba(20, 39, 74, 0.065);
+
+  padding: 6px 10px;
+
+  background: rgba(255, 255, 255, 0.64);
+
+  box-shadow:
+    0 6px 18px rgba(20, 39, 74, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+
+  color: rgba(20, 39, 74, 0.58);
+
+  font-size:
+    clamp(
+      7px,
+      0.54vw,
+      9px
+    );
+
+  font-weight: 580;
+  letter-spacing: 0.1em;
+}
+
+/* Bubble ชื่อแบรนด์ */
+.product-brand-label {
+  column-gap: 9px;
+
+  border-color: rgba(20, 39, 74, 0.07);
+
+  padding:
+    10px
+    16px
+    10px
+    13px;
+
+  background: rgba(255, 255, 255, 0.79);
+
+  box-shadow:
+    0 12px 30px rgba(20, 39, 74, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+.product-brand-label::before {
+  width: 9px;
+  height: 9px;
+
+  box-shadow:
+    0 0 0 4px rgba(245, 164, 0, 0.12),
+    0 5px 12px rgba(20, 39, 74, 0.09);
+}
+
+.product-brand-label::after {
+  width: 1px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(245, 164, 0, 0.72),
+      rgba(245, 164, 0, 0.24),
+      transparent
+    );
+
+  box-shadow: none;
+}
+
+/* POLNAPA / LONGANIC / MATSURI */
+.product-brand-label strong {
+  color: var(--navy);
+
+  font-size:
+    clamp(
+      14px,
+      1.04vw,
+      19px
+    );
+
+  font-weight: 720;
+  letter-spacing: 0.09em;
+  line-height: 1;
+}
+
+/* Description ใต้ชื่อแบรนด์ */
+.product-brand-label span {
+  margin-top: 4px;
+
+  color: rgba(20, 39, 74, 0.53);
+
+  font-size:
+    clamp(
+      8px,
+      0.62vw,
+      11px
+    );
+
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+/* ======================================================
+   5. BRAND DETAIL CARD
+   ====================================================== */
+
+.brand-copy {
+  border-color: rgba(20, 39, 74, 0.065);
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 250, 239, 0.84)
+    );
+
+  box-shadow:
+    0 18px 48px rgba(20, 39, 74, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* OUR HOUSE BRANDS */
+.brand-kicker {
+  color: rgba(194, 119, 0, 0.92);
+
+  font-size:
+    clamp(
+      9px,
+      0.62vw,
+      11px
+    );
+
+  font-weight: 680;
+  letter-spacing: 0.21em;
+  line-height: 1;
+}
+
+/* 01 / 03 */
+.brand-count {
+  border-color: rgba(20, 39, 74, 0.065);
+
+  background: rgba(255, 255, 255, 0.56);
+
+  color: rgba(20, 39, 74, 0.46);
+
+  font-size:
+    clamp(
+      8px,
+      0.6vw,
+      10px
+    );
+
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+/* POLNAPA */
+.brand-name {
+  color: var(--navy);
+
+  font-size:
+    clamp(
+      34px,
+      3.15vw,
+      54px
+    );
+
+  font-weight: 760;
+  letter-spacing: -0.052em;
+  line-height: 0.98;
+
+  text-shadow: none;
+}
+
+/* “ผลนภา”: A Thai Dried Fruit Collection */
+.brand-category {
+  margin-top:
+    clamp(
+      10px,
+      0.8vw,
+      14px
+    );
+
+  color: var(--orange-deep);
+
+  font-size:
+    clamp(
+      15px,
+      1.15vw,
+      20px
+    );
+
+  font-weight: 680;
+  letter-spacing: -0.022em;
+  line-height: 1.22;
+}
+
+/* Description */
+.brand-description {
+  max-width: 58ch;
+
+  margin-top:
+    clamp(
+      11px,
+      0.85vw,
+      15px
+    );
+
+  color: rgba(20, 39, 74, 0.68);
+
+  font-size:
+    clamp(
+      11px,
+      0.78vw,
+      14px
+    );
+
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.58;
+}
+
+/* Brand Type / Brand Mood */
+.brand-extra-grid {
+  gap: 9px;
+
+  margin-top:
+    clamp(
+      15px,
+      1.15vw,
+      19px
+    );
+}
+
+.brand-extra-card {
+  border-color: rgba(20, 39, 74, 0.06);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.52);
+
+  padding: 11px 12px;
+
+  box-shadow:
+    0 6px 18px rgba(20, 39, 74, 0.025),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.brand-extra-card p {
+  margin-bottom: 6px;
+
+  color: rgba(20, 39, 74, 0.4);
+
+  font-size: 8px;
+  font-weight: 580;
+  letter-spacing: 0.15em;
+}
+
+.brand-extra-card strong {
+  color: rgba(20, 39, 74, 0.82);
+
+  font-size:
+    clamp(
+      9px,
+      0.68vw,
+      11px
+    );
+
+  font-weight: 620;
+  line-height: 1.38;
+}
+
+/* Thai Dried Fruit Products */
+.brand-products {
+  margin-top:
+    clamp(
+      14px,
+      1.1vw,
+      19px
+    );
+}
+
+.brand-products-label {
+  margin-bottom: 7px;
+
+  color: rgba(20, 39, 74, 0.42);
+
+  font-size:
+    clamp(
+      8px,
+      0.6vw,
+      10px
+    );
+
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+/* รายการสินค้า */
+.brand-products-list {
+  color: rgba(20, 39, 74, 0.86);
+
+  font-size:
+    clamp(
+      10px,
+      0.72vw,
+      12px
+    );
+
+  font-weight: 620;
+  line-height: 1.5;
+}
+
+/* Progress bar */
+.brand-dot {
+  width: 24px;
+  height: 3px;
+
+  background: rgba(20, 39, 74, 0.11);
+}
+
+.brand-dot.is-active {
+  width: 50px;
+}
+
+/* All brands cards */
+.all-brand-card-top span,
+.all-brand-card-top strong,
+.all-brand-meta p {
+  font-weight: 620;
+}
+
+.all-brand-card h2 {
+  font-weight: 760;
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+}
+
+.all-brand-category {
+  font-weight: 670;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+}
+
+.all-brand-description {
+  font-weight: 500;
+  line-height: 1.58;
+}
+
+.all-brand-meta strong {
+  font-weight: 620;
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 1180px) and (min-width: 768px) {
+  .about-story-panel .about-line-1 {
+    font-size:
+      clamp(
+        40px,
+        4.6vw,
+        64px
+      );
+  }
+
+  .about-story-panel .about-line-2 {
+    font-size:
+      clamp(
+        43px,
+        4.9vw,
+        68px
+      );
+  }
+
+  .about-story-panel .about-line-3 {
+    font-size:
+      clamp(
+        27px,
+        3.1vw,
+        42px
+      );
+  }
+
+  .ingredient-title {
+    font-size:
+      clamp(
+        38px,
+        4.7vw,
+        64px
+      );
+  }
+
+  .lineup-title-bridge {
+    font-size:
+      clamp(
+        44px,
+        5.7vw,
+        72px
+      );
+  }
+
+  .brand-name {
+    font-size:
+      clamp(
+        30px,
+        3.7vw,
+        46px
+      );
+  }
+}
+
+/* ======================================================
+   MOBILE 9:16 — FINAL OVERRIDE
+
+   ต้อง Import ไฟล์นี้หลัง mobile-scenes.css
+   ====================================================== */
+
+@media (max-width: 767px) and (orientation: portrait) {
+  /* ----------------------------------------------------
+     ABOUT STORY
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .about-panel::before {
+    opacity: 0.34 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-panel::after {
+    display: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-lines {
+    width: min(84vw, 340px) !important;
+    gap: 2px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line {
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    font-weight: 760 !important;
+    letter-spacing: -0.04em !important;
+
+    text-align: center !important;
+    text-shadow: none !important;
+  }
+
+  /* Striving to understand */
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-1 {
+    max-width: 10.2ch !important;
+
+    font-size:
+      clamp(
+        30px,
+        8.1vw,
+        37px
+      ) !important;
+
+    font-weight: 760 !important;
+    line-height: 0.99 !important;
+  }
+
+  /* your needs */
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-2 {
+    max-width: 8ch !important;
+
+    margin-top: 5px !important;
+
+    color: var(--orange) !important;
+
+    font-size:
+      clamp(
+        34px,
+        9.1vw,
+        42px
+      ) !important;
+
+    font-weight: 720 !important;
+    line-height: 0.94 !important;
+  }
+
+  /* before you understand them. */
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-3 {
+    max-width: 11.5ch !important;
+
+    margin-top: 7px !important;
+
+    color: var(--navy) !important;
+
+    font-size:
+      clamp(
+        23px,
+        6.4vw,
+        29px
+      ) !important;
+
+    font-weight: 620 !important;
+    line-height: 1.02 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-lines::after {
+    left: 50% !important;
+    bottom: -17px !important;
+
+    width: 56px !important;
+    height: 2px !important;
+
+    transform: translateX(-50%) !important;
+  }
+
+  /* ----------------------------------------------------
+     CURATED FRUITS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .ingredient-title {
+    width: auto !important;
+    max-width: 11.5ch !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    font-size:
+      clamp(
+        27px,
+        7.8vw,
+        35px
+      ) !important;
+
+    font-weight: 750 !important;
+    letter-spacing: -0.04em !important;
+    line-height: 1 !important;
+
+    text-align: center !important;
+    text-transform: none !important;
+    text-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .ingredient-title span {
+    margin-top: 3px !important;
+
+    font-weight: 710 !important;
+  }
+
+  /* ----------------------------------------------------
+     OUR HOUSE BRANDS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .lineup-title,
+
+  html[data-video-mode="mobile"]
+  .lineup-title-bridge {
+    font-size:
+      clamp(
+        29px,
+        8.2vw,
+        38px
+      ) !important;
+
+    font-weight: 750 !important;
+    letter-spacing: -0.045em !important;
+    line-height: 0.98 !important;
+
+    text-align: center !important;
+    text-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .lineup-title-house-row {
+    margin-top: 3px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .lineup-title-accent {
+    font-weight: 710 !important;
+  }
+
+  /* ----------------------------------------------------
+     PRODUCT BRAND LABELS
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .product-brand-label {
+    column-gap: 5px !important;
+
+    padding:
+      6px
+      8px !important;
+
+    border-radius: 14px !important;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.86
+      ) !important;
+
+    box-shadow:
+      0 7px 18px
+      rgba(
+        20,
+        39,
+        74,
+        0.075
+      ),
+      inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-brand-label::before {
+    width: 6px !important;
+    height: 6px !important;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(
+        245,
+        164,
+        0,
+        0.1
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-brand-label strong {
+    font-size:
+      clamp(
+        7.5px,
+        2.1vw,
+        9px
+      ) !important;
+
+    font-weight: 690 !important;
+    letter-spacing: 0.055em !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .product-brand-label span {
+    max-width: 29vw !important;
+
+    margin-top: 1px !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.5
+      ) !important;
+
+    font-size:
+      clamp(
+        5.5px,
+        1.55vw,
+        6.5px
+      ) !important;
+
+    font-weight: 460 !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* ----------------------------------------------------
+     BRAND DETAIL CARD
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .brand-copy {
+    border-color:
+      rgba(
+        20,
+        39,
+        74,
+        0.055
+      ) !important;
+
+    border-radius: 19px !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(
+          255,
+          255,
+          255,
+          0.94
+        ),
+        rgba(
+          255,
+          249,
+          236,
+          0.9
+        )
+      ) !important;
+
+    box-shadow:
+      0 11px 30px
+      rgba(
+        20,
+        39,
+        74,
+        0.085
+      ),
+      inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.95
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-kicker {
+    font-size: 6px !important;
+    font-weight: 650 !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-count {
+    font-size: 6px !important;
+    font-weight: 560 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-name {
+    font-size:
+      clamp(
+        22px,
+        6.2vw,
+        28px
+      ) !important;
+
+    font-weight: 750 !important;
+    letter-spacing: -0.045em !important;
+    line-height: 0.98 !important;
+
+    text-shadow: none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-category {
+    margin-top: 5px !important;
+
+    color: var(--orange-deep) !important;
+
+    font-size:
+      clamp(
+        9.5px,
+        2.7vw,
+        11.5px
+      ) !important;
+
+    font-weight: 640 !important;
+    letter-spacing: -0.015em !important;
+    line-height: 1.22 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-description {
+    margin-top: 6px !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.66
+      ) !important;
+
+    font-size:
+      clamp(
+        7.5px,
+        2.05vw,
+        8.7px
+      ) !important;
+
+    font-weight: 470 !important;
+    line-height: 1.42 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-label {
+    font-size: 5.5px !important;
+    font-weight: 560 !important;
+    letter-spacing: 0.13em !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-products-list {
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.82
+      ) !important;
+
+    font-size:
+      clamp(
+        7px,
+        1.9vw,
+        8px
+      ) !important;
+
+    font-weight: 580 !important;
+    line-height: 1.35 !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-dot {
+    height: 2px !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (max-width: 360px) and (orientation: portrait) {
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-1 {
+    font-size: 29px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-2 {
+    font-size: 33px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .about-story-panel
+  .about-line-3 {
+    font-size: 22px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .ingredient-title {
+    font-size: 26px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .lineup-title,
+
+  html[data-video-mode="mobile"]
+  .lineup-title-bridge {
+    font-size: 28px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .brand-name {
+    font-size: 21px !important;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-line,
+  .ingredient-title,
+  .lineup-title,
+  .product-brand-label,
+  .brand-showcase {
+    transition: none !important;
+  }
+}
+
+/* ======================================================
+   CHUA INTRO LOGO — PREMIUM TYPOGRAPHY
+
+   ปรับ:
+   - โลโก้ CHUA
+   - Main Tagline
+   - Subtagline
+   - Desktop / Tablet / Mobile
+
+   คงข้อความและ Animation เดิมทั้งหมด
+   ====================================================== */
+
+/* ใช้ Font System เดียวกับเว็บไซต์ */
+.intro-logo-group,
+.intro-tagline,
+.intro-subtagline {
+  font-family:
+    var(
+      --chua-premium-font,
+      "IBM Plex Sans Thai",
+      "Inter",
+      "Montserrat",
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif
+    );
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    geometricPrecision;
+}
+
+/* ======================================================
+   LOGO GROUP
+   ====================================================== */
+
+.intro-logo-group {
+  width:
+    min(
+      53vw,
+      610px
+    );
+
+  max-width:
+    84%;
+}
+
+/* ลดโลโก้ลงเล็กน้อยเพื่อให้ข้อความด้านล่างหายใจ */
+.intro-logo-card {
+  width:
+    min(
+      96%,
+      510px
+    );
+}
+
+.intro-logo {
+  width:
+    89%;
+
+  height:
+    89%;
+
+  filter:
+    drop-shadow(
+      0
+      12px
+      30px
+      rgba(
+        20,
+        39,
+        74,
+        0.035
+      )
+    );
+}
+
+/* ลดความเข้มของแสงด้านหลัง */
+.intro-logo-group::before {
+  opacity:
+    calc(
+      var(
+        --intro-glow-opacity,
+        0
+      ) *
+      0.72
+    );
+
+  filter:
+    blur(34px);
+}
+
+/* วงด้านนอกบางลง */
+.intro-logo-group::after {
+  border-color:
+    rgba(
+      232,
+      149,
+      47,
+      0.14
+    );
+
+  box-shadow:
+    none;
+}
+
+/* วงหายใจ */
+.intro-breath-ring {
+  border-color:
+    rgba(
+      232,
+      149,
+      47,
+      0.12
+    );
+
+  box-shadow:
+    0
+    18px
+    50px
+    rgba(
+      232,
+      149,
+      47,
+      0.035
+    );
+}
+
+.intro-breath-ring-2 {
+  border-color:
+    rgba(
+      95,
+      109,
+      55,
+      0.1
+    );
+}
+
+/* เส้น Orbit ให้ดูเบาลง */
+.intro-orbit-line {
+  border-color:
+    rgba(
+      245,
+      164,
+      0,
+      0.14
+    );
+}
+
+.intro-orbit-line-2 {
+  border-color:
+    rgba(
+      20,
+      39,
+      74,
+      0.075
+    );
+}
+
+/* ======================================================
+   MAIN TAGLINE
+
+   Reintroducing Thai Delicacy...
+   ====================================================== */
+
+.intro-tagline {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    fit-content;
+
+  max-width:
+    min(
+      86vw,
+      680px
+    );
+
+  margin:
+    clamp(
+      -15px,
+      -0.9vw,
+      -8px
+    )
+    0
+    0;
+
+  padding:
+    8px
+    18px;
+
+  border:
+    1px solid
+    rgba(
+      194,
+      119,
+      0,
+      0.14
+    );
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      251,
+      241,
+      0.64
+    );
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.84
+    );
+
+  font-size:
+    clamp(
+      11px,
+      0.88vw,
+      14px
+    );
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    -0.005em;
+
+  line-height:
+    1.35;
+
+  text-align:
+    center;
+
+  text-wrap:
+    balance;
+
+  box-shadow:
+    0
+    8px
+    24px
+    rgba(
+      20,
+      39,
+      74,
+      0.04
+    ),
+    inset
+    0
+    1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+}
+
+/* ======================================================
+   SUBTAGLINE
+
+   FROM THAI FRUITS TO GLOBAL MARKETS
+   ====================================================== */
+
+.intro-subtagline {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    clamp(
+      8px,
+      0.8vw,
+      14px
+    );
+
+  width:
+    fit-content;
+
+  max-width:
+    min(
+      82vw,
+      580px
+    );
+
+  margin:
+    clamp(
+      7px,
+      0.65vw,
+      10px
+    )
+    0
+    0;
+
+  padding:
+    0
+    6px;
+
+  border:
+    0;
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      20,
+      39,
+      74,
+      0.56
+    );
+
+  font-size:
+    clamp(
+      8px,
+      0.62vw,
+      10px
+    );
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.17em;
+
+  line-height:
+    1.2;
+
+  text-align:
+    center;
+
+  text-transform:
+    uppercase;
+
+  box-shadow:
+    none;
+}
+
+/* เส้นบางซ้ายและขวาของ Subtagline */
+.intro-subtagline::before,
+.intro-subtagline::after {
+  content:
+    "";
+
+  display:
+    block;
+
+  flex:
+    0
+    0
+    auto;
+
+  width:
+    clamp(
+      28px,
+      3vw,
+      52px
+    );
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        245,
+        164,
+        0,
+        0.45
+      )
+    );
+}
+
+.intro-subtagline::after {
+  transform:
+    scaleX(-1);
+}
+
+/* ======================================================
+   DECORATION REFINEMENT
+   ====================================================== */
+
+/* Spark เล็กและเบาลง */
+.intro-spark {
+  width:
+    5px;
+
+  height:
+    5px;
+
+  background:
+    rgba(
+      245,
+      164,
+      0,
+      0.82
+    );
+
+  box-shadow:
+    0
+    0
+    10px
+    rgba(
+      245,
+      164,
+      0,
+      0.38
+    );
+}
+
+.intro-spark-2,
+.intro-spark-3 {
+  width:
+    4px;
+
+  height:
+    4px;
+}
+
+/* Fruit Chips ลดเงา */
+.intro-fruit-chip {
+  box-shadow:
+    0
+    8px
+    18px
+    rgba(
+      20,
+      39,
+      74,
+      0.055
+    ),
+    inset
+    0
+    1px
+    2px
+    rgba(
+      255,
+      255,
+      255,
+      0.52
+    );
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (
+  max-width: 1180px
+) and (
+  min-width: 768px
+) {
+  .intro-logo-group {
+    width:
+      min(
+        56vw,
+        560px
+      );
+  }
+
+  .intro-logo-card {
+    width:
+      min(
+        94%,
+        470px
+      );
+  }
+
+  .intro-tagline {
+    max-width:
+      76vw;
+
+    padding:
+      7px
+      15px;
+
+    font-size:
+      clamp(
+        10px,
+        1vw,
+        13px
+      );
+  }
+
+  .intro-subtagline {
+    font-size:
+      clamp(
+        7px,
+        0.72vw,
+        9px
+      );
+
+    letter-spacing:
+      0.15em;
+  }
+}
+
+/* ======================================================
+   MOBILE 9:16
+
+   ต้องอยู่ท้าย premium-typography.css
+   เพื่อทับ mobile-scenes.css
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .intro-logo-group {
+    width:
+      min(
+        65vw,
+        286px
+      ) !important;
+
+    max-width:
+      65vw !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-logo-card {
+    width:
+      min(
+        86%,
+        245px
+      ) !important;
+
+    overflow:
+      visible !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-logo {
+    width:
+      86% !important;
+
+    height:
+      86% !important;
+  }
+
+  /* Main Tagline */
+
+  html[data-video-mode="mobile"]
+  .intro-tagline {
+    width:
+      fit-content !important;
+
+    max-width:
+      80vw !important;
+
+    margin-top:
+      -4px !important;
+
+    padding:
+      6px
+      10px !important;
+
+    border-color:
+      rgba(
+        194,
+        119,
+        0,
+        0.12
+      ) !important;
+
+    background:
+      rgba(
+        255,
+        251,
+        241,
+        0.7
+      ) !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.82
+      ) !important;
+
+    font-size:
+      clamp(
+        8px,
+        2.15vw,
+        10px
+      ) !important;
+
+    font-weight:
+      610 !important;
+
+    letter-spacing:
+      -0.005em !important;
+
+    line-height:
+      1.3 !important;
+
+    box-shadow:
+      0
+      5px
+      16px
+      rgba(
+        20,
+        39,
+        74,
+        0.035
+      ),
+      inset
+      0
+      1px
+      0
+      rgba(
+        255,
+        255,
+        255,
+        0.86
+      ) !important;
+  }
+
+  /* Subtagline */
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline {
+    gap:
+      6px !important;
+
+    max-width:
+      78vw !important;
+
+    margin-top:
+      6px !important;
+
+    padding:
+      0
+      3px !important;
+
+    border:
+      0 !important;
+
+    background:
+      transparent !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.52
+      ) !important;
+
+    font-size:
+      clamp(
+        5.5px,
+        1.55vw,
+        7px
+      ) !important;
+
+    font-weight:
+      580 !important;
+
+    letter-spacing:
+      0.13em !important;
+
+    line-height:
+      1.2 !important;
+
+    box-shadow:
+      none !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline::before,
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline::after {
+    width:
+      18px !important;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(
+          245,
+          164,
+          0,
+          0.38
+        )
+      );
+  }
+
+  /* ลดวงตกแต่งให้ไม่แย่งโลโก้ */
+
+  html[data-video-mode="mobile"]
+  .intro-logo-group::before,
+
+  html[data-video-mode="mobile"]
+  .intro-logo-group::after,
+
+  html[data-video-mode="mobile"]
+  .intro-breath-rings,
+
+  html[data-video-mode="mobile"]
+  .intro-orbit {
+    width:
+      min(
+        90%,
+        260px
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-spark {
+    width:
+      4px !important;
+
+    height:
+      4px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-fruit-chip {
+    scale:
+      0.64;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .intro-logo-group {
+    width:
+      62vw !important;
+
+    max-width:
+      62vw !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-logo-card {
+    width:
+      84% !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-tagline {
+    max-width:
+      82vw !important;
+
+    padding:
+      5px
+      9px !important;
+
+    font-size:
+      7.5px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline {
+    font-size:
+      5.5px !important;
+
+    letter-spacing:
+      0.11em !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline::before,
+
+  html[data-video-mode="mobile"]
+  .intro-subtagline::after {
+    width:
+      13px !important;
+  }
+}
+
+/* ======================================================
+   CHUA TOP NAV — PREMIUM LARGE & CLEAR
+
+   Desktop + Tablet + Mobile
+   ต้องวางท้าย premium-typography.css
+   ====================================================== */
+
+/* ======================================================
+   SHARED
+   ====================================================== */
+
+.top-nav,
+.top-nav-brand,
+.top-nav-menu-shell,
+.top-nav-link {
+  font-family:
+    var(
+      --chua-premium-font,
+      "IBM Plex Sans Thai",
+      "Inter",
+      "Montserrat",
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif
+    );
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+/*
+ * ทำให้ Navbar ยังคงลดความเด่นตามฉากได้
+ * แต่ไม่จางจนอ่านยาก
+ */
+
+.top-nav-brand,
+.top-nav-menu-shell {
+  opacity:
+    calc(
+      0.72 +
+      var(
+        --nav-content-opacity,
+        1
+      ) *
+      0.28
+    ) !important;
+
+  transition:
+    opacity 180ms ease,
+    transform 220ms ease;
+}
+
+/* ======================================================
+   DESKTOP
+   ====================================================== */
+
+@media (min-width: 901px) {
+  /* ----------------------------------------------------
+     POSITION
+     ---------------------------------------------------- */
+
+  .top-nav-brand,
+  .top-nav-menu-shell {
+    top:
+      clamp(
+        20px,
+        2.5vh,
+        32px
+      ) !important;
+
+    min-height:
+      clamp(
+        50px,
+        4vw,
+        58px
+      ) !important;
+  }
+
+  /* ----------------------------------------------------
+     LOGO CONTAINER
+     ---------------------------------------------------- */
+
+  .top-nav-brand {
+    left:
+      clamp(
+        32px,
+        3.2vw,
+        60px
+      ) !important;
+
+    min-width:
+      clamp(
+        154px,
+        12vw,
+        194px
+      ) !important;
+
+    height:
+      clamp(
+        50px,
+        4vw,
+        58px
+      ) !important;
+
+    padding:
+      0
+      clamp(
+        16px,
+        1.35vw,
+        22px
+      ) !important;
+  }
+
+  /* ----------------------------------------------------
+     LOGO IMAGE
+     ---------------------------------------------------- */
+
+  .top-nav-logo {
+    width:
+      clamp(
+        118px,
+        9vw,
+        154px
+      ) !important;
+
+    max-height:
+      38px !important;
+
+    opacity:
+      1 !important;
+
+    filter:
+      contrast(1.42)
+      brightness(0.63)
+      saturate(0.78)
+      drop-shadow(
+        0
+        1px
+        3px
+        rgba(
+          255,
+          255,
+          255,
+          0.95
+        )
+      )
+      drop-shadow(
+        0
+        5px
+        14px
+        rgba(
+          20,
+          39,
+          74,
+          0.1
+        )
+      ) !important;
+
+    mix-blend-mode:
+      multiply;
+  }
+
+  /* ----------------------------------------------------
+     MENU CONTAINER
+     ---------------------------------------------------- */
+
+  .top-nav-menu-shell {
+    right:
+      clamp(
+        32px,
+        3.2vw,
+        60px
+      ) !important;
+
+    height:
+      clamp(
+        50px,
+        4vw,
+        58px
+      ) !important;
+
+    padding:
+      0
+      clamp(
+        11px,
+        0.9vw,
+        15px
+      ) !important;
+  }
+
+  .top-nav-menu {
+    gap:
+      clamp(
+        21px,
+        2.15vw,
+        36px
+      ) !important;
+
+    padding:
+      0
+      clamp(
+        9px,
+        0.85vw,
+        13px
+      ) !important;
+  }
+
+  /* ----------------------------------------------------
+     BRAND / OEM / CONTACT
+     ---------------------------------------------------- */
+
+  .top-nav-link {
+    height:
+      clamp(
+        40px,
+        3.5vw,
+        47px
+      ) !important;
+
+    gap:
+      7px !important;
+
+    padding:
+      0
+      3px !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.74
+      ) !important;
+
+    font-size:
+      clamp(
+        12px,
+        0.86vw,
+        15px
+      ) !important;
+
+    font-weight:
+      720 !important;
+
+    letter-spacing:
+      0.085em !important;
+
+    line-height:
+      1 !important;
+
+    text-shadow:
+      0
+      1px
+      4px
+      rgba(
+        255,
+        255,
+        255,
+        0.92
+      ) !important;
+  }
+
+  .top-nav-link.is-active {
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.98
+      ) !important;
+  }
+
+  /* จุดสีส้ม Active */
+
+  .top-nav-link::before {
+    width:
+      6px !important;
+
+    height:
+      6px !important;
+
+    box-shadow:
+      0
+      0
+      0
+      4px
+      rgba(
+        245,
+        164,
+        0,
+        0.11
+      ) !important;
+  }
+
+  /* เส้นใต้ Active */
+
+  .top-nav-link::after {
+    bottom:
+      2px !important;
+
+    height:
+      2px !important;
+  }
+
+  /*
+   * หลังกรอบหาย
+   * อย่าให้ข้อความที่ไม่ Active จางเกินไป
+   */
+
+  .top-nav.is-frameless
+  .top-nav-link:not(.is-active):not(:hover) {
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.68
+      ) !important;
+  }
+
+  .top-nav.is-content-heavy
+  .top-nav-link:not(.is-active):not(:hover) {
+    opacity:
+      0.84 !important;
+  }
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (
+  min-width: 768px
+) and (
+  max-width: 900px
+) {
+  .top-nav-brand,
+  .top-nav-menu-shell {
+    top:
+      14px !important;
+
+    height:
+      48px !important;
+  }
+
+  .top-nav-brand {
+    left:
+      16px !important;
+
+    min-width:
+      116px !important;
+
+    padding:
+      0
+      12px !important;
+  }
+
+  .top-nav-logo {
+    width:
+      96px !important;
+
+    max-height:
+      30px !important;
+
+    opacity:
+      1 !important;
+
+    filter:
+      contrast(1.38)
+      brightness(0.65)
+      saturate(0.8)
+      drop-shadow(
+        0
+        4px
+        12px
+        rgba(
+          20,
+          39,
+          74,
+          0.09
+        )
+      ) !important;
+  }
+
+  .top-nav-menu-shell {
+    right:
+      16px !important;
+
+    padding:
+      0
+      8px !important;
+  }
+
+  .top-nav-menu {
+    gap:
+      18px !important;
+
+    padding:
+      0
+      7px !important;
+  }
+
+  .top-nav-link {
+    height:
+      38px !important;
+
+    font-size:
+      11px !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.075em !important;
+  }
+}
+
+/* ======================================================
+   MOBILE 9:16
+   ====================================================== */
+
+@media (
+  max-width: 767px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .top-nav-brand,
+
+  html[data-video-mode="mobile"]
+  .top-nav-menu-shell {
+    top:
+      max(
+        10px,
+        env(
+          safe-area-inset-top
+        )
+      ) !important;
+
+    height:
+      42px !important;
+
+    min-height:
+      42px !important;
+  }
+
+  /* ----------------------------------------------------
+     MOBILE LOGO
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .top-nav-brand {
+    left:
+      max(
+        10px,
+        env(
+          safe-area-inset-left
+        )
+      ) !important;
+
+    min-width:
+      76px !important;
+
+    padding:
+      0
+      8px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-logo {
+    width:
+      70px !important;
+
+    max-height:
+      25px !important;
+
+    opacity:
+      1 !important;
+
+    filter:
+      contrast(1.4)
+      brightness(0.64)
+      saturate(0.78)
+      drop-shadow(
+        0
+        1px
+        3px
+        rgba(
+          255,
+          255,
+          255,
+          0.95
+        )
+      )
+      drop-shadow(
+        0
+        3px
+        9px
+        rgba(
+          20,
+          39,
+          74,
+          0.08
+        )
+      ) !important;
+
+    mix-blend-mode:
+      multiply;
+  }
+
+  /* ----------------------------------------------------
+     MOBILE MENU
+     ---------------------------------------------------- */
+
+  html[data-video-mode="mobile"]
+  .top-nav-menu-shell {
+    right:
+      max(
+        9px,
+        env(
+          safe-area-inset-right
+        )
+      ) !important;
+
+    padding:
+      0
+      7px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-menu {
+    gap:
+      clamp(
+        9px,
+        2.8vw,
+        13px
+      ) !important;
+
+    padding:
+      0
+      4px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-link {
+    height:
+      36px !important;
+
+    gap:
+      4px !important;
+
+    padding:
+      0
+      1px !important;
+
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.72
+      ) !important;
+
+    font-size:
+      clamp(
+        8.5px,
+        2.3vw,
+        10px
+      ) !important;
+
+    font-weight:
+      700 !important;
+
+    letter-spacing:
+      0.06em !important;
+
+    text-shadow:
+      0
+      1px
+      3px
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-link.is-active {
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.98
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-link::before {
+    width:
+      4px !important;
+
+    height:
+      4px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav.is-frameless
+  .top-nav-link:not(.is-active):not(:hover) {
+    color:
+      rgba(
+        20,
+        39,
+        74,
+        0.66
+      ) !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav.is-content-heavy
+  .top-nav-link:not(.is-active):not(:hover) {
+    opacity:
+      0.86 !important;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+   ====================================================== */
+
+@media (
+  max-width: 360px
+) and (
+  orientation: portrait
+) {
+  html[data-video-mode="mobile"]
+  .top-nav-brand {
+    min-width:
+      69px !important;
+
+    padding:
+      0
+      6px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-logo {
+    width:
+      64px !important;
+
+    max-height:
+      23px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-menu {
+    gap:
+      7px !important;
+
+    padding:
+      0
+      2px !important;
+  }
+
+  html[data-video-mode="mobile"]
+  .top-nav-link {
+    font-size:
+      8px !important;
+
+    letter-spacing:
+      0.045em !important;
+  }
+}

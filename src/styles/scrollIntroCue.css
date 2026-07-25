@@ -1,0 +1,2559 @@
+/* ======================================================
+   CHUA SCROLL INTRO CUE
+   แสดงช่วง Scroll 0%
+   ====================================================== */
+
+.scroll-intro-cue {
+  --scroll-cue-opacity: 1;
+  --scroll-cue-y: 0px;
+  --scroll-cue-scale: 1;
+  --scroll-cue-blur: 0px;
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom:
+    clamp(
+      22px,
+      4vh,
+      48px
+    );
+
+  z-index: 80;
+
+  width:
+    min(
+      calc(100vw - 32px),
+      540px
+    );
+
+  opacity:
+    var(
+      --scroll-cue-opacity
+    );
+
+  visibility: visible;
+
+  transform:
+    translate3d(
+      -50%,
+      var(--scroll-cue-y),
+      0
+    )
+    scale(
+      var(--scroll-cue-scale)
+    );
+
+  transform-origin:
+    center bottom;
+
+  filter:
+    blur(
+      var(--scroll-cue-blur)
+    );
+
+  pointer-events: none;
+
+  will-change:
+    opacity,
+    transform,
+    filter;
+
+  transition:
+    visibility
+    0s
+    linear
+    120ms;
+}
+
+/* ======================================================
+   CLICKABLE BUTTON
+   ====================================================== */
+
+.scroll-intro-cue__button {
+  position: relative;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap:
+    clamp(
+      12px,
+      1.5vw,
+      18px
+    );
+
+  min-height:
+    clamp(
+      68px,
+      6vw,
+      82px
+    );
+
+  border:
+    1px solid
+    rgba(
+      232,
+      149,
+      47,
+      0.2
+    );
+
+  border-radius:
+    clamp(
+      22px,
+      2vw,
+      30px
+    );
+
+  background:
+    linear-gradient(
+      112deg,
+      rgba(
+        255,
+        252,
+        244,
+        0.82
+      ),
+      rgba(
+        255,
+        238,
+        204,
+        0.88
+      ),
+      rgba(
+        255,
+        253,
+        248,
+        0.8
+      )
+    );
+
+  padding:
+    clamp(
+      11px,
+      1.1vw,
+      15px
+    )
+    clamp(
+      15px,
+      1.6vw,
+      22px
+    );
+
+  color:
+    #211c14;
+
+  box-shadow:
+    0 18px 44px
+      rgba(
+        33,
+        28,
+        20,
+        0.1
+      ),
+    0 0 34px
+      rgba(
+        232,
+        149,
+        47,
+        0.1
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.94
+      );
+
+  backdrop-filter:
+    blur(18px)
+    saturate(1.08);
+
+  -webkit-backdrop-filter:
+    blur(18px)
+    saturate(1.08);
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  touch-action:
+    manipulation;
+
+  overflow: hidden;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  animation:
+    scrollCueEntrance
+    720ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+
+  transition:
+    transform
+      220ms
+      ease,
+    border-color
+      220ms
+      ease,
+    background-color
+      220ms
+      ease,
+    box-shadow
+      220ms
+      ease;
+}
+
+/* แสงด้านในป้าย */
+
+.scroll-intro-cue__button::before {
+  content: "";
+
+  position: absolute;
+
+  left: -38%;
+  top: -80%;
+
+  width: 24%;
+  height: 260%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        255,
+        255,
+        255,
+        0.62
+      ),
+      transparent
+    );
+
+  opacity: 0;
+
+  transform:
+    rotate(18deg)
+    translateX(0);
+
+  pointer-events: none;
+
+  animation:
+    scrollCueLightSweep
+    4.6s
+    ease-in-out
+    1.2s
+    infinite;
+}
+
+/* เส้น Gradient บางด้านล่าง */
+
+.scroll-intro-cue__button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 15%;
+  right: 15%;
+  bottom: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        232,
+        149,
+        47,
+        0.52
+      ),
+      rgba(
+        95,
+        109,
+        55,
+        0.22
+      ),
+      transparent
+    );
+
+  opacity: 0.74;
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   HOVER
+   ====================================================== */
+
+.scroll-intro-cue__button:hover {
+  border-color:
+    rgba(
+      232,
+      149,
+      47,
+      0.38
+    );
+
+  background:
+    linear-gradient(
+      112deg,
+      rgba(
+        255,
+        254,
+        249,
+        0.92
+      ),
+      rgba(
+        255,
+        235,
+        193,
+        0.94
+      ),
+      rgba(
+        255,
+        254,
+        249,
+        0.9
+      )
+    );
+
+  box-shadow:
+    0 22px 50px
+      rgba(
+        33,
+        28,
+        20,
+        0.13
+      ),
+    0 0 42px
+      rgba(
+        232,
+        149,
+        47,
+        0.15
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        1
+      );
+
+  transform:
+    translate3d(
+      0,
+      -3px,
+      0
+    );
+}
+
+.scroll-intro-cue__button:active {
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
+    scale(0.985);
+}
+
+.scroll-intro-cue__button:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      232,
+      149,
+      47,
+      0.72
+    );
+
+  outline-offset: 4px;
+}
+
+/* ======================================================
+   SIGNAL DOT
+   ====================================================== */
+
+.scroll-intro-cue__signal {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width:
+    clamp(
+      32px,
+      3vw,
+      40px
+    );
+
+  height:
+    clamp(
+      32px,
+      3vw,
+      40px
+    );
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      245,
+      164,
+      0,
+      0.08
+    );
+
+  box-shadow:
+    inset 0 0 0 1px
+      rgba(
+        245,
+        164,
+        0,
+        0.12
+      );
+
+  flex: 0 0 auto;
+}
+
+.scroll-intro-cue__signal-core {
+  position: relative;
+
+  z-index: 2;
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 999px;
+
+  background:
+    #f5a400;
+
+  box-shadow:
+    0 0 0 5px
+      rgba(
+        245,
+        164,
+        0,
+        0.12
+      ),
+    0 0 18px
+      rgba(
+        245,
+        164,
+        0,
+        0.44
+      );
+}
+
+.scroll-intro-cue__signal-ring {
+  position: absolute;
+
+  inset: 6px;
+
+  border:
+    1px solid
+    rgba(
+      245,
+      164,
+      0,
+      0.32
+    );
+
+  border-radius: inherit;
+
+  animation:
+    scrollCueSignalPulse
+    2.1s
+    ease-out
+    infinite;
+}
+
+/* ======================================================
+   TEXT CONTENT
+   ====================================================== */
+
+.scroll-intro-cue__content {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 0;
+
+  display: grid;
+
+  gap: 3px;
+
+  text-align: left;
+}
+
+.scroll-intro-cue__eyebrow {
+  color:
+    rgba(
+      33,
+      28,
+      20,
+      0.56
+    );
+
+  font-size:
+    clamp(
+      8px,
+      0.57vw,
+      10px
+    );
+
+  font-weight: 850;
+
+  letter-spacing:
+    0.22em;
+
+  line-height: 1;
+
+  text-transform:
+    uppercase;
+}
+
+.scroll-intro-cue__title {
+  color:
+    #211c14;
+
+  font-size:
+    clamp(
+      14px,
+      1.15vw,
+      19px
+    );
+
+  font-weight: 950;
+
+  letter-spacing:
+    0.035em;
+
+  line-height: 1.1;
+
+  text-transform:
+    uppercase;
+
+  text-wrap: balance;
+}
+
+.scroll-intro-cue__meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  column-gap: 7px;
+  row-gap: 2px;
+
+  color:
+    rgba(
+      33,
+      28,
+      20,
+      0.58
+    );
+
+  font-size:
+    clamp(
+      8px,
+      0.62vw,
+      11px
+    );
+
+  font-weight: 760;
+
+  letter-spacing:
+    0.08em;
+
+  line-height: 1.2;
+
+  text-transform:
+    uppercase;
+}
+
+.scroll-intro-cue__meta
+span {
+  color:
+    rgba(
+      232,
+      149,
+      47,
+      0.76
+    );
+}
+
+/* ======================================================
+   MOUSE MOTION ICON
+   ====================================================== */
+
+.scroll-intro-cue__motion {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  justify-items: center;
+
+  gap: 4px;
+
+  width:
+    clamp(
+      32px,
+      3vw,
+      42px
+    );
+}
+
+.scroll-intro-cue__mouse {
+  position: relative;
+
+  display: block;
+
+  width: 23px;
+  height: 35px;
+
+  border:
+    1.5px solid
+    rgba(
+      33,
+      28,
+      20,
+      0.64
+    );
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.62
+      ),
+      rgba(
+        255,
+        241,
+        213,
+        0.46
+      )
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.72
+      );
+}
+
+.scroll-intro-cue__wheel {
+  position: absolute;
+
+  left: 50%;
+  top: 7px;
+
+  width: 3px;
+  height: 7px;
+
+  border-radius: 999px;
+
+  background:
+    #e8952f;
+
+  transform:
+    translateX(-50%);
+
+  box-shadow:
+    0 0 9px
+      rgba(
+        232,
+        149,
+        47,
+        0.42
+      );
+
+  animation:
+    scrollCueWheel
+    1.55s
+    cubic-bezier(
+      0.55,
+      0,
+      0.45,
+      1
+    )
+    infinite;
+}
+
+/* ======================================================
+   DOWN ARROWS
+   ====================================================== */
+
+.scroll-intro-cue__arrows {
+  position: relative;
+
+  width: 16px;
+  height: 11px;
+
+  display: block;
+}
+
+.scroll-intro-cue__arrows
+span {
+  position: absolute;
+
+  left: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  border-right:
+    1.5px solid
+    rgba(
+      232,
+      149,
+      47,
+      0.72
+    );
+
+  border-bottom:
+    1.5px solid
+    rgba(
+      232,
+      149,
+      47,
+      0.72
+    );
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  animation:
+    scrollCueArrow
+    1.55s
+    ease-in-out
+    infinite;
+}
+
+.scroll-intro-cue__arrows
+span:first-child {
+  top: -2px;
+}
+
+.scroll-intro-cue__arrows
+span:last-child {
+  top: 3px;
+
+  animation-delay:
+    0.16s;
+}
+
+/* ======================================================
+   ANIMATIONS
+   ====================================================== */
+
+@keyframes scrollCueEntrance {
+  from {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        18px,
+        0
+      )
+      scale(0.96);
+
+    filter:
+      blur(6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+}
+
+@keyframes scrollCueSignalPulse {
+  0% {
+    opacity: 0.82;
+
+    transform:
+      scale(0.72);
+  }
+
+  75%,
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.65);
+  }
+}
+
+@keyframes scrollCueWheel {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        -50%,
+        -2px,
+        0
+      );
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        -50%,
+        10px,
+        0
+      );
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        -50%,
+        13px,
+        0
+      );
+  }
+}
+
+@keyframes scrollCueArrow {
+  0%,
+  100% {
+    opacity: 0.2;
+
+    translate:
+      0 -2px;
+  }
+
+  50% {
+    opacity: 1;
+
+    translate:
+      0 2px;
+  }
+}
+
+@keyframes scrollCueLightSweep {
+  0%,
+  58% {
+    opacity: 0;
+
+    transform:
+      rotate(18deg)
+      translateX(0);
+  }
+
+  66% {
+    opacity: 0.7;
+  }
+
+  83%,
+  100% {
+    opacity: 0;
+
+    transform:
+      rotate(18deg)
+      translateX(700%);
+  }
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 900px) {
+  .scroll-intro-cue {
+    width:
+      min(
+        calc(100vw - 28px),
+        500px
+      );
+  }
+
+  .scroll-intro-cue__button {
+    gap: 12px;
+
+    padding:
+      11px
+      14px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 620px) {
+  .scroll-intro-cue {
+    bottom:
+      max(
+        18px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+
+    width:
+      calc(
+        100vw -
+        24px
+      );
+  }
+
+  .scroll-intro-cue__button {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr)
+      auto;
+
+    gap: 10px;
+
+    min-height: 66px;
+
+    border-radius: 21px;
+
+    padding:
+      10px
+      12px;
+  }
+
+  .scroll-intro-cue__signal {
+    width: 30px;
+    height: 30px;
+  }
+
+  .scroll-intro-cue__signal-core {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scroll-intro-cue__eyebrow {
+    font-size: 7px;
+
+    letter-spacing:
+      0.16em;
+  }
+
+  .scroll-intro-cue__title {
+    font-size: 13px;
+
+    letter-spacing:
+      0.025em;
+  }
+
+  .scroll-intro-cue__meta {
+    font-size: 7px;
+
+    column-gap: 5px;
+
+    letter-spacing:
+      0.055em;
+  }
+
+  .scroll-intro-cue__motion {
+    width: 28px;
+  }
+
+  .scroll-intro-cue__mouse {
+    width: 20px;
+    height: 31px;
+  }
+}
+
+/* หน้าจอแคบมาก ซ่อนคำรองเพื่อไม่ให้แน่น */
+
+@media (max-width: 390px) {
+  .scroll-intro-cue__meta {
+    display: none;
+  }
+
+  .scroll-intro-cue__button {
+    min-height: 60px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .scroll-intro-cue__button,
+  .scroll-intro-cue__button::before,
+  .scroll-intro-cue__signal-ring,
+  .scroll-intro-cue__wheel,
+  .scroll-intro-cue__arrows
+  span {
+    animation:
+      none !important;
+  }
+
+  .scroll-intro-cue,
+  .scroll-intro-cue__button {
+    transition:
+      none !important;
+  }
+
+  .scroll-intro-cue__wheel {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        -50%,
+        4px,
+        0
+      );
+  }
+
+  .scroll-intro-cue__arrows
+  span {
+    opacity: 0.72;
+  }
+}
+/* ======================================================
+   CHUA — PREMIUM MINIMAL SCROLL CUE
+   ใช้ร่วมกับ scrollIntroCue.js เดิมได้ทันที
+   ====================================================== */
+
+.scroll-intro-cue {
+  --scroll-cue-opacity: 1;
+  --scroll-cue-y: 0px;
+  --scroll-cue-scale: 1;
+  --scroll-cue-blur: 0px;
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom:
+    clamp(
+      28px,
+      4.8vh,
+      56px
+    );
+
+  z-index: 80;
+
+  width:
+    min(
+      calc(100vw - 40px),
+      500px
+    );
+
+  opacity:
+    var(--scroll-cue-opacity);
+
+  visibility: visible;
+
+  transform:
+    translate3d(
+      -50%,
+      var(--scroll-cue-y),
+      0
+    )
+    scale(
+      var(--scroll-cue-scale)
+    );
+
+  transform-origin:
+    center bottom;
+
+  filter:
+    blur(
+      var(--scroll-cue-blur)
+    );
+
+  pointer-events: none;
+
+  will-change:
+    opacity,
+    transform,
+    filter;
+}
+
+/* ======================================================
+   MAIN CARD
+   ====================================================== */
+
+.scroll-intro-cue__button {
+  position: relative;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap:
+    clamp(
+      14px,
+      1.4vw,
+      20px
+    );
+
+  min-height:
+    clamp(
+      72px,
+      6vw,
+      86px
+    );
+
+  margin: 0;
+
+  padding:
+    clamp(
+      13px,
+      1.2vw,
+      17px
+    )
+    clamp(
+      17px,
+      1.7vw,
+      24px
+    );
+
+  border:
+    1px solid
+    rgba(
+      78,
+      67,
+      50,
+      0.11
+    );
+
+  border-radius:
+    clamp(
+      22px,
+      1.8vw,
+      28px
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        255,
+        254,
+        249,
+        0.88
+      ),
+      rgba(
+        250,
+        247,
+        238,
+        0.78
+      )
+    );
+
+  color:
+    #211e19;
+
+  box-shadow:
+    0 18px 50px
+      rgba(
+        43,
+        36,
+        27,
+        0.1
+      ),
+    0 3px 10px
+      rgba(
+        43,
+        36,
+        27,
+        0.045
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.96
+      );
+
+  backdrop-filter:
+    blur(22px)
+    saturate(1.08);
+
+  -webkit-backdrop-filter:
+    blur(22px)
+    saturate(1.08);
+
+  font-family:
+    "Mona Sans",
+    "Inter",
+    "Noto Sans Thai",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  touch-action: manipulation;
+
+  overflow: hidden;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  animation:
+    scrollCuePremiumEntrance
+    760ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+
+  transition:
+    transform
+      260ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    border-color
+      240ms
+      ease,
+    background
+      240ms
+      ease,
+    box-shadow
+      240ms
+      ease;
+}
+
+/*
+ * แสงสะท้อนบาง ๆ ด้านบน
+ * ไม่วิ่งวน เพื่อให้ดูเรียบและแพง
+ */
+
+.scroll-intro-cue__button::before {
+  content: "";
+
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+  top: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      ),
+      transparent
+    );
+
+  opacity: 0.8;
+
+  pointer-events: none;
+}
+
+/*
+ * Accent line ด้านล่าง
+ */
+
+.scroll-intro-cue__button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 20%;
+  right: 20%;
+  bottom: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        221,
+        147,
+        52,
+        0.38
+      ),
+      transparent
+    );
+
+  opacity: 0.8;
+
+  transform:
+    scaleX(0.72);
+
+  transform-origin:
+    center;
+
+  transition:
+    transform
+      280ms
+      ease,
+    opacity
+      280ms
+      ease;
+
+  pointer-events: none;
+}
+
+/* ======================================================
+   HOVER / ACTIVE / FOCUS
+   ====================================================== */
+
+.scroll-intro-cue__button:hover {
+  border-color:
+    rgba(
+      199,
+      137,
+      60,
+      0.24
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        255,
+        255,
+        252,
+        0.94
+      ),
+      rgba(
+        250,
+        246,
+        235,
+        0.88
+      )
+    );
+
+  box-shadow:
+    0 24px 64px
+      rgba(
+        43,
+        36,
+        27,
+        0.13
+      ),
+    0 5px 16px
+      rgba(
+        43,
+        36,
+        27,
+        0.055
+      ),
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        1
+      );
+
+  transform:
+    translate3d(
+      0,
+      -4px,
+      0
+    );
+}
+
+.scroll-intro-cue__button:hover::after {
+  opacity: 1;
+
+  transform:
+    scaleX(1);
+}
+
+.scroll-intro-cue__button:active {
+  transform:
+    translate3d(
+      0,
+      -1px,
+      0
+    )
+    scale(0.988);
+}
+
+.scroll-intro-cue__button:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      202,
+      139,
+      60,
+      0.64
+    );
+
+  outline-offset: 5px;
+}
+
+/* ======================================================
+   LEFT SIGNAL
+   ====================================================== */
+
+.scroll-intro-cue__signal {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width:
+    clamp(
+      38px,
+      3.2vw,
+      46px
+    );
+
+  height:
+    clamp(
+      38px,
+      3.2vw,
+      46px
+    );
+
+  border:
+    1px solid
+    rgba(
+      103,
+      88,
+      66,
+      0.1
+    );
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.9
+      ),
+    0 6px 18px
+      rgba(
+        59,
+        50,
+        37,
+        0.06
+      );
+
+  flex: 0 0 auto;
+}
+
+.scroll-intro-cue__signal-core {
+  position: relative;
+
+  z-index: 2;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    #cc8738;
+
+  box-shadow:
+    0 0 0 5px
+      rgba(
+        204,
+        135,
+        56,
+        0.1
+      ),
+    0 0 16px
+      rgba(
+        204,
+        135,
+        56,
+        0.22
+      );
+}
+
+.scroll-intro-cue__signal-ring {
+  position: absolute;
+
+  inset: 7px;
+
+  border:
+    1px solid
+    rgba(
+      204,
+      135,
+      56,
+      0.22
+    );
+
+  border-radius: inherit;
+
+  animation:
+    scrollCueMinimalPulse
+    2.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    infinite;
+}
+
+/* ======================================================
+   TYPOGRAPHY
+   ====================================================== */
+
+.scroll-intro-cue__content {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 0;
+
+  display: grid;
+
+  gap: 4px;
+
+  text-align: left;
+}
+
+/*
+ * ข้อความแนะนำด้านบน
+ */
+
+.scroll-intro-cue__eyebrow {
+  color:
+    rgba(
+      56,
+      49,
+      39,
+      0.48
+    );
+
+  font-family:
+    "Mona Sans",
+    "Inter",
+    "Noto Sans Thai",
+    sans-serif;
+
+  font-size:
+    clamp(
+      8px,
+      0.56vw,
+      10px
+    );
+
+  font-weight: 650;
+
+  letter-spacing:
+    0.2em;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+/*
+ * หัวข้อหลัก
+ */
+
+.scroll-intro-cue__title {
+  color:
+    #25211b;
+
+  font-family:
+    "Mona Sans",
+    "Inter",
+    "Noto Sans Thai",
+    sans-serif;
+
+  font-size:
+    clamp(
+      15px,
+      1.18vw,
+      20px
+    );
+
+  font-weight: 720;
+
+  letter-spacing:
+    -0.015em;
+
+  line-height: 1.08;
+
+  text-transform: none;
+
+  text-wrap: balance;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    geometricPrecision;
+}
+
+/*
+ * คำ SEO ด้านล่าง
+ */
+
+.scroll-intro-cue__meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  column-gap: 8px;
+  row-gap: 3px;
+
+  color:
+    rgba(
+      56,
+      49,
+      39,
+      0.52
+    );
+
+  font-family:
+    "Mona Sans",
+    "Inter",
+    "Noto Sans Thai",
+    sans-serif;
+
+  font-size:
+    clamp(
+      8px,
+      0.59vw,
+      10px
+    );
+
+  font-weight: 600;
+
+  letter-spacing:
+    0.075em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+.scroll-intro-cue__meta span {
+  color:
+    rgba(
+      190,
+      126,
+      49,
+      0.66
+    );
+}
+
+/* ======================================================
+   RIGHT SCROLL ICON
+   ====================================================== */
+
+.scroll-intro-cue__motion {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  justify-items: center;
+
+  gap: 5px;
+
+  width:
+    clamp(
+      30px,
+      2.8vw,
+      38px
+    );
+
+  opacity: 0.8;
+
+  transition:
+    opacity
+      220ms
+      ease,
+    transform
+      220ms
+      ease;
+}
+
+.scroll-intro-cue__button:hover
+.scroll-intro-cue__motion {
+  opacity: 1;
+
+  transform:
+    translateY(2px);
+}
+
+/* Mouse outline */
+
+.scroll-intro-cue__mouse {
+  position: relative;
+
+  display: block;
+
+  width: 20px;
+  height: 31px;
+
+  border:
+    1.25px solid
+    rgba(
+      44,
+      38,
+      30,
+      0.54
+    );
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.26
+    );
+}
+
+/* Mouse wheel */
+
+.scroll-intro-cue__wheel {
+  position: absolute;
+
+  left: 50%;
+  top: 6px;
+
+  width: 2px;
+  height: 6px;
+
+  border-radius: 999px;
+
+  background:
+    #c78337;
+
+  transform:
+    translateX(-50%);
+
+  animation:
+    scrollCuePremiumWheel
+    1.75s
+    cubic-bezier(
+      0.55,
+      0,
+      0.45,
+      1
+    )
+    infinite;
+}
+
+/* ======================================================
+   MINIMAL ARROWS
+   ====================================================== */
+
+.scroll-intro-cue__arrows {
+  position: relative;
+
+  display: block;
+
+  width: 14px;
+  height: 9px;
+}
+
+.scroll-intro-cue__arrows span {
+  position: absolute;
+
+  left: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  border-right:
+    1px solid
+    rgba(
+      190,
+      126,
+      49,
+      0.65
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      190,
+      126,
+      49,
+      0.65
+    );
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  animation:
+    scrollCuePremiumArrow
+    1.75s
+    ease-in-out
+    infinite;
+}
+
+.scroll-intro-cue__arrows
+span:first-child {
+  top: -2px;
+}
+
+.scroll-intro-cue__arrows
+span:last-child {
+  top: 2px;
+
+  animation-delay:
+    0.18s;
+}
+
+/* ======================================================
+   ANIMATIONS
+   ====================================================== */
+
+@keyframes scrollCuePremiumEntrance {
+  from {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        18px,
+        0
+      )
+      scale(0.97);
+
+    filter:
+      blur(7px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+}
+
+@keyframes scrollCueMinimalPulse {
+  0% {
+    opacity: 0.5;
+
+    transform:
+      scale(0.76);
+  }
+
+  65% {
+    opacity: 0;
+
+    transform:
+      scale(1.45);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.45);
+  }
+}
+
+@keyframes scrollCuePremiumWheel {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        -50%,
+        -1px,
+        0
+      );
+  }
+
+  22% {
+    opacity: 1;
+  }
+
+  68% {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        -50%,
+        8px,
+        0
+      );
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        -50%,
+        10px,
+        0
+      );
+  }
+}
+
+@keyframes scrollCuePremiumArrow {
+  0%,
+  100% {
+    opacity: 0.15;
+
+    translate:
+      0 -1px;
+  }
+
+  50% {
+    opacity: 0.8;
+
+    translate:
+      0 2px;
+  }
+}
+
+/* ======================================================
+   TABLET
+   ====================================================== */
+
+@media (max-width: 900px) {
+  .scroll-intro-cue {
+    width:
+      min(
+        calc(100vw - 30px),
+        470px
+      );
+  }
+
+  .scroll-intro-cue__button {
+    gap: 13px;
+
+    padding:
+      12px
+      15px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 620px) {
+  .scroll-intro-cue {
+    bottom:
+      max(
+        18px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+
+    width:
+      calc(
+        100vw -
+        24px
+      );
+  }
+
+  .scroll-intro-cue__button {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr)
+      auto;
+
+    gap: 10px;
+
+    min-height: 66px;
+
+    border-radius: 21px;
+
+    padding:
+      10px
+      12px;
+  }
+
+  .scroll-intro-cue__signal {
+    width: 32px;
+    height: 32px;
+  }
+
+  .scroll-intro-cue__signal-core {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scroll-intro-cue__signal-ring {
+    inset: 6px;
+  }
+
+  .scroll-intro-cue__eyebrow {
+    font-size: 7px;
+
+    letter-spacing:
+      0.16em;
+  }
+
+  .scroll-intro-cue__title {
+    font-size: 13px;
+
+    letter-spacing:
+      -0.01em;
+  }
+
+  .scroll-intro-cue__meta {
+    font-size: 7px;
+
+    column-gap: 5px;
+
+    letter-spacing:
+      0.055em;
+  }
+
+  .scroll-intro-cue__motion {
+    width: 27px;
+  }
+
+  .scroll-intro-cue__mouse {
+    width: 18px;
+    height: 28px;
+  }
+}
+
+/*
+ * หน้าจอเล็กมาก ซ่อน Meta เพื่อไม่ให้แน่น
+ */
+
+@media (max-width: 390px) {
+  .scroll-intro-cue__meta {
+    display: none;
+  }
+
+  .scroll-intro-cue__button {
+    min-height: 60px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+   ====================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .scroll-intro-cue__button,
+  .scroll-intro-cue__signal-ring,
+  .scroll-intro-cue__wheel,
+  .scroll-intro-cue__arrows span {
+    animation:
+      none !important;
+  }
+
+  .scroll-intro-cue,
+  .scroll-intro-cue__button,
+  .scroll-intro-cue__motion {
+    transition:
+      none !important;
+  }
+
+  .scroll-intro-cue__wheel {
+    opacity: 1;
+
+    transform:
+      translate3d(
+        -50%,
+        4px,
+        0
+      );
+  }
+
+  .scroll-intro-cue__arrows span {
+    opacity: 0.6;
+  }
+}
+/* ======================================================
+   CHUA SCROLL CUE — FRAMELESS MINIMAL
+   วางท้ายสุดของ scrollIntroCue.css
+   ====================================================== */
+
+/* กล่องหลักยังคงตำแหน่งเดิม */
+.scroll-intro-cue {
+  width:
+    min(
+      calc(100vw - 40px),
+      520px
+    );
+
+  bottom:
+    clamp(
+      28px,
+      5vh,
+      58px
+    );
+}
+
+/* เอากรอบ พื้นหลัง และเงาของกล่องออกทั้งหมด */
+.scroll-intro-cue__button {
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  gap:
+    clamp(
+      14px,
+      1.5vw,
+      22px
+    );
+
+  min-height: auto;
+
+  padding:
+    10px
+    4px;
+
+  border:
+    none !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  backdrop-filter:
+    none !important;
+
+  -webkit-backdrop-filter:
+    none !important;
+
+  overflow: visible;
+}
+
+/* ลบเส้นตกแต่งด้านบนและด้านล่าง */
+.scroll-intro-cue__button::before,
+.scroll-intro-cue__button::after {
+  display:
+    none !important;
+}
+
+/* Hover แบบเรียบ ไม่สร้างกล่องกลับมา */
+.scroll-intro-cue__button:hover {
+  border:
+    none !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  transform:
+    translate3d(
+      0,
+      -3px,
+      0
+    );
+}
+
+.scroll-intro-cue__button:active {
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    )
+    scale(0.985);
+}
+
+/* Focus สำหรับ Keyboard แต่ไม่มีกล่อง */
+.scroll-intro-cue__button:focus-visible {
+  outline:
+    1px solid
+    rgba(
+      232,
+      149,
+      47,
+      0.5
+    );
+
+  outline-offset: 8px;
+}
+
+/* ======================================================
+   LEFT SIGNAL — ไม่มีกรอบวงกลม
+   ====================================================== */
+
+.scroll-intro-cue__signal {
+  width: 22px;
+  height: 22px;
+
+  border:
+    none !important;
+
+  border-radius: 50%;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+.scroll-intro-cue__signal-core {
+  width: 7px;
+  height: 7px;
+
+  background:
+    #d88b36;
+
+  box-shadow:
+    0 0 0 5px
+      rgba(
+        216,
+        139,
+        54,
+        0.1
+      ),
+    0 0 20px
+      rgba(
+        216,
+        139,
+        54,
+        0.3
+      );
+}
+
+.scroll-intro-cue__signal-ring {
+  inset: 0;
+
+  border:
+    1px solid
+    rgba(
+      216,
+      139,
+      54,
+      0.28
+    );
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+/* ======================================================
+   TEXT
+   เพิ่มเงาบาง ๆ เพื่อให้อ่านได้บนวิดีโอ
+   ====================================================== */
+
+.scroll-intro-cue__content {
+  gap: 5px;
+
+  text-shadow:
+    0 1px 12px
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+}
+
+.scroll-intro-cue__eyebrow {
+  color:
+    rgba(
+      35,
+      30,
+      24,
+      0.58
+    );
+
+  font-size:
+    clamp(
+      8px,
+      0.58vw,
+      10px
+    );
+
+  font-weight: 600;
+
+  letter-spacing:
+    0.24em;
+}
+
+.scroll-intro-cue__title {
+  color:
+    #211d18;
+
+  font-size:
+    clamp(
+      16px,
+      1.22vw,
+      21px
+    );
+
+  font-weight: 720;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height: 1.05;
+}
+
+.scroll-intro-cue__meta {
+  color:
+    rgba(
+      35,
+      30,
+      24,
+      0.54
+    );
+
+  font-size:
+    clamp(
+      8px,
+      0.6vw,
+      10px
+    );
+
+  font-weight: 600;
+
+  letter-spacing:
+    0.09em;
+}
+
+.scroll-intro-cue__meta span {
+  color:
+    rgba(
+      205,
+      133,
+      51,
+      0.76
+    );
+}
+
+/* ======================================================
+   RIGHT SCROLL ICON
+   ไม่มีพื้นหลังหรือกรอบเพิ่ม
+   ====================================================== */
+
+.scroll-intro-cue__motion {
+  width:
+    clamp(
+      28px,
+      2.7vw,
+      36px
+    );
+
+  opacity: 0.78;
+}
+
+.scroll-intro-cue__mouse {
+  width: 20px;
+  height: 31px;
+
+  border:
+    1.25px solid
+    rgba(
+      35,
+      30,
+      24,
+      0.58
+    );
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+.scroll-intro-cue__wheel {
+  background:
+    #d38936;
+
+  box-shadow:
+    0 0 10px
+      rgba(
+        211,
+        137,
+        54,
+        0.3
+      );
+}
+
+/* ======================================================
+   MOBILE
+   ====================================================== */
+
+@media (max-width: 620px) {
+  .scroll-intro-cue {
+    width:
+      calc(
+        100vw -
+        28px
+      );
+
+    bottom:
+      max(
+        20px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+  }
+
+  .scroll-intro-cue__button {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr)
+      auto;
+
+    gap: 10px;
+
+    padding:
+      8px
+      0;
+  }
+
+  .scroll-intro-cue__signal {
+    width: 18px;
+    height: 18px;
+  }
+
+  .scroll-intro-cue__signal-core {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scroll-intro-cue__title {
+    font-size: 14px;
+  }
+
+  .scroll-intro-cue__meta {
+    font-size: 7px;
+  }
+
+  .scroll-intro-cue__motion {
+    width: 26px;
+  }
+
+  .scroll-intro-cue__mouse {
+    width: 18px;
+    height: 28px;
+  }
+}
+
+/* หน้าจอแคบมาก */
+@media (max-width: 390px) {
+  .scroll-intro-cue__meta {
+    display: none;
+  }
+}
