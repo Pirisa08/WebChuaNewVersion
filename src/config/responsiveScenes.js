@@ -2,7 +2,7 @@
    CHUA RESPONSIVE SCENE CONFIG
 
    One website, two video compositions:
-   - desktop: public/web 16_9.mp4
+   - desktop: public/web-16_9.mp4
    - mobile:  public/9_16.mp4
 
    Both videos use the same timeline, but each video has
@@ -17,7 +17,7 @@
 const desktopScene = {
   mode: "desktop",
 
-  video: "web 16_9.mp4",
+  video: "web-16_9.mp4",
 
   aspectRatio: "16 / 9",
 
