@@ -132,8 +132,8 @@ export const LABEL_FOLLOW_PRODUCT_START = 0.665;
 export const LABEL_FOLLOW_PRODUCT_END = 0.718;
 
 // เริ่มหาย
-export const LABEL_OUT_START = 0.723;
-export const LABEL_OUT_END = 0.742;
+export const LABEL_OUT_START = 0.748;
+export const LABEL_OUT_END = 0.765;
 
 // ======================================================
 // BRAND DETAIL

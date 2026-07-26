@@ -76,19 +76,19 @@ const desktopScene = {
   brandLabels: {
     polnapa: {
       left: 32.5,
-      top: 18,
+      top: 39.5,
 
       enterX: -8,
       enterY: 24,
 
-      followX: 86,
-      followY: 18,
+      followX: 30,
+      followY: -18,
 
       exitX: 8,
       exitY: -10,
 
-      lineStart: 105,
-      lineEnd: 18,
+      lineStart: 44,
+      lineEnd: 16,
 
       wobble: 0.75,
       scaleBoost: 0.008,
@@ -230,27 +230,27 @@ const mobileScene = {
   brandLabels: {
     polnapa: {
       left: 50,
-      top: 18,
+      top: 17.2,
 
       enterX: 0,
       enterY: 18,
 
       followX: 0,
-      followY: 160,
+      followY: 126,
 
       exitX: 0,
       exitY: -10,
 
-      lineStart: 82,
-      lineEnd: 20,
+      lineStart: 26,
+      lineEnd: 12,
 
-      wobble: 0.28,
+      wobble: 0.12,
       scaleBoost: 0.004,
     },
 
     longanic: {
-      left: 29,
-      top: 75,
+      left: 33,
+      top: 78.5,
 
       enterX: 0,
       enterY: 12,
@@ -261,16 +261,16 @@ const mobileScene = {
       exitX: 0,
       exitY: -8,
 
-      lineStart: 24,
-      lineEnd: 12,
+      lineStart: 0,
+      lineEnd: 0,
 
       wobble: 0,
       scaleBoost: 0.002,
     },
 
     matsuri: {
-      left: 72,
-      top: 75,
+      left: 70,
+      top: 78.5,
 
       enterX: 0,
       enterY: 12,
@@ -281,8 +281,8 @@ const mobileScene = {
       exitX: 0,
       exitY: -8,
 
-      lineStart: 24,
-      lineEnd: 12,
+      lineStart: 0,
+      lineEnd: 0,
 
       wobble: 0,
       scaleBoost: 0.002,

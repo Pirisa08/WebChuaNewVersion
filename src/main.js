@@ -177,6 +177,15 @@ let frozenFruitVideoTime =
 let frozenFruitScrollProgress =
   0;
 
+let scrollUpdateQueued =
+  false;
+
+let stageTop =
+  0;
+
+let stageScrollable =
+  1;
+
 // ======================================================
 // SEEK SETTINGS
 // ======================================================
@@ -187,7 +196,7 @@ let frozenFruitScrollProgress =
  */
 
 const SEEK_MIN_INTERVAL =
-  40;
+  33;
 
 /*
  * ถ้า Scroll ข้ามมากกว่า 0.65 วินาที
@@ -469,28 +478,49 @@ const getScrollProgress =
       return 0;
     }
 
-    const rect =
-      stage
-        .getBoundingClientRect();
-
-    const scrollable =
-      rect.height -
-      window.innerHeight;
-
     if (
-      scrollable <= 0
+      stageScrollable <= 0
     ) {
       return 0;
     }
 
     return clamp(
-      -rect.top /
-        scrollable,
+      (
+        window.scrollY -
+        stageTop
+      ) /
+        stageScrollable,
 
       0,
 
       1
     );
+  };
+
+const measureStage =
+  () => {
+    if (!stage) {
+      stageTop = 0;
+      stageScrollable = 1;
+
+      return;
+    }
+
+    const rect =
+      stage
+        .getBoundingClientRect();
+
+    stageTop =
+      window.scrollY +
+      rect.top;
+
+    stageScrollable =
+      Math.max(
+        stage.offsetHeight -
+          window.innerHeight,
+
+        1
+      );
   };
 
 const updateProgressUi =
@@ -1068,6 +1098,9 @@ window.addEventListener(
 
 const updateTarget =
   () => {
+    scrollUpdateQueued =
+      false;
+
     if (
       isFruitDetailOpen
     ) {
@@ -1135,6 +1168,20 @@ const updateTarget =
     updateOverlayState();
 
     scheduleRender();
+  };
+
+const scheduleTargetUpdate =
+  () => {
+    if (scrollUpdateQueued) {
+      return;
+    }
+
+    scrollUpdateQueued =
+      true;
+
+    requestAnimationFrame(
+      updateTarget
+    );
   };
 
 // ======================================================
@@ -1412,7 +1459,7 @@ if (
 window.addEventListener(
   "scroll",
 
-  updateTarget,
+  scheduleTargetUpdate,
 
   {
     passive: true,
@@ -1430,9 +1477,11 @@ window.addEventListener(
     resizeTimer =
       window.setTimeout(
         () => {
+          measureStage();
+
           handleResponsiveVideoChange();
 
-          updateTarget();
+          scheduleTargetUpdate();
         },
 
         160
@@ -1445,7 +1494,11 @@ window.addEventListener(
 
   () => {
     window.setTimeout(
-      handleResponsiveVideoChange,
+      () => {
+        measureStage();
+
+        handleResponsiveVideoChange();
+      },
 
       180
     );
@@ -1489,6 +1542,8 @@ window.addEventListener(
 
 setupVideoAttributes();
 
+measureStage();
+
 loadResponsiveVideo({
   mode:
     getPreferredVideoMode(),
@@ -1500,9 +1555,7 @@ loadResponsiveVideo({
     true,
 });
 
-updateProgressUi();
-
-updateOverlayState();
+updateTarget();
 
 requestAnimationFrame(
   () => {

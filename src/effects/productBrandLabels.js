@@ -124,6 +124,12 @@ const SELECTORS = {
     ".product-brand-label-matsuri",
 };
 
+const layoutState = {
+  baseKey: "",
+  viewportKey: "",
+  protectedRects: [],
+};
+
 /* ======================================================
    PREPARE CONTENT
    ====================================================== */
@@ -430,6 +436,42 @@ const getProtectedRects = (
     );
 };
 
+const getViewportKey = () =>
+  `${window.innerWidth}x${window.innerHeight}`;
+
+const getCachedProtectedRects = (
+  mode,
+  wrapOpacity
+) => {
+  if (
+    mode === "mobile" ||
+    wrapOpacity <= 0.02
+  ) {
+    layoutState.viewportKey = "";
+    layoutState.protectedRects = [];
+
+    return [];
+  }
+
+  const viewportKey =
+    getViewportKey();
+
+  if (
+    layoutState.viewportKey !==
+    viewportKey
+  ) {
+    layoutState.viewportKey =
+      viewportKey;
+
+    layoutState.protectedRects =
+      getProtectedRects(
+        mode
+      );
+  }
+
+  return layoutState.protectedRects;
+};
+
 const resolveDesktopCollision = ({
   label,
   x,
@@ -611,16 +653,18 @@ export const updateProductBrandLabels = ({
     );
 
   const wrapBlur =
-    lerp(
-      7,
-      0,
-      wrapIn
-    ) +
-    lerp(
-      0,
-      6,
-      wrapOut
-    );
+    sceneMode === "mobile"
+      ? 0
+      : lerp(
+          7,
+          0,
+          wrapIn
+        ) +
+        lerp(
+          0,
+          6,
+          wrapOut
+        );
 
   element.style.opacity =
     wrapOpacity.toFixed(3);
@@ -660,6 +704,10 @@ export const updateProductBrandLabels = ({
       `blur(${wrapBlur.toFixed(2)}px)`;
   }
 
+  if (wrapOpacity <= 0.002) {
+    return;
+  }
+
   const followDuration =
     Math.max(
       LABEL_FOLLOW_PRODUCT_END -
@@ -684,11 +732,24 @@ export const updateProductBrandLabels = ({
     );
 
   const protectedRects =
-    getProtectedRects(
-      sceneMode
+    getCachedProtectedRects(
+      sceneMode,
+      wrapOpacity
     );
 
   const occupiedRects = [];
+
+  const baseKey =
+    `${sceneMode}:${JSON.stringify(labelConfigs)}`;
+
+  const shouldApplyBasePosition =
+    layoutState.baseKey !==
+    baseKey;
+
+  if (shouldApplyBasePosition) {
+    layoutState.baseKey =
+      baseKey;
+  }
 
   LABEL_ORDER.forEach(
     (
@@ -707,10 +768,12 @@ export const updateProductBrandLabels = ({
         return;
       }
 
-      applyBasePosition({
-        label,
-        config,
-      });
+      if (shouldApplyBasePosition) {
+        applyBasePosition({
+          label,
+          config,
+        });
+      }
 
       const labelInStart =
         LABEL_WRAP_IN_START +
@@ -836,8 +899,10 @@ export const updateProductBrandLabels = ({
         "none";
 
       const blur =
-        (1 - labelIn) * 6 +
-        labelOut * 5;
+        sceneMode === "mobile"
+          ? 0
+          : (1 - labelIn) * 6 +
+            labelOut * 5;
 
       label.style.filter =
         `blur(${blur.toFixed(2)}px)`;
@@ -855,23 +920,26 @@ export const updateProductBrandLabels = ({
         return;
       }
 
+      if (sceneMode === "mobile") {
+        applyLabelTransform({
+          label,
+          x: baseX,
+          y: baseY,
+          scale,
+        });
+
+        return;
+      }
+
       const resolved =
-        sceneMode === "desktop"
-          ? resolveDesktopCollision({
-              label,
-              x: baseX,
-              y: baseY,
-              scale,
-              protectedRects,
-              occupiedRects,
-            })
-          : keepLabelInsideViewport({
-              label,
-              x: baseX,
-              y: baseY,
-              scale,
-              mode: "mobile",
-            });
+        resolveDesktopCollision({
+          label,
+          x: baseX,
+          y: baseY,
+          scale,
+          protectedRects,
+          occupiedRects,
+        });
 
       occupiedRects.push(
         resolved.rect

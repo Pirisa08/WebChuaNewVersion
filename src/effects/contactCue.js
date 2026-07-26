@@ -139,7 +139,7 @@ const ensureContactContent = (element) => {
               <!-- Instagram -->
               <a
                 class="contact-social-link contact-social-instagram"
-                href="https://www.instagram.com/chua_group?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="
+                href="https://www.instagram.com/lifeatchuagroup/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow CHUA Group on Instagram"

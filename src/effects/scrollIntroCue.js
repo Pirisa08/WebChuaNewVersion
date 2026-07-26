@@ -44,6 +44,9 @@ const state = {
   button: null,
 
   animationFrame: null,
+
+  stageTop: 0,
+  stageScrollable: 1,
 };
 
 /* ======================================================
@@ -59,22 +62,42 @@ const getScrollProgress = () => {
     return 0;
   }
 
-  const rect =
-    state.stage.getBoundingClientRect();
-
-  const scrollable =
-    rect.height -
-    window.innerHeight;
-
-  if (scrollable <= 0) {
+  if (state.stageScrollable <= 0) {
     return 0;
   }
 
   return clamp(
-    -rect.top / scrollable,
+    (
+      window.scrollY -
+      state.stageTop
+    ) /
+      state.stageScrollable,
     0,
     1
   );
+};
+
+const measureStage = () => {
+  if (!state.stage) {
+    state.stageTop = 0;
+    state.stageScrollable = 1;
+
+    return;
+  }
+
+  const rect =
+    state.stage.getBoundingClientRect();
+
+  state.stageTop =
+    window.scrollY +
+    rect.top;
+
+  state.stageScrollable =
+    Math.max(
+      state.stage.offsetHeight -
+        window.innerHeight,
+      1
+    );
 };
 
 /**
@@ -355,6 +378,7 @@ const initializeScrollCue = () => {
   state.initialized = true;
 
   createScrollCue();
+  measureStage();
   updateScrollCue();
 
   window.addEventListener(
@@ -367,7 +391,10 @@ const initializeScrollCue = () => {
 
   window.addEventListener(
     "resize",
-    scheduleUpdate
+    () => {
+      measureStage();
+      scheduleUpdate();
+    }
   );
 
   window.addEventListener(

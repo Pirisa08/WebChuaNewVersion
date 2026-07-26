@@ -30,9 +30,8 @@
   height: 100%;
   object-fit: cover;
   transform: translate3d(0, 0, 0) scale(1.003);
-  filter: contrast(1.1) saturate(1.14) brightness(1.02);
   backface-visibility: hidden;
-  will-change: transform, filter;
+  will-change: transform;
 }
 
 /* เอาเฟรมดำออก แต่ยังมีแสงนุ่ม ๆ แบบ clean */

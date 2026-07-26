@@ -1694,9 +1694,7 @@ body {
      ---------------------------------------------------- */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="polnapa"
-  ] {
+  .brand-showcase[data-brand-key="polnapa"] {
     top:
       max(
         76px,
@@ -1720,9 +1718,7 @@ body {
      ---------------------------------------------------- */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="longanic"
-  ] {
+  .brand-showcase[data-brand-key="longanic"] {
     top:
       auto !important;
 
@@ -1738,9 +1734,7 @@ body {
      ---------------------------------------------------- */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ] {
+  .brand-showcase[data-brand-key="matsuri"] {
     top:
       max(
         76px,
@@ -1932,9 +1926,7 @@ body {
    */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ]
+  .brand-showcase[data-brand-key="matsuri"]
   .brand-name {
     font-size:
       clamp(
@@ -2088,9 +2080,7 @@ body {
    */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ]
+  .brand-showcase[data-brand-key="matsuri"]
   .brand-products-list {
     display:
       -webkit-box;
@@ -2268,9 +2258,7 @@ body {
   orientation: portrait
 ) {
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="longanic"
-  ] {
+  .brand-showcase[data-brand-key="longanic"] {
     bottom:
       82px !important;
   }
@@ -2288,9 +2276,7 @@ body {
   }
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ]
+  .brand-showcase[data-brand-key="matsuri"]
   .brand-name {
     font-size:
       20px;
@@ -2924,9 +2910,7 @@ body {
   /* POLNAPA ด้านบน */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="polnapa"
-  ] {
+  .brand-showcase[data-brand-key="polnapa"] {
     top:
       max(
         74px,
@@ -2949,9 +2933,7 @@ body {
   /* LONGANIC ด้านล่าง */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="longanic"
-  ] {
+  .brand-showcase[data-brand-key="longanic"] {
     top:
       auto !important;
 
@@ -2966,9 +2948,7 @@ body {
   /* MATSURI ด้านบน */
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ] {
+  .brand-showcase[data-brand-key="matsuri"] {
     top:
       max(
         74px,
@@ -3106,9 +3086,7 @@ body {
   }
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ]
+  .brand-showcase[data-brand-key="matsuri"]
   .brand-name {
     font-size:
       clamp(
@@ -3200,9 +3178,7 @@ body {
   }
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="matsuri"
-  ]
+  .brand-showcase[data-brand-key="matsuri"]
   .brand-products-list {
     display:
       -webkit-box;
@@ -3761,9 +3737,7 @@ body {
   }
 
   html[data-video-mode="mobile"]
-  .brand-showcase[
-    data-brand-key="longanic"
-  ] {
+  .brand-showcase[data-brand-key="longanic"] {
     bottom:
       64px !important;
   }

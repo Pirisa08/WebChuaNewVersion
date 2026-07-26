@@ -355,6 +355,12 @@ const state = {
   previousBodyStyles: null,
 
   lastFocusedElement: null,
+
+  layoutKey: "",
+
+  hotspotElements: [],
+
+  hiddenOutsideRange: false,
 };
 
 /* ======================================================
@@ -689,6 +695,15 @@ const ensureContent = (element) => {
           <small>
             Discover grades, ingredients, OEM &amp; private label options
           </small>
+
+          <span class="fruit-hotspot-seo-keywords">
+            Thai dried fruit, dried mango Thailand, premium dried fruit manufacturer,
+            OEM dried fruit, private label dried fruit, wholesale dried fruit,
+            bulk dried fruit, dried fruit export Thailand, dried mango OEM,
+            custom dried fruit packaging, Thai fruit snacks, tropical dried fruit,
+            dried longan, dried coconut, dried pineapple, dried strawberry,
+            mixed dried fruit, no sugar added dried fruit, export-ready dried fruit.
+          </span>
         </span>
       </div>
 
@@ -866,6 +881,13 @@ const ensureContent = (element) => {
       }
     }
   );
+
+  state.hotspotElements =
+    Array.from(
+      element.querySelectorAll(
+        ".fruit-hotspot"
+      )
+    );
 };
 
 /* ======================================================
@@ -886,6 +908,19 @@ const applyResponsiveHotspotLayout = ({
     mode;
 
   if (!positions) return;
+
+  const layoutKey =
+    `${mode}:${JSON.stringify(positions)}`;
+
+  if (
+    state.layoutKey ===
+    layoutKey
+  ) {
+    return;
+  }
+
+  state.layoutKey =
+    layoutKey;
 
   Object.entries(positions)
     .forEach(([fruitId, position]) => {
@@ -945,6 +980,33 @@ export const updateFruitHotspots = ({
   }
 
   ensureContent(element);
+
+  if (
+    !state.isModalOpen &&
+    (
+      progress <
+        FRUIT_HOTSPOT_IN_START ||
+      progress >
+        FRUIT_HOTSPOT_OUT_END
+    )
+  ) {
+    if (!state.hiddenOutsideRange) {
+      state.hiddenOutsideRange = true;
+
+      element.style.opacity = "0";
+      element.style.visibility = "hidden";
+      element.style.pointerEvents = "none";
+
+      element.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+    }
+
+    return;
+  }
+
+  state.hiddenOutsideRange = false;
 
   /*
    * เลือกตำแหน่ง Hotspot
@@ -1029,10 +1091,12 @@ export const updateFruitHotspots = ({
         -8;
 
     const sceneBlur =
-      (1 - cueIn) *
-        5 +
-      cueOut *
-        5;
+      mode === "mobile"
+        ? 0
+        : (1 - cueIn) *
+            5 +
+          cueOut *
+            5;
 
     sceneElement.style.opacity =
       opacity.toFixed(3);
@@ -1057,9 +1121,13 @@ export const updateFruitHotspots = ({
      ------------------------------------------------------ */
 
   const hotspots =
-    element.querySelectorAll(
-      ".fruit-hotspot"
-    );
+    state.hotspotElements.length
+      ? state.hotspotElements
+      : Array.from(
+          element.querySelectorAll(
+            ".fruit-hotspot"
+          )
+        );
 
   hotspots.forEach(
     (

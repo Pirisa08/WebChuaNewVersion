@@ -2350,13 +2350,9 @@ html.is-fruit-modal-open .top-nav {
 /* Mango — Golden Yellow */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-fruit-id="mango"
-],
+.fruit-modal-shell[data-fruit-id="mango"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-fruit-id="mango"
-] {
+.fruit-modal-shell[data-fruit-id="mango"] {
   --fruit-modal-accent:
     #d1b000;
 
@@ -2372,13 +2368,9 @@ html.is-fruit-modal-open .top-nav {
 /* Strawberry — Strawberry Red */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-fruit-id="strawberry"
-],
+.fruit-modal-shell[data-fruit-id="strawberry"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-fruit-id="strawberry"
-] {
+.fruit-modal-shell[data-fruit-id="strawberry"] {
   --fruit-modal-accent:
     #d85b53;
 
@@ -2394,13 +2386,9 @@ html.is-fruit-modal-open .top-nav {
 /* Longan — Amber Orange */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-fruit-id="longan"
-],
+.fruit-modal-shell[data-fruit-id="longan"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-fruit-id="longan"
-] {
+.fruit-modal-shell[data-fruit-id="longan"] {
   --fruit-modal-accent:
     #d29031;
 
@@ -2416,13 +2404,9 @@ html.is-fruit-modal-open .top-nav {
 /* Coconut — Warm Coconut Brown */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-fruit-id="coconut"
-],
+.fruit-modal-shell[data-fruit-id="coconut"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-fruit-id="coconut"
-] {
+.fruit-modal-shell[data-fruit-id="coconut"] {
   --fruit-modal-accent:
     #a47b59;
 
@@ -2438,13 +2422,9 @@ html.is-fruit-modal-open .top-nav {
 /* Pineapple — Pineapple Gold */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-fruit-id="pineapple"
-],
+.fruit-modal-shell[data-fruit-id="pineapple"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-fruit-id="pineapple"
-] {
+.fruit-modal-shell[data-fruit-id="pineapple"] {
   --fruit-modal-accent:
     #d2a20a;
 
@@ -2460,13 +2440,9 @@ html.is-fruit-modal-open .top-nav {
 /* Mixed Fruit — Coral Orange */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-fruit-id="mixed"
-],
+.fruit-modal-shell[data-fruit-id="mixed"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-fruit-id="mixed"
-] {
+.fruit-modal-shell[data-fruit-id="mixed"] {
   --fruit-modal-accent:
     #d56b39;
 
@@ -3216,13 +3192,9 @@ img {
    ========================================================= */
 
 #fruitHotspots
-.fruit-modal-shell[
-  data-variant-count="2"
-],
+.fruit-modal-shell[data-variant-count="2"],
 .fruit-hotspot-cue
-.fruit-modal-shell[
-  data-variant-count="2"
-] {
+.fruit-modal-shell[data-variant-count="2"] {
   width:
     min(
       1040px,
@@ -3549,13 +3521,9 @@ strong {
   }
 
   #fruitHotspots
-  .fruit-modal-shell[
-    data-variant-count="2"
-  ],
+  .fruit-modal-shell[data-variant-count="2"],
   .fruit-hotspot-cue
-  .fruit-modal-shell[
-    data-variant-count="2"
-  ] {
+  .fruit-modal-shell[data-variant-count="2"] {
     min-height:
       480px !important;
 
@@ -3700,13 +3668,9 @@ strong {
   /* Two-product modal shell */
 
   #fruitHotspots
-  .fruit-modal-shell[
-    data-variant-count="2"
-  ],
+  .fruit-modal-shell[data-variant-count="2"],
   .fruit-hotspot-cue
-  .fruit-modal-shell[
-    data-variant-count="2"
-  ] {
+  .fruit-modal-shell[data-variant-count="2"] {
     width:
       calc(
         100vw -

@@ -254,28 +254,24 @@ const isContentHeavyProgress = (
    ====================================================== */
 
 const getStageProgress = (
-  stage
+  metrics
 ) => {
-  if (!stage) {
+  if (!metrics) {
     return 0;
   }
 
-  const rect =
-    stage.getBoundingClientRect();
-
-  const scrollable =
-    rect.height -
-    window.innerHeight;
-
   if (
-    scrollable <= 0
+    metrics.scrollable <= 0
   ) {
     return 0;
   }
 
   return clamp(
-    -rect.top /
-      scrollable,
+    (
+      window.scrollY -
+      metrics.top
+    ) /
+      metrics.scrollable,
     0,
     1
   );
@@ -385,6 +381,27 @@ const initializeTopNav = () => {
 
   let updateFrame = 0;
 
+  const stageMetrics = {
+    top: 0,
+    scrollable: 1,
+  };
+
+  const measureStage = () => {
+    const rect =
+      stage.getBoundingClientRect();
+
+    stageMetrics.top =
+      window.scrollY +
+      rect.top;
+
+    stageMetrics.scrollable =
+      Math.max(
+        stage.offsetHeight -
+          window.innerHeight,
+        1
+      );
+  };
+
   /* ====================================================
      UPDATE STATE
      ==================================================== */
@@ -394,7 +411,7 @@ const initializeTopNav = () => {
 
     const progress =
       getStageProgress(
-        stage
+        stageMetrics
       );
 
     /*
@@ -599,7 +616,10 @@ const initializeTopNav = () => {
 
   window.addEventListener(
     "resize",
-    scheduleNavUpdate
+    () => {
+      measureStage();
+      scheduleNavUpdate();
+    }
   );
 
   window.addEventListener(
@@ -617,6 +637,7 @@ const initializeTopNav = () => {
     scheduleNavUpdate
   );
 
+  measureStage();
   scheduleNavUpdate();
 };
 

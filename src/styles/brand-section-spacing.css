@@ -132,6 +132,14 @@
   .brand-copy {
     margin-top:
       0 !important;
+
+    max-height:
+      calc(
+        100vh - 400px
+      ) !important;
+
+    overflow:
+      hidden !important;
   }
 }
 
@@ -225,6 +233,20 @@
         510px
       ) !important;
   }
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  )
+  .brand-copy {
+    max-height:
+      calc(
+        100vh - 350px
+      ) !important;
+
+    overflow:
+      hidden !important;
+  }
 }
 
 /* ======================================================
@@ -255,6 +277,17 @@
   ) {
     top:
       286px !important;
+  }
+
+  html body
+  #brandShowcase.brand-showcase:not(
+    .is-all-brands
+  )
+  .brand-copy {
+    max-height:
+      calc(
+        100vh - 318px
+      ) !important;
   }
 }
 
@@ -463,9 +496,7 @@
 
   html[data-video-mode="mobile"]
   body
-  #brandShowcase.brand-showcase[
-    data-brand-key="polnapa"
-  ] {
+  #brandShowcase.brand-showcase[data-brand-key="polnapa"] {
     top:
       max(
         102px,
@@ -488,9 +519,7 @@
 
   html[data-video-mode="mobile"]
   body
-  #brandShowcase.brand-showcase[
-    data-brand-key="longanic"
-  ] {
+  #brandShowcase.brand-showcase[data-brand-key="longanic"] {
     top:
       auto !important;
 
@@ -513,9 +542,7 @@
 
   html[data-video-mode="mobile"]
   body
-  #brandShowcase.brand-showcase[
-    data-brand-key="matsuri"
-  ] {
+  #brandShowcase.brand-showcase[data-brand-key="matsuri"] {
     top:
       max(
         102px,
@@ -572,15 +599,11 @@
 
   html[data-video-mode="mobile"]
   body
-  #brandShowcase.brand-showcase[
-    data-brand-key="polnapa"
-  ],
+  #brandShowcase.brand-showcase[data-brand-key="polnapa"],
 
   html[data-video-mode="mobile"]
   body
-  #brandShowcase.brand-showcase[
-    data-brand-key="matsuri"
-  ] {
+  #brandShowcase.brand-showcase[data-brand-key="matsuri"] {
     top:
       max(
         94px,
@@ -595,9 +618,7 @@
 
   html[data-video-mode="mobile"]
   body
-  #brandShowcase.brand-showcase[
-    data-brand-key="longanic"
-  ] {
+  #brandShowcase.brand-showcase[data-brand-key="longanic"] {
     bottom:
       max(
         62px,

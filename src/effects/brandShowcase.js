@@ -532,10 +532,10 @@ export const updateBrandShowcase = ({
         );
 
   const blur =
-    (1 - fadeIn) *
-      (isMobile ? 5 : 8) +
-    exit *
-      (isMobile ? 6 : 7);
+    isMobile
+      ? 0
+      : (1 - fadeIn) * 8 +
+        exit * 7;
 
   const scale =
     (isMobile ? 0.98 : 0.965) +
