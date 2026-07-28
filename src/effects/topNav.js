@@ -1,4 +1,4 @@
-import logoUrl from "../assets/Logo Chua.png";
+import logoUrl from "../assets/chua-logo.avif";
 
 import {
   clamp,
@@ -23,9 +23,6 @@ import {
 
 const NAV_IN_START = 0.23;
 const NAV_IN_FULL = 0.27;
-
-const NAV_FRAME_OUT_START = 0.29;
-const NAV_FRAME_OUT_END = 0.34;
 
 /* ======================================================
    NAV TARGETS
@@ -429,16 +426,8 @@ const initializeTopNav = () => {
      * 29–34%
      * กรอบ Glass ค่อย ๆ หาย
      */
-    const frameFade =
-      smoothstep(
-        NAV_FRAME_OUT_START,
-        NAV_FRAME_OUT_END,
-        progress
-      );
-
     const frameAmount =
-      1 -
-      frameFade;
+      1;
 
     /*
      * ความชัดของ Navbar
@@ -481,7 +470,7 @@ const initializeTopNav = () => {
 
     nav.classList.toggle(
       "is-frameless",
-      frameAmount < 0.08
+      false
     );
 
     nav.classList.toggle(

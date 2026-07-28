@@ -1,0 +1,42 @@
+/* Move the intro copy groups closer to the visual center. */
+@media (min-width: 1181px) {
+  .intro-about-text {
+    left: clamp(86px, 10.2vw, 188px) !important;
+  }
+
+  .about-story-panel,
+  .about-ingredient-panel {
+    left: 0 !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .intro-about-text {
+    left: clamp(64px, 8vw, 94px) !important;
+  }
+
+  .about-story-panel,
+  .about-ingredient-panel {
+    left: 0 !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .intro-about-text {
+    left: 48px !important;
+    right: 28px !important;
+  }
+
+  .about-story-panel,
+  .about-ingredient-panel {
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] .about-story-panel,
+  html[data-video-mode="mobile"] .about-ingredient-panel {
+    padding-left: 34px !important;
+    padding-right: 14px !important;
+  }
+}

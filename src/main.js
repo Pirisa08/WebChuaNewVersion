@@ -4,6 +4,13 @@ import "./styles/mobile-scenes.css";
 import "./styles/premium-typography.css";
 import "./styles/brand-section-spacing.css";
 import "./styles/mobile-layout-correction.css";
+import "./styles/nav-framed.css";
+import "./styles/intro-text-position.css";
+import "./styles/fruit-hotspot-label-layout.css";
+import "./styles/scene-watermark-hidden.css";
+import "./styles/mobile-about-composition.css";
+import "./styles/mobile-fruit-detail-polish.css";
+import "./styles/mobile-certificate-premium.css";
 
 import logoUrl from "./assets/Logo Chua.png";
 
@@ -347,6 +354,8 @@ const updateOverlayState =
 
       progress:
         scrollProgress,
+
+      mode,
     });
 
     updateFruitHotspots({

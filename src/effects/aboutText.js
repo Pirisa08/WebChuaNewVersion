@@ -25,10 +25,85 @@ const highlightWords = [
   "your needs",
 ];
 
+const STORY_COPY = {
+  desktop: [
+    "Striving to understand",
+    "your needs",
+    "before you understand them.",
+  ],
+
+  mobile: [
+    "Understanding",
+    "your needs",
+    "before you do.",
+  ],
+};
+
+const INGREDIENT_COPY = {
+  desktop: `
+    Curated fruits<br />
+    from Thailand<br />
+    Made for the<br />
+    <span>Modern Markets</span>
+  `,
+
+  mobile: `
+    Curated fruits<br />
+    from Thailand<br />
+    <span>for Modern Markets</span>
+  `,
+};
+
+const applyResponsiveCopy = (
+  element,
+  mode = "desktop"
+) => {
+  const copyMode =
+    mode === "mobile"
+      ? "mobile"
+      : "desktop";
+
+  if (
+    element.dataset.aboutCopyMode ===
+    copyMode
+  ) {
+    return;
+  }
+
+  element.dataset.aboutCopyMode =
+    copyMode;
+
+  const lines =
+    element.querySelectorAll(
+      ".about-line"
+    );
+
+  STORY_COPY[copyMode].forEach(
+    (copy, index) => {
+      if (lines[index]) {
+        lines[index].textContent =
+          copy;
+      }
+    }
+  );
+
+  const ingredientTitle =
+    element.querySelector(
+      ".ingredient-title"
+    );
+
+  if (ingredientTitle) {
+    ingredientTitle.innerHTML =
+      INGREDIENT_COPY[copyMode];
+  }
+};
+
 const setLineHighlights = (element) => {
   const lines = element.querySelectorAll(".about-line");
 
   lines.forEach((line) => {
+    line.classList.remove("is-accent");
+
     const text = line.textContent.trim();
 
     if (highlightWords.includes(text)) {
@@ -55,8 +130,17 @@ const setPanelState = ({
   panel.style.filter = `blur(${blur.toFixed(2)}px)`;
 };
 
-export const updateAboutText = ({ element, progress }) => {
+export const updateAboutText = ({
+  element,
+  progress,
+  mode = "desktop",
+}) => {
   if (!element) return;
+
+  applyResponsiveCopy(
+    element,
+    mode
+  );
 
   setLineHighlights(element);
 

@@ -1,0 +1,70 @@
+/* Mobile-only copy composition: tighter story and curated scenes. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] .about-story-panel {
+    padding:
+      max(118px, calc(env(safe-area-inset-top) + 104px))
+      22px
+      0 !important;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel .about-lines {
+    gap: 2px !important;
+    width: min(82vw, 315px) !important;
+    max-width: 315px !important;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel .about-line-1 {
+    max-width: 13ch !important;
+    font-size: clamp(27px, 7.3vw, 33px) !important;
+    line-height: 0.94 !important;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel .about-line-2 {
+    max-width: 9ch !important;
+    margin-top: 3px !important;
+    font-size: clamp(34px, 9.2vw, 41px) !important;
+    line-height: 0.9 !important;
+  }
+
+  html[data-video-mode="mobile"] .about-story-panel .about-line-3 {
+    max-width: 13ch !important;
+    margin-top: 4px !important;
+    font-size: clamp(22px, 6.1vw, 27px) !important;
+    line-height: 0.96 !important;
+  }
+
+  html[data-video-mode="mobile"] .about-ingredient-panel {
+    padding:
+      0
+      20px
+      max(124px, calc(env(safe-area-inset-bottom) + 110px)) !important;
+  }
+
+  html[data-video-mode="mobile"] .about-ingredient-panel .ingredient-title {
+    width: min(84vw, 330px) !important;
+    max-width: 330px !important;
+    font-size: clamp(30px, 8.6vw, 39px) !important;
+    line-height: 0.92 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  html[data-video-mode="mobile"] .about-ingredient-panel .ingredient-title span {
+    display: block !important;
+    margin-top: 4px !important;
+    color: var(--mobile-correction-orange, var(--orange)) !important;
+    font-weight: 720 !important;
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] .about-story-panel {
+    padding-top:
+      max(108px, calc(env(safe-area-inset-top) + 94px)) !important;
+  }
+
+  html[data-video-mode="mobile"] .about-ingredient-panel {
+    padding-bottom:
+      max(112px, calc(env(safe-area-inset-bottom) + 98px)) !important;
+  }
+}

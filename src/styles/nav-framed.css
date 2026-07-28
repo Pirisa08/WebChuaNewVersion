@@ -1,0 +1,154 @@
+/* Keep the top navigation framed on every scene and viewport. */
+.top-nav {
+  --nav-frame: 1 !important;
+}
+
+.top-nav-brand::before,
+.top-nav-menu-shell::before {
+  opacity: 1 !important;
+  border-color: rgba(20, 39, 74, 0.075) !important;
+  background: rgba(255, 255, 255, 0.66) !important;
+  box-shadow:
+    0 12px 32px rgba(20, 39, 74, 0.065),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+}
+
+.top-nav-brand::before {
+  background: rgba(255, 255, 255, 0.94) !important;
+}
+
+@media (min-width: 901px) {
+  .top-nav-brand,
+  .top-nav-menu-shell {
+    min-height: clamp(40px, 3.1vw, 46px) !important;
+    height: clamp(40px, 3.1vw, 46px) !important;
+  }
+
+  .top-nav-brand {
+    width: clamp(40px, 3.1vw, 46px) !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  .top-nav-logo {
+    width: clamp(27px, 2.2vw, 32px) !important;
+    height: clamp(27px, 2.2vw, 32px) !important;
+    max-height: none !important;
+  }
+
+  .top-nav-menu-shell {
+    padding:
+      0
+      clamp(8px, 0.7vw, 11px) !important;
+  }
+
+  .top-nav-menu {
+    gap: clamp(18px, 1.8vw, 31px) !important;
+    padding:
+      0
+      clamp(7px, 0.7vw, 10px) !important;
+  }
+
+  .top-nav-link {
+    height: clamp(32px, 2.6vw, 38px) !important;
+  }
+
+  .top-nav.is-frameless .top-nav-brand {
+    padding: 0 !important;
+  }
+
+  .top-nav.is-frameless .top-nav-menu-shell {
+    padding:
+      0
+      clamp(8px, 0.7vw, 11px) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .top-nav-brand,
+  .top-nav-menu-shell {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .top-nav-brand {
+    width: 40px !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  .top-nav-logo {
+    width: 27px !important;
+    height: 27px !important;
+    max-height: none !important;
+  }
+
+  .top-nav-menu-shell {
+    padding: 0 7px !important;
+  }
+
+  .top-nav-link {
+    height: 32px !important;
+  }
+
+  .top-nav.is-frameless .top-nav-brand {
+    padding: 0 !important;
+  }
+
+  .top-nav.is-frameless .top-nav-menu-shell {
+    padding: 0 7px !important;
+  }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] .top-nav-brand,
+  html[data-video-mode="mobile"] .top-nav-menu-shell {
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-brand {
+    width: 36px !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-logo {
+    width: 24px !important;
+    height: 24px !important;
+    max-height: none !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-menu-shell {
+    padding: 0 6px !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-link {
+    height: 30px !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav.is-frameless .top-nav-brand {
+    padding: 0 !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav.is-frameless .top-nav-menu-shell {
+    padding: 0 6px !important;
+  }
+}
+
+@media (max-width: 360px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] .top-nav-brand,
+  html[data-video-mode="mobile"] .top-nav-menu-shell {
+    height: 34px !important;
+    min-height: 34px !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav-logo {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  html[data-video-mode="mobile"] .top-nav.is-frameless .top-nav-brand {
+    padding: 0 !important;
+  }
+}

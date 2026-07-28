@@ -1,0 +1,7 @@
+/* Hide oversized background watermark words in certificate, OEM, and contact scenes. */
+.certificate-scene::before,
+.oem-contact-scene::before,
+.contact-scene::before {
+  content: none !important;
+  display: none !important;
+}

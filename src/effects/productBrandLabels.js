@@ -937,7 +937,10 @@ export const updateProductBrandLabels = ({
           x: baseX,
           y: baseY,
           scale,
-          protectedRects,
+          protectedRects:
+            config.avoidProtectedCollision
+              ? []
+              : protectedRects,
           occupiedRects,
         });
 
