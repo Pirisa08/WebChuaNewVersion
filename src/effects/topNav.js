@@ -547,7 +547,9 @@ const initializeTopNav = () => {
     (link) => {
       link.addEventListener(
         "click",
-        () => {
+        (event) => {
+          event.preventDefault();
+
           const targetName =
             link.dataset.navTarget;
 
