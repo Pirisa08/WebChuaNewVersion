@@ -30,9 +30,9 @@
 
     top:
       clamp(
-        120px,
-        14.5vh,
-        148px
+        108px,
+        14vh,
+        142px
       ) !important;
 
     width:
@@ -163,9 +163,9 @@
 
     top:
       clamp(
-        108px,
+        100px,
         13.5vh,
-        126px
+        132px
       ) !important;
 
     width:
@@ -261,7 +261,7 @@
 ) {
   html body #lineupHeader.lineup-header {
     top:
-      102px !important;
+      92px !important;
   }
 
   html body
@@ -309,7 +309,7 @@
       28px !important;
 
     top:
-      98px !important;
+      82px !important;
 
     width:
       auto !important;
@@ -682,7 +682,7 @@
 ) {
   html body #lineupHeader.lineup-header {
     top:
-      78px !important;
+      64px !important;
 
     left:
       34px !important;

@@ -75,19 +75,19 @@ const desktopScene = {
 
   brandLabels: {
     polnapa: {
-      left: 32.5,
-      top: 39.5,
+      left: 51.5,
+      top: 30.5,
 
-      enterX: -8,
+      enterX: -6,
       enterY: 24,
 
-      followX: 30,
-      followY: -18,
+      followX: 0,
+      followY: 8,
 
       exitX: 8,
       exitY: -10,
 
-      lineStart: 44,
+      lineStart: 92,
       lineEnd: 16,
 
       wobble: 0.75,

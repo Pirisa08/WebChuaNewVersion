@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 20;
   left: clamp(44px, 6.6vw, 122px);
-  top: clamp(118px, 18vh, 190px);
+  top: clamp(180px, 25vh, 270px);
   width: min(45vw, 690px);
   color: var(--navy);
   opacity: 0;
@@ -252,7 +252,7 @@
   .intro-about-text {
     left: 28px;
     right: 28px;
-    top: 116px;
+    top: 150px;
     width: auto;
   }
 
@@ -280,7 +280,7 @@
 
 @media (max-width: 640px) {
   .intro-about-text {
-    top: 76px;
+    top: 118px;
   }
 
   .about-line,
