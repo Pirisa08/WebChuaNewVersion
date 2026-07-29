@@ -147,10 +147,14 @@ const getVideoUrl = (
       mode
     );
 
-  return (
-    `${import.meta.env.BASE_URL}` +
-    `${scene.video}`
-  );
+  const basePath =
+    import.meta.env.BASE_URL ||
+    "/";
+
+  return new URL(
+    scene.video,
+    `${window.location.origin}${basePath}`
+  ).toString();
 };
 
 // ======================================================
