@@ -147,13 +147,16 @@ const getVideoUrl = (
       mode
     );
 
-  const basePath =
-    import.meta.env.BASE_URL ||
-    "/";
+  const pathname =
+    window.location.pathname.endsWith(
+      "/"
+    )
+      ? window.location.pathname
+      : `${window.location.pathname}/`;
 
   return new URL(
     scene.video,
-    `${window.location.origin}${basePath}`
+    `${window.location.origin}${pathname}`
   ).toString();
 };
 
