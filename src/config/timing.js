@@ -60,8 +60,8 @@ export const LOGO_SPIN_EXIT_END_PROGRESS = 0.215;
 export const STORY_START_PROGRESS = 0.215;
 export const STORY_FULL_PROGRESS = 0.235;
 
-export const STORY_EXIT_START_PROGRESS = 0.27;
-export const STORY_EXIT_END_PROGRESS = 0.295;
+export const STORY_EXIT_START_PROGRESS = 0.34;
+export const STORY_EXIT_END_PROGRESS = 0.37;
 
 export const STORY_LINE_START_PROGRESS = 0.222;
 export const STORY_LINE_STAGGER = 0.006;
