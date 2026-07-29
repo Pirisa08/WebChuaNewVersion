@@ -5,7 +5,7 @@
 เว็บไซต์ตัวอย่างที่ deploy แล้ว:
 
 ```text
-https://fruits-iota-pink.vercel.app/
+https://fruitpopchua.vercel.app
 ```
 
 ## สารบัญ
