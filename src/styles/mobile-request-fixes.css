@@ -339,3 +339,349 @@
     line-height: 1.28 !important;
   }
 }
+
+/* Restored center overlap: place lower cards over the middle fruit area. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: max(78px, calc(env(safe-area-inset-bottom) + 70px)) !important;
+    height: 172px !important;
+    padding: 11px 16px 42px !important;
+    z-index: 6 !important;
+    overflow: visible !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 52px !important;
+    right: 52px !important;
+    bottom: max(92px, calc(env(safe-area-inset-bottom) + 84px)) !important;
+    z-index: 7 !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-service-list {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-address-block {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(158px, calc(env(safe-area-inset-bottom) + 148px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-direct-block {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    z-index: 6 !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: max(70px, calc(env(safe-area-inset-bottom) + 62px)) !important;
+    height: 168px !important;
+    padding: 10px 14px 42px !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 42px !important;
+    right: 42px !important;
+    bottom: max(84px, calc(env(safe-area-inset-bottom) + 76px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-service-list {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-address-block {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(150px, calc(env(safe-area-inset-bottom) + 140px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-direct-block {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+  }
+}
+
+/* Certified final position: align with brand detail card. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    height: 172px !important;
+    padding: 11px 16px 42px !important;
+    z-index: 8 !important;
+    overflow: visible !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 52px !important;
+    right: 52px !important;
+    bottom: max(72px, calc(env(safe-area-inset-bottom) + 64px)) !important;
+    z-index: 9 !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+    height: 168px !important;
+    padding: 10px 14px 42px !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 42px !important;
+    right: 42px !important;
+    bottom: max(66px, calc(env(safe-area-inset-bottom) + 58px)) !important;
+  }
+}
+
+/* Certified final position: align with brand detail card. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    height: 172px !important;
+    padding: 11px 16px 42px !important;
+    z-index: 8 !important;
+    overflow: visible !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 52px !important;
+    right: 52px !important;
+    bottom: max(72px, calc(env(safe-area-inset-bottom) + 64px)) !important;
+    z-index: 9 !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+    height: 168px !important;
+    padding: 10px 14px 42px !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 42px !important;
+    right: 42px !important;
+    bottom: max(66px, calc(env(safe-area-inset-bottom) + 58px)) !important;
+  }
+}
+
+/* Match certified card to the mobile brand detail position. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    height: 172px !important;
+    padding: 11px 16px 42px !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 52px !important;
+    right: 52px !important;
+    bottom: max(72px, calc(env(safe-area-inset-bottom) + 64px)) !important;
+    z-index: 7 !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+    height: 168px !important;
+    padding: 10px 14px 42px !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 42px !important;
+    right: 42px !important;
+    bottom: max(66px, calc(env(safe-area-inset-bottom) + 58px)) !important;
+  }
+}
+
+/* Final overlap trial: lift the lower cards into the fruit area. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body .oem-contact-lead,
+  html[data-video-mode="mobile"] .oem-contact-lead {
+    left: auto !important;
+    right: 16px !important;
+    top: min(48vh, max(360px, calc(env(safe-area-inset-top) + 344px))) !important;
+    width: min(204px, calc(100vw - 32px)) !important;
+    padding: 12px 14px !important;
+    font-size: clamp(11px, 3vw, 12.8px) !important;
+    font-weight: 780 !important;
+    line-height: 1.28 !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-lead::before,
+  html[data-video-mode="mobile"] .oem-contact-lead::before {
+    left: -15px !important;
+    top: 22px !important;
+    bottom: auto !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-lead::after,
+  html[data-video-mode="mobile"] .oem-contact-lead::after {
+    left: -27px !important;
+    top: 42px !important;
+    bottom: auto !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    bottom: max(84px, calc(env(safe-area-inset-bottom) + 76px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-service-list {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(84px, calc(env(safe-area-inset-bottom) + 74px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-address-block {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(190px, calc(env(safe-area-inset-bottom) + 180px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-direct-block {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(88px, calc(env(safe-area-inset-bottom) + 78px)) !important;
+    z-index: 6 !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body .oem-contact-lead,
+  html[data-video-mode="mobile"] .oem-contact-lead {
+    right: 14px !important;
+    top: min(48vh, max(344px, calc(env(safe-area-inset-top) + 328px))) !important;
+    width: min(194px, calc(100vw - 28px)) !important;
+    padding: 11px 12px !important;
+    font-size: 10.4px !important;
+    line-height: 1.26 !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    bottom: max(78px, calc(env(safe-area-inset-bottom) + 70px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-service-list {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(76px, calc(env(safe-area-inset-bottom) + 68px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-address-block {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(180px, calc(env(safe-area-inset-bottom) + 170px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-direct-block {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(82px, calc(env(safe-area-inset-bottom) + 72px)) !important;
+  }
+}
+
+/* True restored center overlap: keep this last. */
+@media (max-width: 767px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    height: 172px !important;
+    padding: 11px 16px 42px !important;
+    z-index: 8 !important;
+    overflow: visible !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 52px !important;
+    right: 52px !important;
+    bottom: max(72px, calc(env(safe-area-inset-bottom) + 64px)) !important;
+    z-index: 9 !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-service-list {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-address-block {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(158px, calc(env(safe-area-inset-bottom) + 148px)) !important;
+    z-index: 6 !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-direct-block {
+    left: 24px !important;
+    right: 24px !important;
+    bottom: max(58px, calc(env(safe-area-inset-bottom) + 50px)) !important;
+    z-index: 6 !important;
+  }
+}
+
+@media (max-width: 390px) and (orientation: portrait) {
+  html[data-video-mode="mobile"] body #certificateCue .certificate-logo-area {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+    height: 168px !important;
+    padding: 10px 14px 42px !important;
+  }
+
+  html[data-video-mode="mobile"] body #certificateCue .certificate-copy-points {
+    left: 42px !important;
+    right: 42px !important;
+    bottom: max(66px, calc(env(safe-area-inset-bottom) + 58px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .oem-contact-service-list {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-address-block {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(150px, calc(env(safe-area-inset-bottom) + 140px)) !important;
+  }
+
+  html[data-video-mode="mobile"] body .contact-right-card .contact-direct-block {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+  }
+}
