@@ -147,17 +147,13 @@ const getVideoUrl = (
       mode
     );
 
-  const pathname =
-    window.location.pathname.endsWith(
-      "/"
-    )
-      ? window.location.pathname
-      : `${window.location.pathname}/`;
+  const candidatePaths = [
+    `/${scene.video}`,
+    `./${scene.video}`,
+    `${window.location.pathname.replace(/\/$/, "")}/${scene.video}`,
+  ];
 
-  return new URL(
-    scene.video,
-    `${window.location.origin}${pathname}`
-  ).toString();
+  return candidatePaths[0];
 };
 
 // ======================================================
