@@ -11,6 +11,7 @@ import "./styles/scene-watermark-hidden.css";
 import "./styles/mobile-about-composition.css";
 import "./styles/mobile-fruit-detail-polish.css";
 import "./styles/mobile-certificate-premium.css";
+import "./styles/mobile-request-fixes.css";
 
 import logoUrl from "./assets/Logo Chua.png";
 
