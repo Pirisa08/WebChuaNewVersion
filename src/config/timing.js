@@ -60,8 +60,8 @@ export const LOGO_SPIN_EXIT_END_PROGRESS = 0.215;
 export const STORY_START_PROGRESS = 0.215;
 export const STORY_FULL_PROGRESS = 0.235;
 
-export const STORY_EXIT_START_PROGRESS = 0.34;
-export const STORY_EXIT_END_PROGRESS = 0.37;
+export const STORY_EXIT_START_PROGRESS = 0.28;
+export const STORY_EXIT_END_PROGRESS = 0.30;
 
 export const STORY_LINE_START_PROGRESS = 0.222;
 export const STORY_LINE_STAGGER = 0.006;
@@ -72,7 +72,7 @@ export const STORY_LINE_REVEAL_DURATION = 0.018;
 // 30% เข้า / 35% เริ่มออก / 37% หายหมด
 // ======================================================
 
-export const INGREDIENT_START_PROGRESS = 0.3;
+export const INGREDIENT_START_PROGRESS = 0.30;
 export const INGREDIENT_FULL_PROGRESS = 0.32;
 
 export const INGREDIENT_EXIT_START_PROGRESS = 0.35;
